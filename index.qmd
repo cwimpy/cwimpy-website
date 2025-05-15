@@ -1,11 +1,56 @@
 ---
-title: "cwimpy-website"
+title: "Cameron Wimpy, PhD"
+pagetitle: "Cameron Wimpy, PhD"
+subtitle: " Associate Professor and Chair"
+image: assets/silvia/img/skyline-philly-dual.png
+image-alt: "Abstract data visualization depicting tall buildings in Philadelphia as a circle. The text inside the circle reads Philadelphia Skyline"
+
+twitter-card:
+    title: Cameron Wimpy, PhD
+    description: |
+      Associate Professor and Chair
+    image: assets/avatar.jpg
+
+about:
+  template: solana
+  image-width: 28em
+  id: hero-heading
+  links:
+    - text: "{{< ai dataverse >}}"
+      aria-label: "Dataverse"
+      href: https://dataverse.harvard.edu/dataverse/cwimpy
+    - icon: github
+      aria-label: "GitHub"
+      href: https://github.com/cwimpy
+    - text: "{{< ai google-scholar >}}"
+      aria-label: "Google Scholar"
+      href: https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en
+    - text: "{{< ai orcid >}}"
+      aria-label: "Orcid"
+      href: https://orcid.org/0000-0002-2049-5229
+    - icon: twitter-x
+      aria-label: "X"
+      href: https://x.com/camwimpy
+    - text: "{{< ai clarivate >}}"
+      aria-label: "Clarivate"
+      href: https://www.webofscience.com/wos/author/record/1987627
+page-layout: full
+
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+
+header-includes: >
+  <link rel="stylesheet" href="assets/index.css">
+resources:
+  - assets/index.css
 ---
 
-This is a Quarto website.
+<br><br>
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: {#hero-heading}
+I am associate professor and department chair of Government, Law & Policy at Arkansas State University with interests in comparative public administration, political economy, political methodology, and public policy. I am also the founding director of the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). I am an affiliate faculty with the [Center for No Boundary Thinking](https://www.astate.edu/a/cnbt/) at A-State. I formerly served as the Research Director in the [MIT Election Data and Science Lab](http://electionlab.mit.edu), where I managed applied research on the scientific study of elections. I was previously an affiliate faculty member with the [Harvard Institute for Quantitative Social Science](https://www.iq.harvard.edu/home). I grew up on [Crowley's Ridge](https://en.wikipedia.org/wiki/Crowley%27s_Ridge) in the Arkansas Delta.
 
-```{r}
-1 + 1
-```
+[Learn more about me →](/about){.about-links .subtitle}
+:::

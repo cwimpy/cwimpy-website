@@ -1,1 +1,12 @@
 /* css styles */
+
+.navbar {
+  background-color: #cc092f; /* Dark blue, like your current setup */
+  color: white;
+}
+.navbar a {
+  color: white !important;
+}
+body {
+  font-family: 'Arial', sans-serif; /* Consistent with your setup */
+}

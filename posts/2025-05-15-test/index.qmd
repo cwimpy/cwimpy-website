@@ -1,0 +1,15 @@
+---
+title: "Test Post"
+description: "A test post to verify the Quarto blog listing"
+author:
+  - name: Cameron Wimpy
+    url: https://github.com/cwimpy
+    affiliation: Your Affiliation
+    affiliation-url: Your Affiliation URL
+date: 2025-05-15
+categories: [test, blog]
+citation:
+  url: http://localhost:3420/posts/2025-05-15-test/
+image: preview-image.png  # Replace or remove if no image
+draft: false
+---

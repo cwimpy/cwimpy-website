@@ -16,6 +16,8 @@ website:
         text: Research
       - href: teaching.qmd
         text: Teaching
+      - href: posts.qmd
+        text: Posts
       - href: files/cv.pdf
         text: CV
   favicon: "images/favicon.ico"

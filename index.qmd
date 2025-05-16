@@ -2,14 +2,13 @@
 title: "Cameron Wimpy, PhD"
 pagetitle: "Cameron Wimpy, PhD"
 subtitle: " Associate Professor and Chair"
-image: assets/silvia/img/skyline-philly-dual.png
-image-alt: "Abstract data visualization depicting tall buildings in Philadelphia as a circle. The text inside the circle reads Philadelphia Skyline"
+image: images/camwimpy.jpg
+image-alt: "Headshot photo of Dr. Cameron Wimpy"
 
 twitter-card:
     title: Cameron Wimpy, PhD
     description: |
       Associate Professor and Chair
-    image: assets/avatar.jpg
 
 about:
   template: solana

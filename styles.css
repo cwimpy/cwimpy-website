@@ -10,3 +10,26 @@
 body {
   font-family: 'Arial', sans-serif; /* Consistent with your setup */
 }
+
+.quarto-listing-default .listing-post {
+  margin-bottom: 20px;
+}
+.quarto-listing-default .listing-title {
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+.quarto-listing-default .listing-date {
+  color: #666;
+  font-size: 0.9em;
+}
+.quarto-listing-default .listing-categories a {
+  background-color: #f8f8f8;
+  color: #2c3e50;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+.quarto-listing-default .listing-categories a:hover {
+  background-color: #3a506b;
+  color: white;
+}

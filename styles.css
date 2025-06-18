@@ -1,0 +1,13 @@
+/* styles.css */
+.navbar-brand {
+  font-weight: bold;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  max-width: 200px;
+}
+
+.education-item {
+  margin-bottom: 1rem;
+}/* css styles */

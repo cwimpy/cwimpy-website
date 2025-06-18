@@ -1,0 +1,10 @@
+---
+title: "Publications"
+bibliography: publications.bib
+nocite: '@*'
+---
+
+## Publications
+
+::: {#refs}
+:::

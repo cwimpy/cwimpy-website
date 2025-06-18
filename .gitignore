@@ -79,3 +79,5 @@ yarn-error.log*
 # Backup files
 *.bak
 *.backup
+
+/.quarto/

@@ -1,0 +1,306 @@
+---
+title: "Research"
+---
+
+This is home for my research publications and accompanying materials.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
+
+library(bib2df)
+library(dplyr)
+library(stringr)
+
+# Read the bib file
+pubs <- bib2df("publications.bib")
+
+# Function to safely get a value or default
+safe_get <- function(value, default = "") {
+  if(is.null(value) || length(value) == 0 || all(is.na(value))) {
+    return(default)
+  }
+  return(value[1]) # Take first element if vector
+}
+
+# Function to bold your name in author lists (APSA style)
+bold_name <- function(authors) {
+  if(is.null(authors) || length(authors) == 0) return("")
+  
+  # Convert to proper string - handle both character vectors and lists
+  if(is.list(authors)) {
+    authors_str <- paste(unlist(authors), collapse = ", ")
+  } else {
+    authors_str <- paste(authors, collapse = ", ")
+  }
+  
+  # Clean up any formatting issues
+  authors_str <- gsub('c\\("', '', authors_str)
+  authors_str <- gsub('"\\)', '', authors_str)
+  authors_str <- gsub('"', '', authors_str)
+  
+  # Bold different name formats
+  authors_str <- gsub("Cameron Wimpy", "**Cameron Wimpy**", authors_str, fixed = TRUE)
+  authors_str <- gsub("Wimpy, Cameron", "**Wimpy, Cameron**", authors_str, fixed = TRUE)
+  authors_str <- gsub("C. Wimpy", "**C. Wimpy**", authors_str, fixed = TRUE)
+  authors_str <- gsub("Wimpy, C.", "**Wimpy, C.**", authors_str, fixed = TRUE)
+  
+  return(authors_str)
+}
+
+# Function to format citation in APSA style
+format_apsa_citation <- function(pub, pub_type) {
+  authors <- bold_name(pub$AUTHOR)
+  year <- safe_get(pub$YEAR, "n.d.")
+  title <- safe_get(pub$TITLE, "No Title")
+  
+  if(pub_type == "article") {
+    journal <- safe_get(pub$JOURNAL, "Journal")
+    volume <- safe_get(pub$VOLUME)
+    number <- safe_get(pub$NUMBER)
+    pages <- safe_get(pub$PAGES)
+    
+    # APSA format: Author. Year. "Title." Journal Volume(Number): Pages.
+    citation <- paste0(authors, ". ", year, ". \"", title, ".\" *", journal, "*")
+    
+    if(volume != "") {
+      citation <- paste0(citation, " ", volume)
+      if(number != "") {
+        citation <- paste0(citation, "(", number, ")")
+      }
+    }
+    
+    if(pages != "") {
+      # Clean up page formatting
+      pages_clean <- gsub("--", "-", pages)
+      citation <- paste0(citation, ": ", pages_clean)
+    }
+    
+    citation <- paste0(citation, ".")
+    
+  } else if(pub_type == "book") {
+    publisher <- safe_get(pub$PUBLISHER, "Publisher")
+    address <- safe_get(pub$ADDRESS)
+    
+    # APSA format: Author. Year. Title. Location: Publisher.
+    citation <- paste0(authors, ". ", year, ". *", title, "*.")
+    if(address != "" && publisher != "") {
+      citation <- paste0(authors, ". ", year, ". *", title, "*. ", address, ": ", publisher, ".")
+    } else if(publisher != "") {
+      citation <- paste0(authors, ". ", year, ". *", title, "*. ", publisher, ".")
+    }
+    
+  } else if(pub_type == "incollection") {
+    booktitle <- safe_get(pub$BOOKTITLE, "Book Title")
+    editor <- safe_get(pub$EDITOR)
+    publisher <- safe_get(pub$PUBLISHER, "Publisher")
+    pages <- safe_get(pub$PAGES)
+    address <- safe_get(pub$ADDRESS)
+    
+    # APSA format: Author. Year. "Title." In Book Title, ed. Editor, pages. Location: Publisher.
+    citation <- paste0(authors, ". ", year, ". \"", title, ".\" In *", booktitle, "*")
+    
+    if(editor != "" && !is.na(editor)) {
+      # Convert editor to character and handle multiple editors
+      editor_str <- as.character(editor)
+      if(length(editor_str) > 1) {
+        editor_clean <- paste(editor_str, collapse = " and ")
+      } else {
+        editor_clean <- gsub(" and ", " and ", editor_str, fixed = TRUE)
+      }
+      citation <- paste0(citation, ", ed. ", editor_clean)
+    }
+    
+    if(pages != "") {
+      pages_clean <- gsub("--", "-", pages)
+      citation <- paste0(citation, ", ", pages_clean)
+    }
+    
+    citation <- paste0(citation, ".")
+    
+    if(address != "" && publisher != "") {
+      citation <- paste0(citation, " ", address, ": ", publisher, ".")
+    } else if(publisher != "") {
+      citation <- paste0(citation, " ", publisher, ".")
+    }
+    
+  } else if(pub_type == "inproceedings") {
+    booktitle <- safe_get(pub$BOOKTITLE, "Conference")
+    address <- safe_get(pub$ADDRESS)
+    month <- safe_get(pub$MONTH)
+    
+    # APSA format: Author. Year. "Title." Paper presented at Conference, Location, Month.
+    citation <- paste0(authors, ". ", year, ". \"", title, ".\" Paper presented at ", booktitle)
+    
+    if(address != "") {
+      citation <- paste0(citation, ", ", address)
+    }
+    
+    if(month != "") {
+      citation <- paste0(citation, ", ", month)
+    }
+    
+    citation <- paste0(citation, ".")
+    
+  } else {
+    # Default format for other types (working papers, etc.)
+    howpublished <- safe_get(pub$HOWPUBLISHED)
+    if(howpublished != "") {
+      citation <- paste0(authors, ". ", year, ". \"", title, ".\" ", howpublished, ".")
+    } else {
+      citation <- paste0(authors, ". ", year, ". \"", title, ".\" Working paper.")
+    }
+  }
+  
+  return(citation)
+}
+
+# Function to determine publication type and sort order
+get_pub_type <- function(category, custom_pubtype = "") {
+  # First check if there's a custom pubtype field
+  if(custom_pubtype != "" && !is.na(custom_pubtype)) {
+    custom_type <- tolower(custom_pubtype)
+    
+    custom_mapping <- list(
+      "journal" = list(name = "Journal Articles", order = 1),
+      "article" = list(name = "Journal Articles", order = 1),
+      "book" = list(name = "Books", order = 2),
+      "chapter" = list(name = "Book Chapters", order = 3),
+      "incollection" = list(name = "Book Chapters", order = 3),
+      "conference" = list(name = "Conference Papers", order = 4),
+      "inproceedings" = list(name = "Conference Papers", order = 4),
+      "working" = list(name = "Working Papers", order = 5),
+      "workingpaper" = list(name = "Working Papers", order = 5),
+      "unpublished" = list(name = "Working Papers", order = 5),
+      "report" = list(name = "Reports", order = 6),
+      "techreport" = list(name = "Reports", order = 6),
+      "policy" = list(name = "Policy Papers", order = 7),
+      "other" = list(name = "Other Publications", order = 8),
+      "misc" = list(name = "Other Publications", order = 8)
+    )
+    
+    if(custom_type %in% names(custom_mapping)) {
+      return(custom_mapping[[custom_type]])
+    }
+  }
+  
+  # Fall back to automatic detection from bib category
+  category <- tolower(safe_get(category, "misc"))
+  
+  type_mapping <- list(
+    "article" = list(name = "Journal Articles", order = 1),
+    "book" = list(name = "Books", order = 2),
+    "incollection" = list(name = "Book Chapters", order = 3),
+    "inproceedings" = list(name = "Conference Papers", order = 4),
+    "unpublished" = list(name = "Working Papers", order = 5),
+    "techreport" = list(name = "Reports", order = 6),
+    "misc" = list(name = "Other Publications", order = 7)
+  )
+  
+  if(category %in% names(type_mapping)) {
+    return(type_mapping[[category]])
+  } else {
+    return(list(name = "Other Publications", order = 7))
+  }
+}
+
+# Process publications
+pubs_processed <- pubs %>%
+  rowwise() %>%
+  mutate(
+    year_clean = as.numeric(safe_get(YEAR, "0")),
+    title_clean = safe_get(TITLE, "No Title"),
+    bibtex_clean = safe_get(BIBTEXKEY, paste0("ref_", row_number())),
+    category_clean = tolower(safe_get(CATEGORY, "misc"))
+  ) %>%
+  ungroup()
+
+# Add type information
+for(i in 1:nrow(pubs_processed)) {
+  custom_pubtype <- safe_get(pubs_processed$PUBTYPE[i], "")
+  type_info <- get_pub_type(pubs_processed$category_clean[i], custom_pubtype)
+  pubs_processed$type_name[i] <- type_info$name
+  pubs_processed$type_order[i] <- type_info$order
+}
+
+# Sort by type and year
+pubs_processed <- pubs_processed %>%
+  arrange(type_order, desc(year_clean))
+
+# Get unique publication types
+pub_types <- pubs_processed %>%
+  distinct(type_name, type_order, category_clean) %>%
+  arrange(type_order)
+
+# Counter for numbering within each section
+section_counter <- 1
+
+# Generate sections by publication type
+for(type_idx in 1:nrow(pub_types)) {
+  current_type <- pub_types$type_name[type_idx]
+  current_category <- pub_types$category_clean[type_idx]
+  
+  # Get publications for this type
+  type_pubs <- pubs_processed %>%
+    filter(type_name == current_type) %>%
+    arrange(desc(year_clean))
+  
+  if(nrow(type_pubs) > 0) {
+    # Print section header
+    cat("## ", current_type, "\n\n")
+    
+    # Generate entries for this type (numbered in descending order)
+    for(i in 1:nrow(type_pubs)) {
+      pub <- type_pubs[i,]
+      
+      # Format citation in APSA style
+      citation <- format_apsa_citation(pub, current_category)
+      
+      # Print the entry with section numbering
+      entry_number <- nrow(type_pubs) - i + 1
+      cat(entry_number, ". ", citation, "\n\n", sep = "")
+      
+      # Add brief description if available
+      abstract_text <- safe_get(pub$ABSTRACT)
+      if(abstract_text != "" && nchar(abstract_text) > 0) {
+        if(nchar(abstract_text) > 200) {
+          abstract_text <- paste0(substr(abstract_text, 1, 200), "...")
+        }
+        cat("   ", abstract_text, "\n\n", sep = "")
+      }
+      
+      # Create buttons section
+      cat("\n::: {.publication-buttons}\n")
+      
+      # PDF button
+      pdf_file <- paste0("uploads/", pub$bibtex_clean, ".pdf")
+      cat("[<i class=\"fas fa-file-pdf\"></i> PDF](", pdf_file, "){.btn-pub}", sep = "")
+      
+      # DOI button
+      doi <- safe_get(pub$DOI)
+      if(doi != "") {
+        doi_url <- if(startsWith(doi, "http")) doi else paste0("https://doi.org/", doi)
+        cat("\n[<i class=\"fas fa-external-link-alt\"></i> DOI](", doi_url, "){.btn-pub}", sep = "")
+      }
+      
+      # Data button
+      data_url <- safe_get(pub$DATA)
+      if(data_url != "") {
+        cat("\n[<i class=\"fas fa-database\"></i> Data](", data_url, "){.btn-pub}", sep = "")
+      }
+      
+      # Code button
+      code_url <- safe_get(pub$CODE)
+      if(code_url != "") {
+        cat("\n[<i class=\"fas fa-code\"></i> Code](", code_url, "){.btn-pub}", sep = "")
+      }
+      
+      cat("\n:::\n\n")
+    }
+    
+    cat("---\n\n")
+  }
+}
+```

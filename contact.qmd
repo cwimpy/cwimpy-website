@@ -1,0 +1,26 @@
+---
+title: "Contact"
+---
+
+## Get in Touch
+
+**Email:** [your.email@astate.edu](mailto:your.email@astate.edu)
+
+**Office:** Your Office Location  
+Department of Political Science  
+Arkansas State University  
+Your Address  
+Jonesboro, AR 72467
+
+**Phone:** (870) xxx-xxxx
+
+## Office Hours
+- Day: Time
+- Day: Time
+- Or by appointment
+
+## Social Media & Academic Profiles
+- [Google Scholar](https://scholar.google.com/your-profile)
+- [ORCID](https://orcid.org/your-orcid-id)
+- [GitHub](https://github.com/your-username)
+- [Twitter](https://twitter.com/your-handle)

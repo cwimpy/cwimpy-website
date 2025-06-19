@@ -1,13 +1,396 @@
-/* styles.css */
-.navbar-brand {
-  font-weight: bold;
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root variables */
+:root {
+  --primary-color: #1e5f3e;
+  --secondary-color: #2d8a47;
+  --text-dark: #1e3a28;
+  --text-medium: #4a6b56;
+  --text-light: #7a9b87;
+  --background-light: #f6faf7;
+  --border-light: #d4e5da;
 }
 
-.profile-photo {
-  border-radius: 50%;
-  max-width: 200px;
+/* Publication styling */
+.publication-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem 0;
 }
 
-.education-item {
+.btn-pub {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  background: var(--background-light);
+  color: var(--text-medium);
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-pub:hover {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 138, 71, 0.15);
+}
+
+.btn-pub i {
+  margin-right: 0.4rem;
+  font-size: 0.9em;
+}
+
+/* Research page styling */
+#research h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+#research h3 {
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#research hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2rem 0;
+}
+
+/* Hanging indent for publications - target paragraphs that contain citations */
+#research p {
+  text-indent: -2rem;
+  padding-left: 2rem;
   margin-bottom: 1rem;
-}/* css styles */
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* Don't apply hanging indent to abstracts (they're indented already) */
+#research p:has(+ .publication-buttons) {
+  text-indent: 0;
+  padding-left: 0;
+  font-style: italic;
+  color: var(--text-medium);
+  margin-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .publication-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-pub {
+    min-width: 120px;
+  }
+  
+  /* Adjust hanging indent for mobile */
+  #research p {
+    text-indent: -1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  #research p:has(+ .publication-buttons) {
+    margin-left: 1.5rem;
+  }
+}
+
+/* Bio link styling */
+.hero-text p a {
+  color: var(--secondary-color) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-text p a:hover {
+  text-decoration: underline;
+}
+
+/* Base styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/* Main content container */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #000000;
+}
+
+/* Hero grid layout - matches Silvia's side-by-side layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+/* Profile image section */
+.hero-image {
+  position: sticky;
+  top: 2rem;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Hero text section */
+.hero-text {
+  max-width: none;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.hero-text h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #000000;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Social buttons */
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--background-light);
+  color: var(--text-medium);
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.15);
+}
+
+/* Education section - matches her clean list style */
+.content-container > h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.education-list p {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.education-list p:last-child {
+  border-bottom: none;
+}
+
+.education-list strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Navbar styling */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  font-weight: 600 !important;
+  color: var(--primary-color) !important;
+  font-size: 1.25rem !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-medium) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    padding: 1rem;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-image {
+    position: static;
+    justify-self: center;
+  }
+  
+  .profile-image {
+    max-width: 200px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .social-buttons {
+    justify-content: center;
+  }
+  
+  .content-container > h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Footer styling */
+.page-footer {
+  background-color: var(--background-light) !important;
+  border-top: 1px solid var(--border-light) !important;
+  padding: 2rem 0 !important;
+  margin-top: 4rem !important;
+}
+
+.page-footer .footer-left,
+.page-footer .footer-center,
+.page-footer .footer-right {
+  font-size: 0.9rem;
+  color: var(--text-medium) !important;
+}
+
+.page-footer .footer-left a {
+  color: var(--secondary-color) !important;
+  text-decoration: none;
+}
+
+.page-footer .footer-left a:hover {
+  text-decoration: underline;
+}
+
+.page-footer .footer-center a {
+  color: var(--text-medium) !important;
+  margin: 0 0.75rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.page-footer .footer-center a:hover {
+  color: var(--secondary-color) !important;
+  transform: translateY(-2px);
+}
+
+.page-footer .footer-right a {
+  color: var(--text-medium) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.page-footer .footer-right a:hover {
+  color: var(--secondary-color) !important;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.25rem;
+  }
+  
+  .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-social {
+    min-width: 150px;
+    justify-content: center;
+  }
+}

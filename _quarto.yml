@@ -4,22 +4,42 @@ project:
 
 website:
   title: "Cameron Wimpy"
-  site-url: "https://cwimpy.com"  # Your custom domain
+  site-url: "https://cwimpy.com"
+  search: 
+    location: navbar
+    type: overlay
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: About
-      - href: publications.qmd
-        text: Publications
+      - href: posts.qmd
+        text: Posts
+      - href: research.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
       - href: cv.qmd
         text: CV
+  page-footer:
+    left: |
+      © 2025 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
+    center: |
+      <a href="uploads/cv-wimpy.pdf">{{< ai cv >}}</a>
+      <a href="mailto:cwimpy@astate.edu">{{< fa envelope >}}</a>
+      <a href="https://github.com/cwimpy">{{< fa brands github >}}</a>
+      <a href="https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en">{{< ai google-scholar >}}</a>
+      <a href="https://www.linkedin.com/in/cwimpy/">{{< fa brands linkedin >}}</a>
+      <a href="https://orcid.org/0000-0002-2049-5229">{{< ai orcid >}}</a>
+      <a href="https://twitter.com/camwimpy">{{< fa brands x-twitter >}}</a>
+    right: |
+      <a href="contact.qmd">Contact</a>
 
 format:
   html:
-    theme: cosmo
+    theme: journal
     css: styles.css
-    toc: true
+
+filters:
+  - fontawesome
 
 bibliography: publications.bib

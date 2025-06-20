@@ -241,6 +241,22 @@ body {
   }
 }
 
+// Aggressive override for white backgrounds in course cards
+body .quarto-listing-container-grid .listing-item,
+html .quarto-listing-container-grid .listing-item,
+.quarto-listing .quarto-listing-container-grid .listing-item,
+div.quarto-listing-container-grid .listing-item,
+.listing-grid .listing-item {
+  background: var(--dark-background-light) !important;
+  background-color: var(--dark-background-light) !important;
+}
+
+// Target specific Bootstrap classes that might be overriding
+.card, .card-body, .listing-item.card {
+  background: var(--dark-background-light) !important;
+  background-color: var(--dark-background-light) !important;
+}
+
 .quarto-listing-container-table {
   .table {
     background: var(--dark-background-light) !important;
@@ -250,12 +266,24 @@ body {
       background: var(--dark-background) !important;
       color: var(--dark-primary-color) !important;
       border-color: var(--dark-border) !important;
+      white-space: nowrap !important;
+      padding: 0.75rem !important;
     }
 
     td {
       background: var(--dark-background-light) !important;
       color: var(--dark-text) !important;
       border-color: var(--dark-border) !important;
+      vertical-align: top !important;
+      padding: 0.75rem !important;
+
+      // Fix date column formatting
+      &:first-child {
+        white-space: nowrap !important;
+        min-width: 100px !important;
+        font-family: monospace !important;
+        font-size: 0.9rem !important;
+      }
 
       a {
         color: var(--dark-secondary-color) !important;

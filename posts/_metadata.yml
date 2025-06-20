@@ -1,12 +1,33 @@
 # Metadata for all files in the posts/ directory
+format:
+  html: 
+    date-format: "M/D/YYYY"
+  pdf:
+    documentclass: article
+    date-format: "M/D/YYYY"
+    geometry:
+      - top=1in
+      - left=1in
+      - right=1in
+      - bottom=1in
+    include-in-header:
+      text: |
+        \usepackage{fancyhdr}
+        \usepackage{fontawesome5}
+        \pagestyle{fancy}
+        \fancyhf{}
+        \rhead{Cameron Wimpy}
+        \lhead{\leftmark}
+        \cfoot{\thepage}
+
 comments:
   giscus:
     repo: cwimpy/cwimpy-website
-    repo-id: "YOUR_REPO_ID"
+    repo-id: "R_kgDOO9_voQ"
     category: "General"
-    category-id: "YOUR_CATEGORY_ID"
+    category-id: "DIC_kwDOO9_voc4CrxCV"
     mapping: "pathname"
     reactions-enabled: true
     input-position: "bottom"
-    theme: "light"
+    theme: "dark"
     language: "en"

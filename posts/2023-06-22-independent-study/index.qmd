@@ -5,6 +5,16 @@ date: "2023-06-22"
 categories: [teaching, advice]
 image: "image.jpg"
 description: "So you need an independent study? I am often approached by students who want to complete an independent study with me. In most cases, they 'want' to do this because they 'need' a certain amount of credit for a given sub-field to graduate."
+format:
+  html: default
+  pdf: 
+    output-file: "independent-study-wimpy.pdf"  
+    documentclass: article
+    geometry:
+      - top=1in
+      - left=1in
+      - right=1in
+      - bottom=1in
 ---
 
 ## So you need an independent study?
@@ -58,3 +68,5 @@ I may decline to supervise an independent study if: - The proposal lacks focus o
 If an independent study isn't the right fit, consider: - **Directed readings courses** for exploring a literature - **Research assistant positions** to gain hands-on experience - **Thesis work** if you're looking for a capstone experience - **Existing courses** that might meet your needs
 
 Remember: an independent study should be an intellectually rewarding experience for both of us. If you're just looking to fulfill requirements, there are likely better options available.
+
+[Download PDF](independent-study-wimpy.pdf){.pdf-download}

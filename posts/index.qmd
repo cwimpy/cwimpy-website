@@ -1,6 +1,13 @@
 ---
 title: "Posts"
-listing: "**/*.qmd"
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  feed: true
+comments: false
 ---
-
 Welcome to my blog! Here you'll find posts about teaching, research, data science, and academic life.

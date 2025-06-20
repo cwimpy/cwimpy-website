@@ -212,7 +212,8 @@ body {
 .quarto-listing-container-grid {
   .listing-item {
     background: var(--dark-background-light) !important;
-    border-color: var(--dark-border) !important;
+    border: 1px solid var(--dark-border) !important;
+    color: var(--dark-text) !important;
 
     &:hover {
       border-color: var(--dark-secondary-color) !important;

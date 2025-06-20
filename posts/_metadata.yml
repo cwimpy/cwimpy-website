@@ -1,7 +1,7 @@
 # Metadata for all files in the posts/ directory
 comments:
   giscus:
-    repo: cwimpy/cwimpy.com
+    repo: cwimpy/cwimpy-website
     repo-id: "YOUR_REPO_ID"
     category: "General"
     category-id: "YOUR_CATEGORY_ID"

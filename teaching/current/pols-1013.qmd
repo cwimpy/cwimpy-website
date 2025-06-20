@@ -1,8 +1,13 @@
 ---
-title: "POLS 1013 - American National Government"
-description: "Introduction to the structure, processes, and policies of American national government including the Constitution, federalism, civil liberties, political parties, and public policy."
-categories: [undergraduate, core, american politics]
+title: "American National Government"
+course-number: "POLS 1013"
 semester: "Fall 2024"
+date: "8/15/2024"
+categories: [syllabus, undergraduate, core]
+format:
+  html: default
+  typst:
+    output-file: "pols-1013-syllabus-fall2024.pdf"
 ---
 
 ## Course Information
@@ -10,6 +15,13 @@ semester: "Fall 2024"
 **Meeting Time:** MWF 10:00-10:50 AM  
 **Location:** HSS 1001  
 **Credits:** 3 hours  
+**Prerequisites:** None  
+
+**Instructor:** Dr. Cameron Wimpy  
+**Office:** HSS 3007  
+**Phone:** (870) xxx-xxxx  
+**Email:** [cwimpy@astate.edu](mailto:cwimpy@astate.edu)  
+**Office Hours:** MW 2:00-4:00 PM, or by appointment  
 
 ## Course Description
 
@@ -19,33 +31,109 @@ This course provides a comprehensive introduction to American national governmen
 
 By the end of this course, students will be able to:
 
-- Analyze the structure and function of American political institutions
-- Evaluate the role of federalism in the American system
-- Assess the impact of civil liberties and civil rights on American democracy
-- Examine the role of political parties, interest groups, and media in politics
-- Apply theoretical concepts to contemporary political issues
+1. **Analyze** the structure and function of American political institutions
+2. **Evaluate** the role of federalism in the American system  
+3. **Assess** the impact of civil liberties and civil rights on American democracy
+4. **Examine** the role of political parties, interest groups, and media in politics
+5. **Apply** theoretical concepts to contemporary political issues
 
 ## Required Materials
 
-- **Textbook:** *American Government: Stories of a Nation* by Scott Abernathy
-- **Course Packet:** Available at campus bookstore
-- **Blackboard:** All assignments and announcements
+### Textbook
+- Abernathy, Scott F. *American Government: Stories of a Nation*. 2nd Edition. CQ Press.
+- ISBN: 978-1506379616
+- Available at campus bookstore and online
+
+### Additional Materials
+- Course packet (available at bookstore)
+- Access to Blackboard for assignments and announcements
+- Reliable internet connection for online components
+
+## Assessment & Grading
+
+| Component | Weight | Description |
+|-----------|--------|-------------|
+| Exams (3) | 60% | Multiple choice and short answer |
+| Research Paper | 20% | 5-7 page analytical paper |
+| Participation & Quizzes | 20% | Class engagement and pop quizzes |
+
+### Grading Scale
+- A: 90-100%
+- B: 80-89%
+- C: 70-79%
+- D: 60-69%
+- F: Below 60%
+
+## Course Schedule
+
+### Unit 1: Constitutional Foundations (Weeks 1-5)
+- The Constitution and Bill of Rights
+- Federalism and intergovernmental relations
+- Civil liberties and civil rights
+
+### Unit 2: Political Institutions (Weeks 6-10)
+- Congress: structure, powers, and processes
+- The Presidency: roles and responsibilities
+- The Federal Judiciary: structure and judicial review
+
+### Unit 3: Political Processes (Weeks 11-15)
+- Political parties and interest groups
+- Elections and voting behavior
+- Public opinion and political participation
+- Public policy and implementation
 
 ## Major Assignments
 
-- **Exams (3):** 60% of grade
-- **Research Paper:** 20% of grade  
-- **Participation & Quizzes:** 20% of grade
+### Research Paper
+**Due:** October 30, 2024  
+**Length:** 5-7 pages, double-spaced  
+**Topic:** Contemporary policy issue analysis  
+**Requirements:** Minimum 5 scholarly sources, proper citation format
+
+### Exams
+- **Exam 1:** September 25 (Constitutional Foundations)
+- **Exam 2:** November 15 (Political Institutions)  
+- **Final Exam:** December 12, 8:00 AM (Comprehensive)
+
+## Course Policies
+
+### Attendance
+Regular attendance is essential for success. More than 3 unexcused absences may result in a lowered final grade. Notify me in advance of anticipated absences when possible.
+
+### Late Work
+Late assignments will be penalized 5% per day unless prior arrangements are made. No make-up exams without documented excuse.
+
+### Academic Integrity
+All work must be your own. Plagiarism, cheating, or any form of academic dishonesty will result in failure of the assignment and may lead to failure of the course. When in doubt, cite your sources.
+
+### Accommodations
+Students with documented disabilities should contact Student Accessibility Services and provide me with appropriate documentation as soon as possible. All discussions will remain confidential.
+
+### Technology Policy
+Laptops and tablets are permitted for note-taking. Cell phones should be silenced and put away during class. Inappropriate use of technology will result in loss of participation points.
+
+## Resources for Success
+
+- **Writing Center:** Free tutoring available in HSS 2010
+- **Library Research Help:** Subject librarians available for research assistance  
+- **Study Groups:** Encouraged! Contact me if you need help forming groups
+- **Office Hours:** Take advantage of these - I'm here to help you succeed
 
 ## Important Dates
 
-- **Exam 1:** September 25
-- **Research Paper Due:** October 30
-- **Exam 2:** November 15
-- **Final Exam:** December 12, 8:00 AM
+- **Add/Drop Deadline:** August 30
+- **Withdrawal Deadline:** November 1
+- **Thanksgiving Break:** November 25-29 (no classes)
+- **Final Exams:** December 9-13
 
-## Contact & Office Hours
+---
 
-**Office:** HSS 3007  
-**Email:** [cwimpy@astate.edu](mailto:cwimpy@astate.edu)  
-**Office Hours:** MW 2:00-4:00 PM or by appointment
+*This syllabus is subject to change with advance notice. Any changes will be announced in class and posted on Blackboard.*
+
+::: {.content-visible when-format="html"}
+[{{< fa file-pdf >}} Download PDF Syllabus](pols-1013-syllabus-fall2024.pdf){.pdf-download}
+:::
+
+::: {.content-visible when-format="typst"}
+*This syllabus is also available online at: cwimpy.com/teaching/materials/pols-1013-syllabus*
+:::

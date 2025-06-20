@@ -106,7 +106,7 @@ $if(title)$
     font: "Myriad Pro",
     size: 24pt,
     weight: "bold", 
-    fill: rgb("#1e5f3e")
+    fill: rgb("#000000")
   )[$title$]
 ]
 #v(0.3em)
@@ -118,7 +118,7 @@ $if(course-number)$
     font: "Myriad Pro",
     size: 16pt,
     weight: "semibold",
-    fill: rgb("#2d8a47")
+    fill: rgb("#000000")
   )[$course-number$]
 ]
 #v(0.2em)

@@ -1,0 +1,109 @@
+---
+title: "Teaching"
+listing:
+  - id: current-courses
+    contents: "teaching/current/*.qmd"
+    sort: "title"
+    type: grid
+    grid-columns: 2
+    categories: true
+    sort-ui: false
+    filter-ui: false
+    fields: [title, description, categories]
+  - id: course-materials
+    contents: "teaching/materials/*.qmd"
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: true
+    filter-ui: true
+    fields: [date, title, description, categories]
+  - id: past-courses
+    contents: "teaching/past/*.qmd"
+    sort: "date desc"
+    type: table
+    categories: true
+    sort-ui: false
+    filter-ui: false
+    fields: [date, title, description, categories]
+    table-striped: true
+    table-hover: true
+---
+
+::: {.content-container}
+
+## Teaching Philosophy
+
+I believe in creating an engaging and inclusive learning environment where students develop critical thinking skills and gain practical knowledge they can apply in their careers and civic lives. My approach emphasizes active learning, real-world applications, and fostering intellectual curiosity.
+
+---
+
+## Current Courses
+
+::: {#current-courses}
+:::
+
+---
+
+## Course Materials & Resources
+
+::: {#course-materials}
+:::
+
+---
+
+## Past Courses
+
+::: {#past-courses}
+:::
+
+---
+
+## Office Hours & Student Resources
+
+### Office Hours
+- **Mondays:** 2:00 PM - 4:00 PM
+- **Wednesdays:** 10:00 AM - 12:00 PM
+- **By appointment:** [Email me](mailto:cwimpy@astate.edu) to schedule
+
+### Resources for Students
+- [Writing Center](https://www.astate.edu/writing-center) - Help with academic writing
+- [Library Research Guides](https://library.astate.edu) - Subject-specific research assistance
+- [Academic Success Center](https://www.astate.edu/success) - Tutoring and study skills
+- [Student Accessibility Services](https://www.astate.edu/accessibility) - Accommodations and support
+
+### Grade Policies
+All course-specific grading policies, rubrics, and expectations are detailed in individual course syllabi. I maintain an open-door policy for discussing grades and academic progress.
+
+:::
+
+---
+
+## Getting Started
+
+To add content to your teaching page, create folders and files like this:
+
+```
+teaching/
+├── current/
+│   ├── pols-1013.qmd      # Current course
+│   └── pols-3003.qmd      # Another current course
+├── materials/
+│   ├── syllabus-template.qmd
+│   ├── research-guide.qmd
+│   └── writing-tips.qmd
+└── past/
+    ├── pols-2013-fall2024.qmd
+    └── pols-4003-spring2024.qmd
+```
+
+Each `.qmd` file should have YAML frontmatter like:
+
+```yaml
+---
+title: "Course Name"
+description: "Brief course description"
+date: "2024-08-15"
+categories: [undergraduate, political science, core]
+---
+```

@@ -1,0 +1,12 @@
+# Metadata for all files in the posts/ directory
+comments:
+  giscus:
+    repo: cwimpy/cwimpy.com
+    repo-id: "YOUR_REPO_ID"
+    category: "General"
+    category-id: "YOUR_CATEGORY_ID"
+    mapping: "pathname"
+    reactions-enabled: true
+    input-position: "bottom"
+    theme: "light"
+    language: "en"

@@ -1,0 +1,337 @@
+/*-- scss:defaults --*/
+// Dark theme variables
+$dark-primary-color: #4ade80;
+$dark-secondary-color: #34d399;
+$dark-text: #f8fafc;
+$dark-text-medium: #cbd5e1;
+$dark-text-light: #94a3b8;
+$dark-background: #0f172a;
+$dark-background-light: #1e293b;
+$dark-border: #334155;
+
+/*-- scss:rules --*/
+// Dark mode styles
+:root {
+  --dark-primary-color: #{$dark-primary-color};
+  --dark-secondary-color: #{$dark-secondary-color};
+  --dark-text: #{$dark-text};
+  --dark-text-medium: #{$dark-text-medium};
+  --dark-text-light: #{$dark-text-light};
+  --dark-background: #{$dark-background};
+  --dark-background-light: #{$dark-background-light};
+  --dark-border: #{$dark-border};
+}
+
+// Override variables for dark theme
+body {
+  background-color: var(--dark-background) !important;
+  color: var(--dark-text) !important;
+}
+
+// Update CSS variables for dark theme
+:root {
+  --primary-color: #{$dark-primary-color};
+  --secondary-color: #{$dark-secondary-color};
+  --text-dark: #{$dark-text};
+  --text-medium: #{$dark-text-medium};
+  --text-light: #{$dark-text-light};
+  --background-light: #{$dark-background-light};
+  --border-light: #{$dark-border};
+}
+
+// Dark theme overrides
+.content-container {
+  color: var(--dark-text) !important;
+}
+
+.hero-text p {
+  color: var(--dark-text) !important;
+}
+
+#research p {
+  color: var(--dark-text) !important;
+}
+
+.quarto-listing .listing-item .listing-description {
+  color: var(--dark-text) !important;
+}
+
+// Fix for listing preview text that might be too dark
+.quarto-listing .listing-item {
+  .listing-description,
+  .listing-description p,
+  .listing-description * {
+    color: var(--dark-text) !important;
+  }
+  
+  .listing-subtitle {
+    color: var(--dark-text-medium) !important;
+  }
+  
+  .listing-author {
+    color: var(--dark-text-medium) !important;
+  }
+  
+  // Target any remaining dark text elements
+  p, span, div {
+    color: var(--dark-text) !important;
+  }
+  
+  // Ensure any nested content is also light
+  * {
+    color: var(--dark-text) !important;
+  }
+}
+
+// Additional overrides for any stubborn dark text
+.quarto-listing * {
+  color: var(--dark-text) !important;
+}
+
+// Dark mode contact form styling
+.contact-form {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+
+  .form-group {
+    label {
+      color: var(--dark-text) !important;
+    }
+
+    input, select, textarea {
+      background: var(--dark-background) !important;
+      border-color: var(--dark-border) !important;
+      color: var(--dark-text) !important;
+
+      &:focus {
+        border-color: var(--dark-secondary-color) !important;
+        box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2) !important;
+      }
+
+      &::placeholder {
+        color: var(--dark-text-light) !important;
+      }
+    }
+  }
+
+  .btn-submit {
+    background: var(--dark-secondary-color) !important;
+    
+    &:hover {
+      background: var(--dark-primary-color) !important;
+      box-shadow: 0 6px 20px rgba(52, 211, 153, 0.3) !important;
+    }
+  }
+}
+
+// Dark mode social cards
+.social-card {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+
+  h3 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  ul li a {
+    color: var(--dark-text-medium) !important;
+
+    &:hover {
+      color: var(--dark-secondary-color) !important;
+    }
+  }
+}
+
+// Dark mode 404 page
+.error-page {
+  h1 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  h2 {
+    color: var(--dark-text) !important;
+  }
+
+  p {
+    color: var(--dark-text-medium) !important;
+  }
+}
+
+.error-actions {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+
+  h3 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  ul li a {
+    color: var(--dark-secondary-color) !important;
+
+    &:hover {
+      color: var(--dark-primary-color) !important;
+    }
+  }
+}
+
+.search-suggestion {
+  background: rgba(52, 211, 153, 0.1) !important;
+  border-left-color: var(--dark-secondary-color) !important;
+
+  h3 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  p {
+    color: var(--dark-text-medium) !important;
+  }
+}
+
+// Dark mode comments styling
+.giscus {
+  border-top-color: var(--dark-border) !important;
+}
+
+.comments-section {
+  border-top-color: var(--dark-border) !important;
+
+  h3 {
+    color: var(--dark-primary-color) !important;
+
+    &::before {
+      color: var(--dark-secondary-color) !important;
+    }
+  }
+
+  p {
+    color: var(--dark-text-medium) !important;
+  }
+}
+
+// Dark mode teaching page styling
+.quarto-listing-container-grid {
+  .listing-item {
+    background: var(--dark-background-light) !important;
+    border-color: var(--dark-border) !important;
+
+    &:hover {
+      border-color: var(--dark-secondary-color) !important;
+      box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2) !important;
+    }
+
+    .listing-title {
+      color: var(--dark-primary-color) !important;
+    }
+
+    .listing-description {
+      color: var(--dark-text-medium) !important;
+    }
+
+    .listing-categories .listing-category {
+      background: rgba(52, 211, 153, 0.2) !important;
+      color: var(--dark-primary-color) !important;
+      border-color: var(--dark-border) !important;
+
+      &:hover {
+        background: var(--dark-secondary-color) !important;
+        color: var(--dark-background) !important;
+      }
+    }
+  }
+}
+
+.quarto-listing-container-table {
+  .table {
+    background: var(--dark-background-light) !important;
+    border-color: var(--dark-border) !important;
+
+    th {
+      background: var(--dark-background) !important;
+      color: var(--dark-primary-color) !important;
+      border-color: var(--dark-border) !important;
+    }
+
+    td {
+      background: var(--dark-background-light) !important;
+      color: var(--dark-text) !important;
+      border-color: var(--dark-border) !important;
+
+      a {
+        color: var(--dark-secondary-color) !important;
+
+        &:hover {
+          color: var(--dark-primary-color) !important;
+        }
+      }
+    }
+
+    .listing-categories .listing-category {
+      background: rgba(52, 211, 153, 0.2) !important;
+      color: var(--dark-primary-color) !important;
+      border-color: var(--dark-border) !important;
+
+      &:hover {
+        background: var(--dark-secondary-color) !important;
+        color: var(--dark-background) !important;
+      }
+    }
+  }
+}
+
+.resource-box {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(52, 211, 153, 0.2) !important;
+  }
+
+  h4 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  ul li a {
+    color: var(--dark-text-medium) !important;
+
+    &:hover {
+      color: var(--dark-secondary-color) !important;
+    }
+  }
+}
+
+.cv-container p {
+  color: var(--dark-text) !important;
+}
+
+// Dark mode navbar with transparency
+.navbar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+// Dark mode search button - remove duplicate icons
+.navbar #quarto-search button {
+  // Hide any SVG or Bootstrap icons that might show up in dark mode
+  svg, .bi {
+    display: none !important;
+  }
+}
+
+// Ensure dark mode toggle shows properly
+.navbar .quarto-color-scheme-toggle {
+  color: var(--dark-text-medium) !important;
+  text-decoration: none !important;
+  
+  &:hover {
+    color: var(--dark-secondary-color) !important;
+    text-decoration: none !important;
+  }
+  
+  // Ensure sun icon shows in dark mode (to switch TO light mode)
+  &::after {
+    content: "\f185" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+}

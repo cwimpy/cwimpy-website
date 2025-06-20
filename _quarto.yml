@@ -5,14 +5,10 @@ project:
 website:
   title: "Cameron Wimpy"
   site-url: "https://cwimpy.com"
-  search: 
-    location: navbar
-    type: overlay
+  search: true
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: posts.qmd
+    right:
+      - href: posts/index.qmd
         text: Posts
       - href: research.qmd
         text: Research
@@ -36,10 +32,11 @@ website:
 
 format:
   html:
-    theme: journal
-    css: styles.css
-
+    theme:
+      light: [journal, styles.scss]
+      dark: [journal, custom-dark.scss]
+    
 filters:
   - fontawesome
-
+  
 bibliography: publications.bib

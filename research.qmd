@@ -2,7 +2,7 @@
 title: "Research"
 ---
 
-This is home for my research publications and accompanying materials.
+## Grants
 
 ```{r}
 #| echo: false
@@ -12,17 +12,57 @@ This is home for my research publications and accompanying materials.
 
 library(bib2df)
 library(dplyr)
-library(stringr)
 
-# Read the bib file
-pubs <- bib2df("publications.bib")
+# Helper function for null coalescing
+null_or <- function(x, y) if(is.null(x) || is.na(x) || length(x) == 0) y else x
 
 # Function to safely get a value or default
 safe_get <- function(value, default = "") {
   if(is.null(value) || length(value) == 0 || all(is.na(value))) {
     return(default)
   }
-  return(value[1]) # Take first element if vector
+  # Handle different data types and take first element
+  result <- as.character(value[1])
+  if(is.na(result) || result == "NA") {
+    return(default)
+  }
+  return(result)
+}
+
+# Function to extract year more robustly
+extract_year <- function(pub) {
+  # Try multiple year fields that might exist
+  year_value <- NULL
+  
+  if(!is.null(pub$YEAR) && !all(is.na(pub$YEAR))) {
+    year_value <- pub$YEAR[1]
+  } else if(!is.null(pub$DATE) && !all(is.na(pub$DATE))) {
+    year_value <- pub$DATE[1]
+  } else if(!is.null(pub$PUBDATE) && !all(is.na(pub$PUBDATE))) {
+    year_value <- pub$PUBDATE[1]
+  }
+  
+  if(is.null(year_value) || is.na(year_value)) {
+    return(0)
+  }
+  
+  # Convert to character first, then extract year
+  year_str <- as.character(year_value)
+  
+  # Extract 4-digit year from various formats
+  year_match <- regmatches(year_str, regexpr("\\b(19|20)\\d{2}\\b", year_str))
+  
+  if(length(year_match) > 0) {
+    return(as.numeric(year_match[1]))
+  } else {
+    # Try direct conversion
+    year_num <- suppressWarnings(as.numeric(year_str))
+    if(!is.na(year_num) && year_num > 1900 && year_num < 2030) {
+      return(year_num)
+    }
+  }
+  
+  return(0)
 }
 
 # Function to bold your name in author lists (APSA style)
@@ -53,7 +93,7 @@ bold_name <- function(authors) {
 # Function to format citation in APSA style
 format_apsa_citation <- function(pub, pub_type) {
   authors <- bold_name(pub$AUTHOR)
-  year <- safe_get(pub$YEAR, "n.d.")
+  year <- pub$year_clean  # Use the cleaned year from our processing
   title <- safe_get(pub$TITLE, "No Title")
   
   if(pub_type == "article") {
@@ -169,16 +209,9 @@ get_pub_type <- function(category, custom_pubtype = "") {
       "book" = list(name = "Books", order = 2),
       "chapter" = list(name = "Book Chapters", order = 3),
       "incollection" = list(name = "Book Chapters", order = 3),
-      "conference" = list(name = "Conference Papers", order = 4),
-      "inproceedings" = list(name = "Conference Papers", order = 4),
-      "working" = list(name = "Working Papers", order = 5),
-      "workingpaper" = list(name = "Working Papers", order = 5),
-      "unpublished" = list(name = "Working Papers", order = 5),
-      "report" = list(name = "Reports", order = 6),
-      "techreport" = list(name = "Reports", order = 6),
-      "policy" = list(name = "Policy Papers", order = 7),
-      "other" = list(name = "Other Publications", order = 8),
-      "misc" = list(name = "Other Publications", order = 8)
+      "essay" = list(name = "Essays & Reviews", order = 4),
+      "review" = list(name = "Essays & Reviews", order = 4),
+      "essayreview" = list(name = "Essays & Reviews", order = 4)
     )
     
     if(custom_type %in% names(custom_mapping)) {
@@ -193,33 +226,52 @@ get_pub_type <- function(category, custom_pubtype = "") {
     "article" = list(name = "Journal Articles", order = 1),
     "book" = list(name = "Books", order = 2),
     "incollection" = list(name = "Book Chapters", order = 3),
-    "inproceedings" = list(name = "Conference Papers", order = 4),
-    "unpublished" = list(name = "Working Papers", order = 5),
-    "techreport" = list(name = "Reports", order = 6),
-    "misc" = list(name = "Other Publications", order = 7)
+    "misc" = list(name = "Essays & Reviews", order = 4)
   )
   
   if(category %in% names(type_mapping)) {
     return(type_mapping[[category]])
   } else {
-    return(list(name = "Other Publications", order = 7))
+    # Default everything else to Essays & Reviews
+    return(list(name = "Essays & Reviews", order = 4))
   }
 }
+
+# Function to determine publication type manually
+get_manual_pubtype <- function(title, bibtex_key, category) {
+  title_lower <- tolower(title)
+  key_lower <- tolower(bibtex_key)
+  
+  # Manual mapping for specific entries
+  if(grepl("review of:", title_lower) || 
+     grepl("reflections on", title_lower) ||
+     grepl("defining opposition", title_lower) ||
+     key_lower %in% c("wimpy2024essay", "reid2013defining", "wimpy2011presidential", "wimpy2010review")) {
+    return("essay")
+  }
+  
+  # Default based on category
+  return("")
+}
+
+# Read the bib file
+pubs <- bib2df("publications.bib")
 
 # Process publications
 pubs_processed <- pubs %>%
   rowwise() %>%
   mutate(
-    year_clean = as.numeric(safe_get(YEAR, "0")),
+    year_clean = extract_year(cur_data()),
     title_clean = safe_get(TITLE, "No Title"),
     bibtex_clean = safe_get(BIBTEXKEY, paste0("ref_", row_number())),
-    category_clean = tolower(safe_get(CATEGORY, "misc"))
+    category_clean = tolower(safe_get(CATEGORY, "misc")),
+    pubtype_clean = get_manual_pubtype(title_clean, bibtex_clean, category_clean)
   ) %>%
   ungroup()
 
 # Add type information
 for(i in 1:nrow(pubs_processed)) {
-  custom_pubtype <- safe_get(pubs_processed$PUBTYPE[i], "")
+  custom_pubtype <- pubs_processed$pubtype_clean[i]
   type_info <- get_pub_type(pubs_processed$category_clean[i], custom_pubtype)
   pubs_processed$type_name[i] <- type_info$name
   pubs_processed$type_order[i] <- type_info$order
@@ -233,9 +285,6 @@ pubs_processed <- pubs_processed %>%
 pub_types <- pubs_processed %>%
   distinct(type_name, type_order, category_clean) %>%
   arrange(type_order)
-
-# Counter for numbering within each section
-section_counter <- 1
 
 # Generate sections by publication type
 for(type_idx in 1:nrow(pub_types)) {

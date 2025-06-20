@@ -1,0 +1,6 @@
+---
+title: "Posts"
+listing: "**/*.qmd"
+---
+
+Welcome to my blog! Here you'll find posts about teaching, research, data science, and academic life.

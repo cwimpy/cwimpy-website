@@ -1,0 +1,38 @@
+---
+title: "Page Not Found"
+---
+
+::: {.content-container}
+
+::: {.error-page}
+
+# 404
+
+## Oops! Page Not Found
+
+The page you're looking for seems to have wandered off into the academic ether. Don't worry though – even the best research sometimes leads down unexpected paths!
+
+::: {.error-actions}
+
+### What you can do:
+
+- **[Go Home](index.qmd)** – Return to the main page
+- **[Browse Research](research.qmd)** – Check out my publications
+- **[Read Posts](posts/index.qmd)** – Explore my blog posts
+- **[Contact Me](contact.qmd)** – Let me know if something should be here
+
+:::
+
+::: {.search-suggestion}
+### Looking for something specific?
+
+Try using the search function in the navigation bar above, or browse through the main sections of the site.
+:::
+
+---
+
+*"Not all those who wander are lost, but this page certainly is."*
+
+:::
+
+:::

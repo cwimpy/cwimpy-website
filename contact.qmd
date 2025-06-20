@@ -2,25 +2,105 @@
 title: "Contact"
 ---
 
+::: {.content-container}
+
 ## Get in Touch
 
-**Email:** [your.email@astate.edu](mailto:your.email@astate.edu)
+I'd love to hear from you! Whether you have questions about my research, potential collaborations, or just want to connect, feel free to reach out.
 
-**Office:** Your Office Location  
-Department of Political Science  
+### Contact Information
+
+**Email:** [cwimpy@astate.edu](mailto:cwimpy@astate.edu)  
+**Office:** HSS 3007  
+Department of Government, Law & Policy  
 Arkansas State University  
-Your Address  
-Jonesboro, AR 72467
-
+P.O. Box 1980  
+Jonesboro, AR 72467  
 **Phone:** (870) xxx-xxxx
 
-## Office Hours
-- Day: Time
-- Day: Time
+### Office Hours
+- **Mondays:** 2:00 PM - 4:00 PM
+- **Wednesdays:** 10:00 AM - 12:00 PM
 - Or by appointment
 
-## Social Media & Academic Profiles
-- [Google Scholar](https://scholar.google.com/your-profile)
-- [ORCID](https://orcid.org/your-orcid-id)
-- [GitHub](https://github.com/your-username)
-- [Twitter](https://twitter.com/your-handle)
+---
+
+## Send Me a Message
+
+::: {.contact-form-container}
+
+<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
+  <!-- Hidden field for bot detection -->
+  <input type="hidden" name="form-name" value="contact">
+  <div style="display: none;">
+    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="affiliation">Institution/Organization</label>
+    <input type="text" id="affiliation" name="affiliation">
+  </div>
+
+  <div class="form-group">
+    <label for="subject">Subject *</label>
+    <select id="subject" name="subject" required>
+      <option value="">Please select a topic</option>
+      <option value="research">Research Collaboration</option>
+      <option value="academic">Academic Inquiry</option>
+      <option value="student">Student Question</option>
+      <option value="media">Media/Press</option>
+      <option value="speaking">Speaking Engagement</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">
+    <i class="fas fa-paper-plane"></i>
+    Send Message
+  </button>
+</form>
+
+:::
+
+---
+
+## Connect With Me
+
+::: {.social-grid}
+
+::: {.social-card}
+### Academic Profiles
+- [{{< ai google-scholar >}} Google Scholar](https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en)
+- [{{< ai orcid >}} ORCID](https://orcid.org/0000-0002-2049-5229)
+- [{{< fa graduation-cap >}} ResearchGate](https://www.researchgate.net/profile/your-profile)
+:::
+
+::: {.social-card}
+### Professional Networks
+- [{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/cwimpy/)
+- [{{< fa brands twitter >}} Twitter](https://twitter.com/camwimpy)
+- [{{< fa brands github >}} GitHub](https://github.com/cwimpy)
+:::
+
+:::
+
+---
+
+*I typically respond to emails within 2-3 business days. For urgent matters, please indicate so in your subject line.*
+
+:::

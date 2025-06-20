@@ -1,0 +1,51 @@
+---
+title: "POLS 1013 - American National Government"
+description: "Introduction to the structure, processes, and policies of American national government including the Constitution, federalism, civil liberties, political parties, and public policy."
+categories: [undergraduate, core, american politics]
+semester: "Fall 2024"
+---
+
+## Course Information
+
+**Meeting Time:** MWF 10:00-10:50 AM  
+**Location:** HSS 1001  
+**Credits:** 3 hours  
+
+## Course Description
+
+This course provides a comprehensive introduction to American national government, examining the Constitution, institutions, processes, and policies that shape American democracy. Students will develop critical thinking skills about contemporary political issues and gain practical knowledge of how government affects their daily lives.
+
+## Learning Objectives
+
+By the end of this course, students will be able to:
+
+- Analyze the structure and function of American political institutions
+- Evaluate the role of federalism in the American system
+- Assess the impact of civil liberties and civil rights on American democracy
+- Examine the role of political parties, interest groups, and media in politics
+- Apply theoretical concepts to contemporary political issues
+
+## Required Materials
+
+- **Textbook:** *American Government: Stories of a Nation* by Scott Abernathy
+- **Course Packet:** Available at campus bookstore
+- **Blackboard:** All assignments and announcements
+
+## Major Assignments
+
+- **Exams (3):** 60% of grade
+- **Research Paper:** 20% of grade  
+- **Participation & Quizzes:** 20% of grade
+
+## Important Dates
+
+- **Exam 1:** September 25
+- **Research Paper Due:** October 30
+- **Exam 2:** November 15
+- **Final Exam:** December 12, 8:00 AM
+
+## Contact & Office Hours
+
+**Office:** HSS 3007  
+**Email:** [cwimpy@astate.edu](mailto:cwimpy@astate.edu)  
+**Office Hours:** MW 2:00-4:00 PM or by appointment

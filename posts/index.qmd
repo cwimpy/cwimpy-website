@@ -1,8 +1,11 @@
 ---
 title: "Posts"
-format: html
+format: 
+  html: 
+    toc: false
+    date-format: "M/D/YYYY"
 listing:
-  contents: "*.qmd"
+  contents: "**/*.qmd"
   sort: "date desc"
   type: default
   categories: true

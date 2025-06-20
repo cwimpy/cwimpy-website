@@ -977,6 +977,49 @@ a {
   }
 }
 
+// Hide PDF download button in PDF output
+@media print {
+  .pdf-download {
+    display: none !important;
+  }
+}
+
+// Last updated styling for posts
+.quarto-title-meta {
+  .quarto-title-meta-heading {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .quarto-title-meta-contents {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+}
+
+// Post date styling
+.post-date-info {
+  background: var(--background-light);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+
+  .date-label {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .date-value {
+    font-style: italic;
+  }
+}
+
 // Responsive design
 @media (max-width: 1024px) {
   .hero-grid {

@@ -328,6 +328,31 @@ div.quarto-listing-container-grid .listing-item,
   }
 }
 
+// Dark mode last updated styling
+.quarto-title-meta {
+  .quarto-title-meta-heading {
+    color: var(--dark-text-medium) !important;
+  }
+
+  .quarto-title-meta-contents {
+    color: var(--dark-text-medium) !important;
+  }
+}
+
+.post-date-info {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-medium) !important;
+
+  .date-label {
+    color: var(--dark-primary-color) !important;
+  }
+
+  .date-value {
+    color: var(--dark-text-medium) !important;
+  }
+}
+
 .cv-container p {
   color: var(--dark-text) !important;
 }

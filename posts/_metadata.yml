@@ -1,24 +1,19 @@
 # Metadata for all files in the posts/ directory
+date-modified: last-modified
 format:
   html: 
     date-format: "M/D/YYYY"
-  pdf:
-    documentclass: article
+  typst:
+    pdf-engine: typst
     date-format: "M/D/YYYY"
-    geometry:
-      - top=1in
-      - left=1in
-      - right=1in
-      - bottom=1in
-    include-in-header:
-      text: |
-        \usepackage{fancyhdr}
-        \usepackage{fontawesome5}
-        \pagestyle{fancy}
-        \fancyhf{}
-        \rhead{Cameron Wimpy}
-        \lhead{\leftmark}
-        \cfoot{\thepage}
+    margin:
+      top: 1in
+      left: 1in
+      right: 1in
+      bottom: 1in
+    mainfont: "Minion Pro"
+    sansfont: "Myriad Pro"
+    template: "../templates/post-template.typ"
 
 comments:
   giscus:
@@ -29,5 +24,5 @@ comments:
     mapping: "pathname"
     reactions-enabled: true
     input-position: "bottom"
-    theme: "dark"
+    theme: "light"
     language: "en"

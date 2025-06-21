@@ -1,39 +1,8 @@
-# Cameron Wimpy - Academic Website
+# Cameron Wimpy - Personal Website
 
-A modern, responsive academic website built with [Quarto](https://quarto.org) featuring automated content management, beautiful PDF generation, and seamless light/dark mode switching.
+I have tried to create a modern, responsive academic website built with [Quarto](https://quarto.org) featuring automated content management and (Typst) PDF generation. Given the challenges and unique preferences I may have, I have done my best to make the rest of this README useful for others (and me when I forget how I did this!).
 
 🌐 **Live Site:** [cwimpy.com](https://cwimpy.com)
-
-## ✨ Features
-
-### 🎨 Design & User Experience
-- **Responsive design** that works beautifully on all devices
-- **Light/dark theme toggle** with smooth transitions
-- **Professional typography** using Inter font family
-- **Clean, academic-focused layout** with intuitive navigation
-- **Accessible design** with proper contrast and semantic markup
-
-### 📝 Content Management
-- **Auto-populating blog posts** from Markdown files
-- **Dynamic teaching materials** with course organization
-- **Research publications** with structured display
-- **Contact form** with Netlify integration
-- **GitHub-powered comments** via Giscus
-
-### 📄 PDF Generation
-- **Typst-powered PDFs** for lightning-fast compilation
-- **Professional typography** with Minion Pro (body) and Myriad Pro (headings)
-- **Custom headers/footers** with automatic title and date insertion
-- **Academic document formatting** optimized for both blog posts and teaching materials
-- **Download links** that appear only in HTML (not in PDFs themselves)
-
-### 🔧 Technical Features
-- **Static site generation** with Quarto
-- **Font Awesome icons** and academic icon integration
-- **Category-based organization** for posts and courses
-- **RSS feed generation** for blog posts
-- **SEO-optimized** with proper meta tags
-- **Fast loading** with optimized assets
 
 ## 🏗️ Architecture
 
@@ -60,15 +29,15 @@ A modern, responsive academic website built with [Quarto](https://quarto.org) fe
 ```
 
 ### PDF Templates
-- **`post-template.typ`** - Blog post PDF generation
-- **`teaching-template.typ`** - Academic document formatting
+- **`templates/post-template.typ`** - Blog post PDF generation
+- **`templatesteaching-template.typ`** - Academic document formatting
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - [Quarto](https://quarto.org/docs/get-started/) (latest version)
 - [Typst](https://typst.app/) for PDF generation
-- **Fonts:** Minion Pro and Myriad Pro (or substitute with Times and Helvetica)
+- **Fonts:** Minion Pro and Myriad Pro (or substitute with something like Times and Helvetica)
 
 ### Local Development
 ```bash
@@ -110,14 +79,14 @@ Add course files to appropriate folders in `teaching/`:
 ```yaml
 ---
 title: "Course Name"
-course-number: "POLS 1013"
+course-number: "POSC 2013"
 semester: "Fall 2024"
 date: "8/15/2024"
-categories: [undergraduate, core]
+categories: [undergraduate, political science]
 format:
   html: default
   typst:
-    output-file: "course-syllabus.pdf"
+    output-file: "posc-2013-syllabus.pdf"
 ---
 ```
 
@@ -142,35 +111,12 @@ Automatic dark mode with custom color palette defined in `custom-dark.scss`:
 
 ## 🚢 Deployment
 
-### Netlify (Recommended)
+### Netlify (my suggestion)
 1. Connect your GitHub repository to Netlify
 2. Set build command: `quarto render`
 3. Set publish directory: `_site`
 4. Enable form handling for contact form
 5. Configure Giscus for comments (see setup below)
-
-### GitHub Pages
-```yaml
-# .github/workflows/quarto-publish.yml
-name: Render and Publish
-on:
-  push:
-    branches: main
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-```
 
 ## 💬 Comments Setup (Giscus)
 
@@ -207,17 +153,6 @@ The contact form uses Netlify Forms. Once deployed to Netlify:
 - Custom templates for different content types
 - Automatic font fallbacks if premium fonts unavailable
 - Format-specific content blocks prevent PDF download links in PDFs
-
-### Performance
-- Optimized SCSS with minimal overhead
-- Efficient icon loading
-- Responsive images and typography
-- Fast Typst compilation vs. traditional LaTeX
-
-### Browser Support
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Progressive enhancement for older browsers
-- Accessible design following WCAG guidelines
 
 ## 📄 License
 

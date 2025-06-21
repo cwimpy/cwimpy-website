@@ -2,105 +2,150 @@
 title: "Contact"
 ---
 
-::: {.content-container}
-
+::::::::::::::::::::::::: content-container
 ## Get in Touch
 
 I'd love to hear from you! Whether you have questions about my research, potential collaborations, or just want to connect, feel free to reach out.
 
 ### Contact Information
 
-**Email:** [cwimpy@astate.edu](mailto:cwimpy@astate.edu)  
-**Office:** HSS 3007  
+::: {.contact-info}
+{{< fa paper-plane >}} **Email:** cwimpy@astate.edu
+
+{{< fa university >}} **Office:** HSS 3007  
 Department of Government, Law & Policy  
 Arkansas State University  
-P.O. Box 1980  
-Jonesboro, AR 72467  
-**Phone:** (870) xxx-xxxx
+P.O. Box 1750  
+Jonesboro, AR 72467
+
+{{< fa phone >}} **Phone:** (870) 972-3048
+:::
 
 ### Office Hours
-- **Mondays:** 2:00 PM - 4:00 PM
-- **Wednesdays:** 10:00 AM - 12:00 PM
-- Or by appointment
 
----
+-   **By appointment only**
+-   {{< fa calendar-plus >}} [**Schedule a meeting**](https://fantastical.app/cwimpy)
+
+------------------------------------------------------------------------
 
 ## Send Me a Message
 
-::: {.contact-form-container}
-
+::::::::: contact-form-container
 <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
-  <!-- Hidden field for bot detection -->
-  <input type="hidden" name="form-name" value="contact">
-  <div style="display: none;">
-    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-  </div>
 
-  <div class="form-group">
-    <label for="name">Name *</label>
-    <input type="text" id="name" name="name" required>
-  </div>
+<!-- Hidden field for bot detection -->
 
-  <div class="form-group">
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="email" required>
-  </div>
+<input type="hidden" name="form-name" value="contact">
 
-  <div class="form-group">
-    <label for="affiliation">Institution/Organization</label>
-    <input type="text" id="affiliation" name="affiliation">
-  </div>
-
-  <div class="form-group">
-    <label for="subject">Subject *</label>
-    <select id="subject" name="subject" required>
-      <option value="">Please select a topic</option>
-      <option value="research">Research Collaboration</option>
-      <option value="academic">Academic Inquiry</option>
-      <option value="student">Student Question</option>
-      <option value="media">Media/Press</option>
-      <option value="speaking">Speaking Engagement</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
-  </div>
-
-  <button type="submit" class="btn-submit">
-    <i class="fas fa-paper-plane"></i>
-    Send Message
-  </button>
-</form>
-
+::: {style="display: none;"}
+```         
+<label>Don't fill this out if you're human: <input name="bot-field"></label>
+```
 :::
 
----
+::: form-group
+```         
+<label for="name">Name *</label>
+<input type="text" id="name" name="name" required>
+```
+:::
+
+::: form-group
+```         
+<label for="email">Email *</label>
+<input type="email" id="email" name="email" required>
+```
+:::
+
+::: form-group
+```         
+<label for="affiliation">Institution/Organization</label>
+<input type="text" id="affiliation" name="affiliation">
+```
+:::
+
+::: form-group
+```         
+<label for="subject">Subject *</label>
+<select id="subject" name="subject" required>
+  <option value="">Please select a topic</option>
+  <option value="research">Research Collaboration</option>
+  <option value="academic">Academic Inquiry</option>
+  <option value="student">Student Question</option>
+  <option value="media">Media/Press</option>
+  <option value="speaking">Speaking Engagement</option>
+  <option value="other">Other</option>
+</select>
+```
+:::
+
+::: form-group
+```         
+<label for="message">Message *</label>
+<textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+```
+:::
+
+<button type="submit" class="btn-submit">
+
+<i class="fas fa-paper-plane"></i> Send Message
+
+</button>
+
+</form>
+:::::::::
+
+------------------------------------------------------------------------
 
 ## Connect With Me
 
-::: {.social-grid}
-
-::: {.social-card}
-### Academic Profiles
-- [{{< ai google-scholar >}} Google Scholar](https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en)
-- [{{< ai orcid >}} ORCID](https://orcid.org/0000-0002-2049-5229)
-- [{{< fa graduation-cap >}} ResearchGate](https://www.researchgate.net/profile/your-profile)
+::::::::::::::::: connect-centered
+:::::::::::::::: social-card
+::::::::::::::: social-icon-grid
+::::: social-icon-link
+::: icon
+{{< fa brands github >}}
 :::
 
-::: {.social-card}
-### Professional Networks
-- [{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/cwimpy/)
-- [{{< fa brands twitter >}} Twitter](https://twitter.com/camwimpy)
-- [{{< fa brands github >}} GitHub](https://github.com/cwimpy)
+::: label
+[GitHub](https://github.com/cwimpy)
+:::
+:::::
+
+::::: social-icon-link
+::: icon
+{{< fa brands linkedin >}}
 :::
 
+::: label
+[LinkedIn](https://www.linkedin.com/in/cwimpy/)
+:::
+:::::
+
+::::: social-icon-link
+::: icon
+{{< ai orcid >}}
 :::
 
----
-
-*I typically respond to emails within 2-3 business days. For urgent matters, please indicate so in your subject line.*
-
+::: label
+[ORCID](https://orcid.org/0000-0002-2049-5229)
 :::
+:::::
+
+::::: social-icon-link
+::: icon
+{{< fa brands x-twitter >}}
+:::
+
+::: label
+[Twitter](https://twitter.com/camwimpy)
+:::
+:::::
+:::::::::::::::
+::::::::::::::::
+:::::::::::::::::
+
+------------------------------------------------------------------------
+
+*I typically respond to emails within 1--2 business days. For urgent matters, please indicate so in your subject line.*
+:::::::::::::::::::::::::

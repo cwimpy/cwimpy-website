@@ -29,7 +29,7 @@ website:
       <a href="https://orcid.org/0000-0002-2049-5229">{{< ai orcid >}}</a>
       <a href="https://twitter.com/camwimpy">{{< fa brands x-twitter >}}</a>
     right: |
-      <a href="contact.qmd">Contact</a>
+      <a href="/contact.qmd">Contact</a>
 
 format:
   html:

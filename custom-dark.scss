@@ -142,6 +142,24 @@ body {
   }
 }
 
+// Dark mode social icon grid
+.social-icon-link {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-medium) !important;
+
+  &:hover {
+    color: var(--dark-secondary-color) !important;
+    border-color: var(--dark-secondary-color) !important;
+    background: var(--dark-background) !important;
+    box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2) !important;
+  }
+
+  .icon, .label {
+    color: inherit !important;
+  }
+}
+
 // Dark mode 404 page
 .error-page {
   h1 {

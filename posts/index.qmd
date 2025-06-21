@@ -4,6 +4,7 @@ format:
   html: 
     toc: false
     date-format: "M/D/YYYY"
+format-links: false
 listing:
   contents: "**/*.qmd"
   sort: "date desc"
@@ -14,4 +15,4 @@ listing:
   feed: true
 comments: false
 ---
-Welcome to my blog! Here you'll find posts about teaching, research, data science, and academic life.
+Welcome! Here you'll find posts about my teaching, research, data science, and academic life.

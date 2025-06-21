@@ -13,8 +13,8 @@ website:
         text: Posts
       - href: research.qmd
         text: Research
-      - href: teaching.qmd
-        text: Teaching
+      # - href: teaching.qmd
+      #   text: Teaching
       - href: cv.qmd
         text: CV
   page-footer:

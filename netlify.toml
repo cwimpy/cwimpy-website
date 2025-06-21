@@ -1,0 +1,8 @@
+[build]
+  command = "quarto render"
+  publish = "_site"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

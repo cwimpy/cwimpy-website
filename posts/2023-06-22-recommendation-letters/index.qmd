@@ -2,8 +2,18 @@
 title: "Asking for a Letter of Recommendation"
 author: "Cameron Wimpy"
 date: "2023-06-22"
+image: "letter.jpg"
 categories: [teaching, advice]
 description: "So You Need a Letter? I am often asked to write letters of recommendation for students. This is an important part of our jobs as professors, but I often find myself struggling to write the letter I think the student needs because my experience with them is either limited to a single course or otherwise negative."
+format:
+  html: default
+  typst:
+    output-file: "letter-wimpy.pdf"
+format-links:
+  - html
+  - format: typst
+    text: PDF
+    icon: file-pdf
 ---
 
 ## So You Need a Letter?
@@ -14,35 +24,36 @@ Here are some guidelines to help ensure you get the best possible letter:
 
 ### Before You Ask
 
-1. **Consider your relationship with the professor** - Have you taken multiple courses? Participated actively in class? Done well academically?
+1.  **Consider your relationship with the professor** - Have you taken multiple courses? Participated actively in class? Done well academically?
 
-2. **Give plenty of notice** - Ask at least 2-3 weeks in advance, preferably more for important applications.
+2.  **Give plenty of notice** - Ask at least 2-3 weeks in advance, preferably more for important applications.
 
-3. **Think about fit** - Is this professor familiar with the type of program/position you're applying for?
+3.  **Think about fit** - Is this professor familiar with the type of program/position you're applying for?
 
 ### When You Ask
 
 **Provide comprehensive information:**
 
-- Your CV/resume
-- Personal statement or cover letter
-- Details about what you're applying for
-- Specific deadline dates
-- Any forms that need to be completed
+-   Your CV/resume
+-   Personal statement or cover letter
+-   Details about what you're applying for
+-   Specific deadline dates
+-   Any forms that need to be completed
 
-**Be specific about your request:**
-- What type of letter do you need?
-- What should be emphasized?
-- Are there particular experiences you'd like highlighted?
+**Be specific about your request:** - What type of letter do you need? - What should be emphasized? - Are there particular experiences you'd like highlighted?
 
 ### Follow Up Appropriately
 
-- Send a polite reminder 1 week before the deadline
-- Provide any additional materials if requested
-- Update your recommender on outcomes when appropriate
+-   Send a polite reminder 1 week before the deadline
+-   Provide any additional materials if requested
+-   Update your recommender on outcomes when appropriate
 
 ### Making the Most of Your Request
 
 Remember, a good letter of recommendation tells a story about you as a student, researcher, or future professional. Help your recommender tell that story by providing context and specific examples of your work together.
 
 The best letters come from professors who know you well and can speak specifically to your abilities and potential. If our interaction has been limited, consider whether another faculty member might be able to write a stronger letter on your behalf.
+
+::: {.content-visible when-format="html"}
+[{{< fa file-pdf >}} Download PDF](letter-wimpy.pdf){.pdf-download}
+:::

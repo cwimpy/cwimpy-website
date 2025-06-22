@@ -2,8 +2,6 @@
 title: "Research"
 ---
 
-## Grants
-
 ```{r}
 #| echo: false
 #| warning: false

@@ -8,7 +8,10 @@ website:
   favicon: "favicon.ico"
   search: true
   twitter-card: true
-  open-graph: true
+  google-analytics: "G-TYNMV5ZKBT"
+  open-graph: 
+    title: "Dr. Cameron Wimpy"
+    description: "Political Science Research & Teaching"
   navbar:
     right:
       - href: posts/index.qmd
@@ -38,7 +41,8 @@ format:
     theme:
       light: [journal, styles.scss]
       dark: [journal, custom-dark.scss]
-    
+    page-navigation: true
+
 filters:
   - fontawesome
   

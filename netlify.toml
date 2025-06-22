@@ -1,11 +1,6 @@
 [build]
-  command = "wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb && sudo dpkg -i quarto-1.4.550-linux-amd64.deb && quarto render"
+  command = "curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && sudo dpkg -i quarto-linux-amd64.deb && quarto render"
   publish = "_site"
 
 [build.environment]
   NODE_VERSION = "18"
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404

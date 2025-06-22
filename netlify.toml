@@ -1,12 +1,20 @@
 [build]
   command = """
-    # Download and install Quarto without sudo
+    set -e
+    echo "Installing Quarto..."
     cd /tmp
     wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.tar.gz
     tar -xzf quarto-1.4.550-linux-amd64.tar.gz
     export PATH="/tmp/quarto-1.4.550/bin:$PATH"
+    echo "Quarto installed, version:"
+    quarto --version
+    echo "Returning to build directory..."
     cd $OLDPWD
-    quarto render
+    echo "Current directory: $(pwd)"
+    echo "Files in directory:"
+    ls -la
+    echo "Starting Quarto render..."
+    quarto render --verbose
   """
   publish = "_site"
 

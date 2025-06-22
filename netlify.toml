@@ -1,6 +1,9 @@
 [build]
-  command = "quarto render"
+  command = "wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb && sudo dpkg -i quarto-1.4.550-linux-amd64.deb && quarto render"
   publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"

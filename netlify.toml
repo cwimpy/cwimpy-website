@@ -1,6 +1,0 @@
-[build]
-  command = "curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && sudo dpkg -i quarto-linux-amd64.deb && quarto render"
-  publish = "_site"
-
-[build.environment]
-  NODE_VERSION = "18"

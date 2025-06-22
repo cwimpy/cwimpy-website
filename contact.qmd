@@ -1,15 +1,14 @@
 ---
 title: "Contact"
+format: html
 ---
 
-::::::::::::::::::::::::: content-container
 ## Get in Touch
 
 I'd love to hear from you! Whether you have questions about my research, potential collaborations, or just want to connect, feel free to reach out.
 
 ### Contact Information
 
-::: {.contact-info}
 {{< fa paper-plane >}} **Email:** cwimpy@astate.edu
 
 {{< fa university >}} **Office:** HSS 3007  
@@ -19,133 +18,104 @@ P.O. Box 1750
 Jonesboro, AR 72467
 
 {{< fa phone >}} **Phone:** (870) 972-3048
-:::
 
 ### Office Hours
 
--   **By appointment only**
--   {{< fa calendar-plus >}} [**Schedule a meeting**](https://fantastical.app/cwimpy)
+- **By appointment only**
+- {{< fa calendar-plus >}} [**Schedule a meeting**](https://fantastical.app/cwimpy)
 
-------------------------------------------------------------------------
+---
 
 ## Send Me a Message
 
-::::::::: contact-form-container
-<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
-
-<!-- Hidden field for bot detection -->
-
-<input type="hidden" name="form-name" value="contact">
-
-::: {style="display: none;"}
-```         
-<label>Don't fill this out if you're human: <input name="bot-field"></label>
-```
-:::
-
-::: form-group
-```         
-<label for="name">Name *</label>
-<input type="text" id="name" name="name" required>
-```
-:::
-
-::: form-group
-```         
-<label for="email">Email *</label>
-<input type="email" id="email" name="email" required>
-```
-:::
-
-::: form-group
-```         
-<label for="affiliation">Institution/Organization</label>
-<input type="text" id="affiliation" name="affiliation">
-```
-:::
-
-::: form-group
-```         
-<label for="subject">Subject *</label>
-<select id="subject" name="subject" required>
-  <option value="">Please select a topic</option>
-  <option value="research">Research Collaboration</option>
-  <option value="academic">Academic Inquiry</option>
-  <option value="student">Student Question</option>
-  <option value="media">Media/Press</option>
-  <option value="speaking">Speaking Engagement</option>
-  <option value="other">Other</option>
-</select>
-```
-:::
-
-::: form-group
-```         
-<label for="message">Message *</label>
-<textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
-```
-:::
-
-<button type="submit" class="btn-submit">
-
-<i class="fas fa-paper-plane"></i> Send Message
-
-</button>
-
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact" />
+  
+  <p style="display: none;">
+    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+  </p>
+  
+  <p>
+    <label for="name">Name: *</label><br/>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-top: 4px;" />
+  </p>
+  
+  <p>
+    <label for="email">Email: *</label><br/>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-top: 4px;" />
+  </p>
+  
+  <p>
+    <label for="subject">Subject: *</label><br/>
+    <select id="subject" name="subject" required style="width: 100%; padding: 8px; margin-top: 4px;">
+      <option value="">Please select a topic</option>
+      <option value="research">Research Collaboration</option>
+      <option value="academic">Academic Inquiry</option>
+      <option value="student">Student Question</option>
+      <option value="media">Media/Press</option>
+      <option value="speaking">Speaking Engagement</option>
+      <option value="other">Other</option>
+    </select>
+  </p>
+  
+  <p>
+    <label for="message">Message: *</label><br/>
+    <textarea id="message" name="message" required rows="6" style="width: 100%; padding: 8px; margin-top: 4px;" placeholder="Your message here..."></textarea>
+  </p>
+  
+  <p>
+    <button type="submit" style="background: #2d8a47; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer;">Send Message</button>
+  </p>
 </form>
-:::::::::
 
-------------------------------------------------------------------------
+---
 
 ## Connect With Me
 
-::::::::::::::::: connect-centered
-:::::::::::::::: social-card
-::::::::::::::: social-icon-grid
-::::: social-icon-link
-::: icon
+::: {.connect-centered}
+::: {.social-card}
+::: {.social-icon-grid}
+
+::: {.social-icon-link}
+::: {.icon}
 {{< fa brands github >}}
 :::
-
-::: label
+::: {.label}
 [GitHub](https://github.com/cwimpy)
 :::
-:::::
+:::
 
-::::: social-icon-link
-::: icon
+::: {.social-icon-link}
+::: {.icon}
 {{< fa brands linkedin >}}
 :::
-
-::: label
+::: {.label}
 [LinkedIn](https://www.linkedin.com/in/cwimpy/)
 :::
-:::::
+:::
 
-::::: social-icon-link
-::: icon
+::: {.social-icon-link}
+::: {.icon}
 {{< ai orcid >}}
 :::
-
-::: label
+::: {.label}
 [ORCID](https://orcid.org/0000-0002-2049-5229)
 :::
-:::::
+:::
 
-::::: social-icon-link
-::: icon
+::: {.social-icon-link}
+::: {.icon}
 {{< fa brands x-twitter >}}
 :::
-
-::: label
+::: {.label}
 [Twitter](https://twitter.com/camwimpy)
 :::
-:::::
-:::::::::::::::
-::::::::::::::::
-:::::::::::::::::
+:::
 
-------------------------------------------------------------------------
+:::
+:::
+:::
 
-*I typically respond to emails within 1--2 business days. For urgent matters, please indicate so in your subject line.*
-:::::::::::::::::::::::::
+---
+
+*I typically respond to emails within 1-2 business days. For urgent matters, please indicate so in your subject line.*

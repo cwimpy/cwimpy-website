@@ -396,6 +396,24 @@ body {
       color: var(--secondary-color) !important;
     }
   }
+
+  // Mobile hamburger menu - ensure it shows
+  .navbar-toggler {
+    border: none !important;
+    padding: 0.25rem 0.5rem !important;
+    
+    &:focus {
+      box-shadow: none !important;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2874, 107, 86, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    
+    &:not(.collapsed) .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2874, 107, 86, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e") !important;
+    }
+  }
 }
 
 // Search button styling - improved approach

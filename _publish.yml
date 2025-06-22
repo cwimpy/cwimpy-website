@@ -1,4 +1,4 @@
 - source: project
   netlify:
     - id: 33cde0f2-7a9b-45c4-8095-90479f798c45
-      url: http://cwimpy.com
+      url: https://cwimpy.com

@@ -7,6 +7,8 @@ website:
   site-url: "https://cwimpy.com"
   favicon: "favicon.ico"
   search: true
+  twitter-card: true
+  open-graph: true
   navbar:
     right:
       - href: posts/index.qmd

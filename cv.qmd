@@ -4,10 +4,8 @@ page-layout: full
 ---
 
 ::: {.cv-container}
-
 ::: {.cv-header}
 ## Cameron Wimpy
-
 Associate Professor & Department Chair • Government, Law & Policy • Arkansas State University
 
 ::: {.cv-actions}
@@ -16,14 +14,29 @@ Associate Professor & Department Chair • Government, Law & Policy • Arkansas
 :::
 :::
 
+::: {.mobile-cv-notice}
+**📱 Mobile Access**
+
+My CV is best viewed as a downloaded PDF on mobile devices. Choose your preferred option below:
+
+[<i class="fas fa-download"></i> Download PDF](uploads/cv-wimpy.pdf){.cv-button download="CV-Cameron-Wimpy.pdf"}
+
+[<i class="fas fa-external-link"></i> Open in Browser](uploads/cv-wimpy.pdf){.cv-button target="_blank"}
+:::
+
 ::: {.pdf-viewer}
 <iframe src="uploads/cv-wimpy.pdf" 
         width="100%" 
-        height="800" 
+        height="800"
+        title="Cameron Wimpy CV"
+        loading="lazy"
+        allow="fullscreen"
         style="border: none;">
   <p>Your browser does not support viewing PDFs inline. 
-     <a href="uploads/cv-wimpy.pdf">Download the PDF</a> instead.</p>
+     <a href="uploads/cv-wimpy.pdf" class="cv-button">
+       <i class="fas fa-download"></i> Download the PDF
+     </a> instead.
+  </p>
 </iframe>
 :::
-
 :::

@@ -343,6 +343,58 @@ body {
   }
 }
 
+// Mobile-specific PDF viewer improvements
+@media (max-width: 768px) {
+  .pdf-viewer {
+    // Remove fixed height constraints on mobile
+    height: auto;
+    max-height: 70vh; // Limit to 70% of viewport height
+    overflow-y: auto; // Allow scrolling
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    
+    iframe {
+      // Make iframe responsive on mobile
+      min-height: 500px; // Smaller minimum on mobile
+      height: 70vh; // Use viewport height
+      max-height: none;
+      
+      // Ensure iframe is scrollable
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  
+  // Alternative: Hide iframe on mobile and show download buttons more prominently
+  .cv-container {
+    .cv-actions {
+      margin-bottom: 1rem;
+    }
+    
+    // Option to show a mobile-friendly message
+    .mobile-cv-notice {
+      display: block;
+      background: var(--background-light);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      text-align: center;
+      margin: 1rem 0;
+      
+      p {
+        margin: 0.5rem 0;
+        color: var(--text-medium);
+      }
+    }
+  }
+}
+
+// Hide mobile notice on desktop
+@media (min-width: 769px) {
+  .mobile-cv-notice {
+    display: none !important;
+  }
+}
+
 // Navbar customization - comprehensive override to prevent red colors
 .navbar {
   background: rgba(255, 255, 255, 0.95) !important;
@@ -1117,7 +1169,67 @@ a {
   }
 }
 
+// Mobile styles - hide PDF viewer and emphasize download options
 @media (max-width: 768px) {
+  // Hide the PDF viewer completely on mobile
+  .pdf-viewer {
+    display: none !important;
+  }
+  
+  // Show and enhance the mobile notice
+  .mobile-cv-notice {
+    display: block !important;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 6px 20px rgba(45, 138, 71, 0.3);
+    
+    p {
+      margin: 1rem 0;
+      color: white;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    
+    .cv-button {
+      background: white;
+      color: var(--primary-color);
+      border: 2px solid white;
+      margin: 0.5rem;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      min-width: 200px;
+      
+      &:hover {
+        background: rgba(255,255,255,0.9);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+    }
+  }
+  
+  .cv-container {
+    padding: 1rem;
+    
+    .cv-actions {
+      margin-bottom: 1rem;
+      gap: 0.5rem;
+    }
+    
+    .cv-button {
+      flex: 1;
+      min-width: auto;
+      padding: 0.875rem 1rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  // Keep existing mobile styles for other elements
   .content-container {
     padding: 1rem;
   }
@@ -1163,30 +1275,30 @@ a {
     margin-left: 1.5rem;
   }
 
-  .cv-container {
-    padding: 1rem;
-  }
-  
   .cv-header h2 {
     font-size: 1.5rem;
-  }
-  
-  .cv-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cv-button {
-    min-width: 200px;
-    justify-content: center;
-  }
-  
-  .pdf-viewer iframe {
-    min-height: 600px;
   }
 }
 
 @media (max-width: 480px) {
+  .mobile-cv-notice {
+    padding: 1.5rem;
+    margin: 1rem 0;
+    
+    p {
+      font-size: 1rem;
+    }
+    
+    .cv-button {
+      display: block;
+      width: 100%;
+      margin: 0.75rem 0;
+      padding: 1.25rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  // Keep existing 480px styles
   .hero-text h1 {
     font-size: 2rem;
   }
@@ -1203,5 +1315,12 @@ a {
   .btn-social {
     min-width: 150px;
     justify-content: center;
+  }
+}
+
+// Ensure mobile notice is hidden on desktop
+@media (min-width: 769px) {
+  .mobile-cv-notice {
+    display: none !important;
   }
 }

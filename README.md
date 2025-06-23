@@ -9,6 +9,7 @@ I have tried to create a modern, responsive academic website built with [Quarto]
 ### Content Organization
 ```
 ├── _quarto.yml                 # Main configuration
+|—— _publish.yml                # Deploy to Netlify
 ├── index.qmd                   # Homepage
 ├── research.qmd                # Research & publications
 ├── cv.qmd                      # Curriculum vitae

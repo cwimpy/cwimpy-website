@@ -1,4 +1,4 @@
-# Cameron Wimpy - Personal Website
+# Cameron Wimpy — Personal Website
 
 I have tried to create a modern, responsive academic website built with [Quarto](https://quarto.org) featuring automated content management and (Typst) PDF generation. Given the challenges and unique preferences I may have, I have done my best to make the rest of this README useful for others (and me when I forget how I did this!).
 

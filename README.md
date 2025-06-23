@@ -13,6 +13,7 @@ I have tried to create a modern, responsive academic website built with [Quarto]
 ├── research.qmd                # Research & publications
 ├── cv.qmd                      # Curriculum vitae
 ├── contact.qmd                 # Contact form
+|—— 
 ├── 404.qmd                     # Custom error page
 ├── posts/                      # Blog posts
 │   ├── _metadata.yml           # Posts configuration
@@ -23,9 +24,12 @@ I have tried to create a modern, responsive academic website built with [Quarto]
 │   ├── current/                # Current courses
 │   ├── materials/              # Course resources
 │   └── past/                   # Course archive
-└── styles/                     # Custom styling
-    ├── styles.scss             # Main styles
-    └── custom-dark.scss        # Dark mode styles
+|── styles/                     # Custom styling
+|   ├── styles.scss             # Main styles
+|   └── custom-dark.scss        # Dark mode styles
+|—— templates/                  # Typst templates
+    ├── post-template.typ       # Typst template for PDF posts
+    └── teaching-template.typ   # Typst template for teaching documents
 ```
 
 ### PDF Templates

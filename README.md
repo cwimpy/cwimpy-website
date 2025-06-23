@@ -1,7 +1,5 @@
 # Cameron Wimpy - Personal Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/33cde0f2-7a9b-45c4-8095-90479f798c45/deploy-status)](https://app.netlify.com/projects/cwimpy/deploys)
-
 I have tried to create a modern, responsive academic website built with [Quarto](https://quarto.org) featuring automated content management and (Typst) PDF generation. Given the challenges and unique preferences I may have, I have done my best to make the rest of this README useful for others (and me when I forget how I did this!).
 
 🌐 **Live Site:** [cwimpy.com](https://cwimpy.com)

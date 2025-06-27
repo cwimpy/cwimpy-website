@@ -252,6 +252,78 @@ get_manual_pubtype <- function(title, bibtex_key, category) {
   return("")
 }
 
+# Function to create individual BibTeX citation file
+create_bibtex_citation <- function(pub, pub_type) {
+  authors <- safe_get(pub$AUTHOR)
+  year <- pub$year_clean
+  title <- safe_get(pub$TITLE, "No Title")
+  bibtex_key <- pub$bibtex_clean
+  
+  # Convert authors list to proper BibTeX format
+  if(is.list(authors)) {
+    authors_str <- paste(unlist(authors), collapse = " and ")
+  } else {
+    authors_str <- paste(authors, collapse = " and ")
+  }
+  
+  # Clean up formatting
+  authors_str <- gsub('c\\("', '', authors_str)
+  authors_str <- gsub('"\\)', '', authors_str)
+  authors_str <- gsub('"', '', authors_str)
+  authors_str <- gsub(", ", " and ", authors_str)
+  
+  # Start building BibTeX entry
+  bib_entry <- paste0("@", pub_type, "{", bibtex_key, ",\n")
+  bib_entry <- paste0(bib_entry, "  author = {", authors_str, "},\n")
+  bib_entry <- paste0(bib_entry, "  title = {", title, "},\n")
+  bib_entry <- paste0(bib_entry, "  year = {", year, "}")
+  
+  # Add type-specific fields
+  if(pub_type == "article") {
+    journal <- safe_get(pub$JOURNAL)
+    volume <- safe_get(pub$VOLUME)
+    number <- safe_get(pub$NUMBER)
+    pages <- safe_get(pub$PAGES)
+    
+    if(journal != "") bib_entry <- paste0(bib_entry, ",\n  journal = {", journal, "}")
+    if(volume != "") bib_entry <- paste0(bib_entry, ",\n  volume = {", volume, "}")
+    if(number != "") bib_entry <- paste0(bib_entry, ",\n  number = {", number, "}")
+    if(pages != "") bib_entry <- paste0(bib_entry, ",\n  pages = {", pages, "}")
+    
+  } else if(pub_type == "book") {
+    publisher <- safe_get(pub$PUBLISHER)
+    address <- safe_get(pub$ADDRESS)
+    
+    if(publisher != "") bib_entry <- paste0(bib_entry, ",\n  publisher = {", publisher, "}")
+    if(address != "") bib_entry <- paste0(bib_entry, ",\n  address = {", address, "}")
+    
+  } else if(pub_type == "incollection") {
+    booktitle <- safe_get(pub$BOOKTITLE)
+    editor <- safe_get(pub$EDITOR)
+    publisher <- safe_get(pub$PUBLISHER)
+    pages <- safe_get(pub$PAGES)
+    address <- safe_get(pub$ADDRESS)
+    
+    if(booktitle != "") bib_entry <- paste0(bib_entry, ",\n  booktitle = {", booktitle, "}")
+    if(editor != "") bib_entry <- paste0(bib_entry, ",\n  editor = {", editor, "}")
+    if(publisher != "") bib_entry <- paste0(bib_entry, ",\n  publisher = {", publisher, "}")
+    if(pages != "") bib_entry <- paste0(bib_entry, ",\n  pages = {", pages, "}")
+    if(address != "") bib_entry <- paste0(bib_entry, ",\n  address = {", address, "}")
+  }
+  
+  # Add DOI if available
+  doi <- safe_get(pub$DOI)
+  if(doi != "") bib_entry <- paste0(bib_entry, ",\n  doi = {", doi, "}")
+  
+  # Add URL if available
+  url <- safe_get(pub$URL)
+  if(url != "") bib_entry <- paste0(bib_entry, ",\n  url = {", url, "}")
+  
+  bib_entry <- paste0(bib_entry, "\n}")
+  
+  return(bib_entry)
+}
+
 # Read the bib file
 pubs <- bib2df("publications.bib")
 
@@ -278,6 +350,19 @@ for(i in 1:nrow(pubs_processed)) {
 # Sort by type and year
 pubs_processed <- pubs_processed %>%
   arrange(type_order, desc(year_clean))
+
+# Create citations folder if it doesn't exist
+if(!dir.exists("citations")) {
+  dir.create("citations")
+}
+
+# Generate individual BibTeX files
+for(i in 1:nrow(pubs_processed)) {
+  pub <- pubs_processed[i,]
+  bib_content <- create_bibtex_citation(pub, pub$category_clean)
+  bib_filename <- paste0("citations/", pub$bibtex_clean, ".bib")
+  writeLines(bib_content, bib_filename)
+}
 
 # Get unique publication types
 pub_types <- pubs_processed %>%
@@ -309,27 +394,27 @@ for(type_idx in 1:nrow(pub_types)) {
       entry_number <- nrow(type_pubs) - i + 1
       cat(entry_number, ". ", citation, "\n\n", sep = "")
       
-      # Add brief description if available
-      abstract_text <- safe_get(pub$ABSTRACT)
-      if(abstract_text != "" && nchar(abstract_text) > 0) {
-        if(nchar(abstract_text) > 200) {
-          abstract_text <- paste0(substr(abstract_text, 1, 200), "...")
-        }
-        cat("   ", abstract_text, "\n\n", sep = "")
-      }
-      
       # Create buttons section
       cat("\n::: {.publication-buttons}\n")
       
-      # PDF button
+      # PDF button (only show if file exists)
       pdf_file <- paste0("uploads/", pub$bibtex_clean, ".pdf")
-      cat("[<i class=\"fas fa-file-pdf\"></i> PDF](", pdf_file, "){.btn-pub}", sep = "")
+      if(file.exists(pdf_file)) {
+        cat("[<i class=\"fas fa-file-pdf\"></i> PDF](", pdf_file, "){.btn-pub}", sep = "")
+      }
       
       # DOI button
       doi <- safe_get(pub$DOI)
       if(doi != "") {
         doi_url <- if(startsWith(doi, "http")) doi else paste0("https://doi.org/", doi)
         cat("\n[<i class=\"fas fa-external-link-alt\"></i> DOI](", doi_url, "){.btn-pub}", sep = "")
+      }
+      
+      # Publisher/Journal URL button
+      url <- safe_get(pub$URL)
+      if(url == "") url <- safe_get(pub$url)  # Check lowercase too
+      if(url != "") {
+        cat("\n[<i class=\"fas fa-external-link-alt\"></i> Publisher](", url, "){.btn-pub}", sep = "")
       }
       
       # Data button
@@ -340,14 +425,200 @@ for(type_idx in 1:nrow(pub_types)) {
       
       # Code button
       code_url <- safe_get(pub$CODE)
+      if(code_url == "") code_url <- safe_get(pub$code)  # Check lowercase too
       if(code_url != "") {
         cat("\n[<i class=\"fas fa-code\"></i> Code](", code_url, "){.btn-pub}", sep = "")
       }
       
-      cat("\n:::\n\n")
+      # Supplement button
+      supplement_url <- safe_get(pub$SUPPLEMENT)
+      if(supplement_url == "") supplement_url <- safe_get(pub$supplement)  # Check lowercase too
+      if(supplement_url != "") {
+        cat("\n[<i class=\"fas fa-paperclip\"></i> Supplement](", supplement_url, "){.btn-pub}", sep = "")
+      }
+      
+      # Citation button (BibTeX popup)
+      bib_content <- create_bibtex_citation(pub, current_category)
+      # Escape quotes and newlines for JavaScript
+      bib_content_escaped <- gsub("\"", "&quot;", bib_content)
+      bib_content_escaped <- gsub("\n", "\\n", bib_content_escaped)
+      cat("\n[<i class=\"fas fa-quote-right\"></i> Cite](#){.btn-pub .citation-btn data-citation=\"", bib_content_escaped, "\"}", sep = "")
+      
+      # Summary/Abstract toggle button (if abstract exists)
+      full_abstract <- safe_get(pub$ABSTRACT)
+      if(full_abstract == "") full_abstract <- safe_get(pub$abstract)  # Check lowercase too
+      if(full_abstract != "" && nchar(full_abstract) > 0) {
+        cat("\n[<i class=\"fas fa-align-left\"></i> Summary](#){.btn-pub .abstract-toggle data-target=\"abstract-", pub$bibtex_clean, "\"}", sep = "")
+      }
+      
+      cat("\n:::\n")
+      
+      # Add hidden full abstract if it exists
+      if(full_abstract != "" && nchar(full_abstract) > 0) {
+        cat("\n::: {.abstract-full #abstract-", pub$bibtex_clean, " style=\"display: none; margin-top: 10px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;\"}\n", sep = "")
+        cat("**Abstract:** ", full_abstract, "\n")
+        cat(":::\n")
+      }
+      
+      cat("\n")
     }
     
     cat("---\n\n")
   }
 }
 ```
+
+<script>
+// JavaScript to handle abstract toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButtons = document.querySelectorAll('.abstract-toggle');
+  
+  toggleButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const abstractDiv = document.getElementById(targetId);
+      
+      if(abstractDiv) {
+        if(abstractDiv.style.display === 'none' || abstractDiv.style.display === '') {
+          abstractDiv.style.display = 'block';
+          this.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Summary';
+        } else {
+          abstractDiv.style.display = 'none';
+          this.innerHTML = '<i class="fas fa-align-left"></i> Summary';
+        }
+      }
+    });
+  });
+  
+  // JavaScript to handle citation popup functionality
+  const citationButtons = document.querySelectorAll('.citation-btn');
+  
+  citationButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const citation = this.getAttribute('data-citation').replace(/\\n/g, '\n').replace(/&quot;/g, '"');
+      
+      // Create modal
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      `;
+      
+      const modalContent = document.createElement('div');
+      modalContent.style.cssText = `
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        max-height: 70vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      `;
+      
+      modalContent.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+          <h3 style="margin: 0; color: #333;">BibTeX Citation</h3>
+          <button id="closeModal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
+        </div>
+        <textarea id="citationText" readonly style="
+          width: 100%;
+          height: 200px;
+          font-family: 'Courier New', monospace;
+          font-size: 12px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 10px;
+          resize: vertical;
+          background-color: #f8f9fa;
+        ">${citation}</textarea>
+        <div style="margin-top: 15px; text-align: right;">
+          <button id="copyBtn" style="
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+          ">Copy to Clipboard</button>
+          <button id="closeBtn" style="
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+          ">Close</button>
+        </div>
+      `;
+      
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+      
+      // Focus and select text
+      const textarea = document.getElementById('citationText');
+      textarea.focus();
+      textarea.select();
+      
+      // Copy functionality
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        textarea.select();
+        navigator.clipboard.writeText(citation).then(function() {
+          const btn = document.getElementById('copyBtn');
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.style.backgroundColor = '#28a745';
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '#007bff';
+          }, 2000);
+        }).catch(function() {
+          // Fallback for older browsers
+          document.execCommand('copy');
+          const btn = document.getElementById('copyBtn');
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.style.backgroundColor = '#28a745';
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '#007bff';
+          }, 2000);
+        });
+      });
+      
+      // Close functionality
+      function closeModal() {
+        document.body.removeChild(modal);
+      }
+      
+      document.getElementById('closeModal').addEventListener('click', closeModal);
+      document.getElementById('closeBtn').addEventListener('click', closeModal);
+      
+      // Close on background click
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+    });
+  });
+});
+</script>

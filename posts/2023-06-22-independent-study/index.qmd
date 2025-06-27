@@ -1,7 +1,7 @@
 ---
 title: "Doing an Independent Study with Dr. Wimpy"
 author: "Cameron Wimpy"
-date: "2023-06-22"
+date: "2020-03-18"
 date-modified: "2025-06-20"
 categories: [teaching, advice]
 image: "image.jpg"

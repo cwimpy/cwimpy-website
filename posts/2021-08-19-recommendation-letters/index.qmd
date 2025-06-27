@@ -1,7 +1,7 @@
 ---
 title: "Asking for a Letter of Recommendation"
 author: "Cameron Wimpy"
-date: "2023-06-22"
+date: "2021-08-19"
 image: "letter.jpg"
 categories: [teaching, advice]
 description: "So You Need a Letter? I am often asked to write letters of recommendation for students. This is an important part of our jobs as professors, but I often find myself struggling to write the letter I think the student needs because my experience with them is either limited to a single course or otherwise negative."

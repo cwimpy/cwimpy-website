@@ -1,7 +1,7 @@
 ---
 title: "New publication on spatial-x models"
 author: "Cameron Wimpy"
-date: "2021-03-06"
+date: "2023-06-22"
 categories: [research, publications]
 description: "Along with Guy D. Whitten and Laron K. Williams, we have a forthcoming article in the Journal of Politics."
 image: "featured.png"

@@ -1,5 +1,6 @@
 ---
 title: "Curriculum Vitae"
+description: "CV for Cameron Wimpy, Associate Professor and Department Chair at Arkansas State University."
 page-layout: full
 ---
 

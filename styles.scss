@@ -1114,6 +1114,34 @@ a {
   }
 }
 
+// Software page cards
+.software-card {
+  background: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 138, 71, 0.1);
+    border-color: var(--secondary-color);
+  }
+
+  h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+}
+
 // Hide PDF download button in PDF output
 @media print {
   .pdf-download {

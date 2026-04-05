@@ -62,9 +62,7 @@ I believe in creating an engaging and inclusive learning environment where stude
 
 ### Office Hours
 
--   **Mondays:** 2:00 PM - 4:00 PM
--   **Wednesdays:** 10:00 AM - 12:00 PM
--   **By appointment:** [Email me](mailto:cwimpy@astate.edu) to schedule
+-   **By appointment only:** [Schedule a meeting](https://fantastical.app/cwimpy)
 
 ### Resources for Students
 
@@ -78,33 +76,3 @@ I believe in creating an engaging and inclusive learning environment where stude
 All course-specific grading policies, rubrics, and expectations are detailed in individual course syllabi. I maintain an open-door policy for discussing grades and academic progress.
 ::::::
 
-------------------------------------------------------------------------
-
-## Getting Started
-
-To add content to your teaching page, create folders and files like this:
-
-```         
-teaching/
-├── current/
-│   ├── pols-1013.qmd      # Current course
-│   └── pols-3003.qmd      # Another current course
-├── materials/
-│   ├── syllabus-template.qmd
-│   ├── research-guide.qmd
-│   └── writing-tips.qmd
-└── past/
-    ├── pols-2013-fall2024.qmd
-    └── pols-4003-spring2024.qmd
-```
-
-Each `.qmd` file should have YAML frontmatter like:
-
-``` yaml
----
-title: "Course Name"
-description: "Brief course description"
-date: "2024-08-15"
-categories: [undergraduate, political science, core]
----
-```

@@ -1,0 +1,67 @@
+---
+title: "Software"
+description: "Software, data tools, and open-source projects by Cameron Wimpy."
+---
+
+::: {.content-container}
+
+I build tools and applications related to my research on election administration, rural public policy, and political methodology. Most projects use R and are available on [GitHub](https://github.com/cwimpy).
+
+## Applications
+
+::: {.software-card}
+### LEO Dashboard
+An interactive Shiny dashboard for exploring Local Election Official (LEO) data from the Election Administration and Voting Survey (EAVS). Includes county-level mapping, demographic overlays, and rural/urban comparisons.
+
+**Stack:** R Shiny, shinydashboard, leaflet, plotly, sf, tigris
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/LEO-Dashboard){.btn-pub}
+:::
+
+::: {.software-card}
+### Rurality App
+A web application for computing and exploring rurality scores across U.S. communities.
+
+**Stack:** React
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality-app){.btn-pub}
+[{{< fa globe >}} rurality.app](https://rurality.app){.btn-pub}
+:::
+
+---
+
+## Data & Replication
+
+::: {.software-card}
+### Precinct-Level Election Results
+Replication data for "American Election Results at the Precinct Level" (Baltz et al., 2022, *Nature: Scientific Data*). Nearly all available precinct-level election results from 2016, 2018, and 2020.
+
+[{{< fa external-link-alt >}} Publication](https://www.nature.com/articles/s41597-022-01745-0){.btn-pub}
+:::
+
+::: {.software-card}
+### Spatial-X Models Replication
+Replication materials for "X Marks the Spot: Discovering the Treasure of Spatial-X Models" (Wimpy, Williams, and Whitten, 2021, *The Journal of Politics*).
+
+[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/RFYOH6){.btn-pub}
+:::
+
+::: {.software-card}
+### Spatial Interpretation Replication
+Replication materials for "Interpretation: The Final Spatial Frontier" (Whitten, Williams, and Wimpy, 2021, *Political Science Research and Methods*).
+
+[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/RGDEET){.btn-pub}
+:::
+
+::: {.software-card}
+### Anti-Government Violence Replication
+Replication materials for "Does Information Lead to Emulation? Spatial Dependence in Anti-Government Violence" (Garcia and Wimpy, 2016, *Political Science Research and Methods*).
+
+[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/CTRV5Z){.btn-pub}
+:::
+
+---
+
+*Have questions about any of these projects? [Get in touch.](contact.qmd)*
+
+:::

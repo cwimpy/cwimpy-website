@@ -18,13 +18,15 @@ website:
         text: Posts
       - href: research.qmd
         text: Research
+      - href: software.qmd
+        text: Software
       # - href: teaching.qmd
       #   text: Teaching
       - href: cv.qmd
         text: CV
   page-footer:
     left: |
-      © 2025 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
+      © 2026 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
     center: |
       <a href="uploads/cv-wimpy.pdf">{{< ai cv >}}</a>
       <a href="mailto:cwimpy@astate.edu">{{< fa envelope >}}</a>
@@ -32,9 +34,9 @@ website:
       <a href="https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en">{{< ai google-scholar >}}</a>
       <a href="https://www.linkedin.com/in/cwimpy/">{{< fa brands linkedin >}}</a>
       <a href="https://orcid.org/0000-0002-2049-5229">{{< ai orcid >}}</a>
-      <a href="https://twitter.com/camwimpy">{{< fa brands x-twitter >}}</a>
+      <a href="https://x.com/camwimpy">{{< fa brands x-twitter >}}</a>
     right: |
-      <a href="/contact.qmd">Contact</a>
+      <a href="/contact.html">Contact</a>
 
 format:
   html:

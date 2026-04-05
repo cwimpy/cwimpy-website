@@ -1,5 +1,6 @@
 ---
 title: "Contact"
+description: "Get in touch with Cameron Wimpy at Arkansas State University."
 format: html
 ---
 
@@ -108,7 +109,7 @@ Jonesboro, AR 72467
 {{< fa brands x-twitter >}}
 :::
 ::: {.label}
-[Twitter](https://twitter.com/camwimpy)
+[X](https://x.com/camwimpy)
 :::
 :::
 

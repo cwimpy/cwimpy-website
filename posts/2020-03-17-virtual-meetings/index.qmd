@@ -98,7 +98,7 @@ The most common audio issue is that a user is on "mute" and they simply do not r
 
 ## Video
 
-As with audio, video problems often begin with the video option off. If you are sure that you do, then the next step is to check the video settings in both the application and the operating system. If the webcam has an "on" indicator light and is not illuminated, then you likely have a settings or driver problem. If the webcam connects externally, make sure it works elsewhere and the appropriate software is installed as needed. You can try your webcam with another application to see if it works at all. If it does not, then you likely have a hardware issue that will need to be addessed at a later time.
+As with audio, video problems often begin with the video option off. If you are sure that you do, then the next step is to check the video settings in both the application and the operating system. If the webcam has an "on" indicator light and is not illuminated, then you likely have a settings or driver problem. If the webcam connects externally, make sure it works elsewhere and the appropriate software is installed as needed. You can try your webcam with another application to see if it works at all. If it does not, then you likely have a hardware issue that will need to be addressed at a later time.
 
 It is crucial to remember that the potential for embarrassment with video is something that you should never forget. This can make or break your presentation, interview, career (at least your current step on the ladder), and even reputation. Always be mindful of your appearance, your verbal and nonverbal reactions to others, and anything else in your environment.
 

@@ -407,3 +407,22 @@ div.quarto-listing-container-grid .listing-item,
     font-weight: 900 !important;
   }
 }
+
+// Dark mode software cards
+.software-card {
+  background: var(--dark-background-light) !important;
+  border-color: var(--dark-border) !important;
+
+  &:hover {
+    border-color: var(--dark-secondary-color) !important;
+    box-shadow: 0 6px 20px rgba(52, 211, 153, 0.2) !important;
+  }
+
+  h3 {
+    color: var(--dark-primary-color) !important;
+  }
+
+  p {
+    color: var(--dark-text) !important;
+  }
+}

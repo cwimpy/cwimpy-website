@@ -59,7 +59,7 @@ The following points are a list of best practices to follow while in or planning
 
 -   **Mute yourself when you are not talking---especially in formal meetings.** This allows for freedom when it comes to outside noise, and it also ensures you are not accidentally disrupting the sound for those who are talking.
 
--   **Always check your open application and browser tabs before screen sharing.** Some of the potential issues here are obvious, and they range from the potential for seeming disorganized to the potential for losing out on a job (or, worse, being terminated from one). Most applications let you select exactly what you want to share. For example, if I am going to show some results from `Stata` or `R`, I select only those applications. The same goes for when showing a paper or slideshow (select the PDF application or browser).
+-   **Always check your open application and browser tabs before screen sharing.** Some of the potential issues here are obvious, and they range from the potential for seeming disorganized to the potential for losing out on a job (or, worse, being terminated from one). Most applications let you select exactly what you want to share. For example, if I am going to show some results from Stata or R, I select only those applications. The same goes for when showing a paper or slideshow (select the PDF application or browser).
 
 -   **Apologize when you disrupt the meeting.** If you cause a disruption, take responsibility, apologize, correct it, and move on.
 

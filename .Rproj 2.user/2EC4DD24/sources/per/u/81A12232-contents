@@ -1,0 +1,144 @@
+library(tidyverse)
+library(scales)
+library(kableExtra)
+df <- read_csv("~/Desktop/data.csv")
+
+# Clean and process the data
+vaccine_data <- df %>%
+  # Convert date column to proper date format
+  mutate(
+    date = mdy(wk_allocations),  # lubridate function to parse MM/DD/YYYY
+    # Filter out non-state entities (keep only actual US states)
+    # Remove cities, territories, and federal entities
+    exclude_entities = case_when(
+      str_detect(state, "New York City|Philadelphia|Chicago") ~ TRUE,
+      str_detect(state, "Puerto Rico|U.S. Virgin Islands|American Samoa|Guam|Marshall Islands|Micronesia|Mariana Islands|Palau") ~ TRUE,
+      str_detect(state, "Federal Entities|District of Columbia") ~ TRUE,
+      TRUE ~ FALSE
+    )
+  ) %>%
+  filter(!exclude_entities) %>%
+  select(state, date, dose_number) %>%
+  arrange(date, state)
+
+
+top_states <- vaccine_data %>%
+  group_by(date) %>%
+  slice_max(dose_number, n = 3) %>%
+  ungroup()
+
+# Create labels for the end of each line
+line_labels <- top_states %>%
+  group_by(state) %>%
+  slice_max(date) %>%  # Get the last date for each state
+  ungroup()
+
+# Plot showing only top 3 states with direct labels
+ggplot(top_states, aes(x = date, y = dose_number, color = state)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2.5) +
+  geom_text(data = line_labels, 
+            aes(label = state, x = date, y = dose_number), 
+            hjust = -0.1, vjust = 0.5, size = 3.5, fontface = "bold") +
+  scale_y_continuous(labels = comma_format()) +
+  scale_x_date(date_labels = "%m/%d", date_breaks = "2 weeks",
+               limits = c(min(top_states$date), max(top_states$date) + days(14))) +  # Add space for labels
+  scale_color_viridis_d(option = "plasma", end = 0.8) +
+  labs(
+    title = "COVID-19 Vaccine Allocations: Top 3 States",
+    subtitle = "Weekly allocations from March to May 2021",
+    x = "Week",
+    y = "Vaccine Doses Allocated"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 11, color = "gray50"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none",  # Remove legend
+    panel.grid.minor = element_blank()
+  )
+
+vaccine_data %>%
+  group_by(state) %>%
+  summarise(total = sum(dose_number)) %>%
+  slice_max(total, n = 10) %>%
+  ggplot(aes(x = reorder(state, total), y = total)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Top 10 States: Total Vaccine Doses")
+# Just two big states - easy to understand
+vaccine_data %>%
+  filter(state %in% c("California", "Texas")) %>%
+  ggplot(aes(x = date, y = dose_number, color = state)) +
+  geom_line(size = 2) +
+  labs(title = "California vs Texas: Weekly Allocations")
+
+
+df %>%
+  filter(wk_allocations == "05/03/2021") %>%  # Use original date format
+  slice_max(dose_number, n = 10) %>%
+  ggplot(aes(x = reorder(state, dose_number), y = dose_number)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::comma_format()) +
+  labs(
+    title = "Top 10 Vaccine Allocations: May 3, 2021",
+    subtitle = "Including all entities in original data",
+    x = "State/Entity",
+    y = "Doses Allocated"
+  ) +
+  theme_minimal()
+
+df %>%
+  group_by(state) %>%
+  summarise(mean_doses = mean(dose_number))
+
+
+state_summary <- df %>%
+  group_by(state) %>%
+  summarise(
+    mean_doses = mean(dose_number, na.rm = TRUE),
+    total_doses = sum(dose_number, na.rm = TRUE),
+    weeks_count = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_doses)) %>%
+  # Format numbers nicely
+  mutate(
+    mean_doses = round(mean_doses, 0),
+    total_doses = scales::comma(total_doses),
+    mean_doses_formatted = scales::comma(mean_doses)
+  )
+
+state_summary %>%
+  select(state, mean_doses_formatted, total_doses, weeks_count) %>%
+  slice_head(n = 10) %>%
+  kable(
+    col.names = c("State/Entity", "Avg Weekly", "Total", "Weeks"),
+    caption = "COVID-19 Vaccine Allocations Summary"
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  add_header_above(c(" " = 1, "Doses Allocated" = 2, " " = 1)) %>%
+  row_spec(1, bold = TRUE, color = "white", background = "#3498db")
+
+
+
+get_state_summary <- function(state_name) {
+  df %>%
+    filter(state == state_name) %>%
+    summarise(
+      state = state_name,
+      total_doses = sum(dose_number),
+      mean_doses = round(mean(dose_number), 0),
+      max_doses = max(dose_number),
+      min_doses = min(dose_number),
+      weeks = n()
+    )
+}
+
+get_state_summary("Arkansas")

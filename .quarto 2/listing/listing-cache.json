@@ -1,0 +1,12 @@
+{
+  "listingMap": {
+    "teaching.qmd": [
+      "teaching/current/*.qmd",
+      "teaching/materials/*.qmd",
+      "teaching/past/*.qmd"
+    ],
+    "posts/index.qmd": [
+      "**/*.qmd"
+    ]
+  }
+}

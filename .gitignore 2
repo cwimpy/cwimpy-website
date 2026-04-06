@@ -81,5 +81,3 @@ yarn-error.log*
 *.backup
 
 /.quarto/
-
-**/*.quarto_ipynb

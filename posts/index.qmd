@@ -13,7 +13,7 @@ listing:
   sort-ui: false
   filter-ui: false
   feed: true
-  fields: [date, title, reading-time, description, categories]
+  fields: [image, date, title, reading-time, description, categories]
 comments: false
 ---
 Welcome! Here you'll find posts about my teaching, research, data science, and academic life.

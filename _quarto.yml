@@ -8,7 +8,9 @@ website:
   title: "Cameron Wimpy"
   site-url: "https://cwimpy.com"
   favicon: "favicon.ico"
-  search: true
+  search:
+    location: navbar
+    type: overlay
   google-analytics: "G-TYNMV5ZKBT"
   back-to-top-navigation: true
   llms-txt: true

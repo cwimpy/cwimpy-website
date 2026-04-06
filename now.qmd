@@ -1,0 +1,34 @@
+---
+title: "Now"
+description: "What I'm currently working on."
+date: last-modified
+date-format: "MMMM YYYY"
+---
+
+::: {.content-container}
+
+This is a [now page](https://nownownow.com/about). It's a snapshot of what I'm focused on at this point in my life and career.
+
+*Updated {{< meta date >}}.*
+
+## At work
+
+I'm in my fourth year as chair of [Government, Law & Policy](https://www.astate.edu/college/liberal-arts-and-communication/departments/government-law-and-policy/) at Arkansas State University and my fourth year directing the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). Most of my administrative time goes toward faculty development, program review, and building out the IRI's research agenda.
+
+## Research
+
+My primary research focus is **rural election administration** -- understanding how local election officials in small and rural jurisdictions manage elections with limited resources. I'm working with data from the Election Administration and Voting Survey (EAVS) and building tools to make rurality classification easier for researchers (see the [rurality](/software.html) R and Stata packages).
+
+I also have ongoing work in **political methodology**, particularly spatial econometric models and their interpretation.
+
+## Building
+
+- [rurality](https://github.com/cwimpy/rurality) -- R package for rurality classification and scoring
+- [rurality-stata](https://github.com/cwimpy/rurality-stata) -- Stata implementation
+- [rurality.app](https://rurality.app) -- web app companion
+
+## Outside work
+
+I live on [Crowley's Ridge](https://en.wikipedia.org/wiki/Crowley%27s_Ridge) in northeast Arkansas with my family.
+
+:::

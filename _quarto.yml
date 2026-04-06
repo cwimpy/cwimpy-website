@@ -10,7 +10,6 @@ website:
   favicon: "favicon.ico"
   search: true
   google-analytics: "G-TYNMV5ZKBT"
-  reader-mode: false
   back-to-top-navigation: true
   llms-txt: true
   twitter-card:
@@ -34,6 +33,8 @@ website:
       #   text: Teaching
       - href: cv.qmd
         text: CV
+      - href: now.qmd
+        text: Now
       - icon: rss
         href: posts/index.xml
         aria-label: RSS
@@ -42,12 +43,12 @@ website:
       © 2026 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
     center: |
       <a href="uploads/cv-wimpy.pdf">{{< ai cv >}}</a>
-      <a href="mailto:cwimpy@astate.edu">{{< fa envelope >}}</a>
+      <a href="mailto:{{< var email >}}">{{< fa envelope >}}</a>
       <a href="https://github.com/cwimpy" rel="me">{{< fa brands github >}}</a>
-      <a href="https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en">{{< ai google-scholar >}}</a>
-      <a href="https://www.linkedin.com/in/cwimpy/" rel="me">{{< fa brands linkedin >}}</a>
-      <a href="https://orcid.org/0000-0002-2049-5229" rel="me">{{< ai orcid >}}</a>
-      <a href="https://x.com/camwimpy" rel="me">{{< fa brands x-twitter >}}</a>
+      <a href="{{< var scholar >}}">{{< ai google-scholar >}}</a>
+      <a href="{{< var linkedin >}}" rel="me">{{< fa brands linkedin >}}</a>
+      <a href="https://orcid.org/{{< var orcid >}}" rel="me">{{< ai orcid >}}</a>
+      <a href="{{< var twitter >}}" rel="me">{{< fa brands x-twitter >}}</a>
       <a href="/posts/index.xml">{{< fa rss >}}</a>
     right: |
       <a href="/contact.html">Contact</a>

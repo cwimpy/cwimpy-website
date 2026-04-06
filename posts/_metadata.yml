@@ -1,8 +1,9 @@
 # Metadata for all files in the posts/ directory
 date-modified: last-modified
 format:
-  html: 
+  html:
     date-format: "M/D/YYYY"
+    reading-time: true
   typst:
     pdf-engine: typst
     date-format: "M/D/YYYY"

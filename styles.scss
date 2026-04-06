@@ -200,22 +200,19 @@ body {
     margin: 2rem 0;
   }
 
-  // APSA-style hanging indent for citations
-  .citation {
-    p {
-      padding-left: 2rem;
-      text-indent: -2rem;
-      margin-bottom: 0.25rem;
-      line-height: 1.6;
-      color: #000000;
-    }
-  }
-
   // Standalone paragraphs (abstracts, etc.)
   p {
     line-height: 1.5;
     color: #000000;
   }
+}
+
+// APSA-style hanging indent for citations (top-level for reliable selector)
+.citation p {
+  padding-left: 2rem !important;
+  text-indent: -2rem !important;
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
 }
 
 // Blog listing styling
@@ -1295,9 +1292,9 @@ a {
     min-width: 120px;
   }
 
-  #research .citation p {
-    padding-left: 1.5rem;
-    text-indent: -1.5rem;
+  .citation p {
+    padding-left: 1.5rem !important;
+    text-indent: -1.5rem !important;
   }
 
   .cv-header h2 {

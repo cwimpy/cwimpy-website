@@ -64,28 +64,61 @@ extract_year <- function(pub) {
   return(0)
 }
 
-# Function to bold your name in author lists (APSA style)
+# Function to format authors in APSA style and bold your name
 bold_name <- function(authors) {
   if(is.null(authors) || length(authors) == 0) return("")
-  
-  # Convert to proper string - handle both character vectors and lists
+
+  # Get individual author names as a character vector
   if(is.list(authors)) {
-    authors_str <- paste(unlist(authors), collapse = ", ")
+    names_vec <- unlist(authors)
   } else {
-    authors_str <- paste(authors, collapse = ", ")
+    names_vec <- authors
   }
-  
-  # Clean up any formatting issues
-  authors_str <- gsub('c\\("', '', authors_str)
-  authors_str <- gsub('"\\)', '', authors_str)
-  authors_str <- gsub('"', '', authors_str)
-  
+
+  # Clean up formatting artifacts
+  names_vec <- gsub('c\\("', '', names_vec)
+  names_vec <- gsub('"\\)', '', names_vec)
+  names_vec <- gsub('"', '', names_vec)
+  names_vec <- trimws(names_vec)
+  names_vec <- names_vec[names_vec != "" & !is.na(names_vec)]
+
+  if(length(names_vec) == 0) return("")
+
+  # APSA style: invert first author (Last, First), rest in natural order
+  invert_name <- function(name) {
+    parts <- trimws(strsplit(name, " ")[[1]])
+    if(length(parts) <= 1) return(name)
+    # Handle suffixes (III, Jr., Sr., IV, etc.)
+    suffixes <- c("III", "IV", "Jr.", "Jr", "Sr.", "Sr", "II")
+    suffix <- ""
+    if(parts[length(parts)] %in% suffixes) {
+      suffix <- paste0(" ", parts[length(parts)])
+      parts <- parts[-length(parts)]
+    }
+    last <- parts[length(parts)]
+    first <- paste(parts[-length(parts)], collapse = " ")
+    return(paste0(last, ", ", first, suffix))
+  }
+
+  # Invert first author only
+  names_vec[1] <- invert_name(names_vec[1])
+
+  # Join with APSA style: commas, "and" before last
+  if(length(names_vec) == 1) {
+    authors_str <- names_vec[1]
+  } else if(length(names_vec) == 2) {
+    authors_str <- paste(names_vec[1], "and", names_vec[2])
+  } else {
+    authors_str <- paste0(
+      paste(names_vec[-length(names_vec)], collapse = ", "),
+      ", and ", names_vec[length(names_vec)]
+    )
+  }
+
   # Bold different name formats
   authors_str <- gsub("Cameron Wimpy", "**Cameron Wimpy**", authors_str, fixed = TRUE)
   authors_str <- gsub("Wimpy, Cameron", "**Wimpy, Cameron**", authors_str, fixed = TRUE)
-  authors_str <- gsub("C. Wimpy", "**C. Wimpy**", authors_str, fixed = TRUE)
-  authors_str <- gsub("Wimpy, C.", "**Wimpy, C.**", authors_str, fixed = TRUE)
-  
+
   return(authors_str)
 }
 

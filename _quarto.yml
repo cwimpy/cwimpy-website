@@ -10,7 +10,7 @@ website:
   favicon: "favicon.ico"
   search: true
   google-analytics: "G-TYNMV5ZKBT"
-  reader-mode: true
+  reader-mode: false
   back-to-top-navigation: true
   llms-txt: true
   twitter-card:
@@ -34,6 +34,9 @@ website:
       #   text: Teaching
       - href: cv.qmd
         text: CV
+      - icon: rss
+        href: posts/index.xml
+        aria-label: RSS
   page-footer:
     left: |
       © 2026 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)

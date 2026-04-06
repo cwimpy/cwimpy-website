@@ -22,7 +22,7 @@ I am associate professor of political science and chair of Government, Law & Pol
 I formerly served as the Research Director in the [MIT Election Data and Science Lab](http://electionlab.mit.edu), where I managed applied research on the scientific study of elections. I was previously an affiliate faculty member with the [Harvard Institute for Quantitative Social Science](https://www.iq.harvard.edu/home). I grew up on [Crowley's Ridge](https://en.wikipedia.org/wiki/Crowley%27s_Ridge) in the Arkansas Delta.
 
 ::: social-buttons
-[{{< fa file-pdf >}}](uploads/cv-wimpy.pdf){.btn-social} [{{< fa envelope >}}](mailto:cwimpy@astate.edu){.btn-social} [{{< fa brands github >}}](https://github.com/cwimpy){.btn-social} [{{< ai google-scholar >}}](https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en){.btn-social} [{{< fa brands linkedin >}}](https://www.linkedin.com/in/cwimpy/){.btn-social} [{{< ai orcid >}}](https://orcid.org/0000-0002-2049-5229){.btn-social} [{{< fa brands x-twitter >}}](https://x.com/camwimpy){.btn-social}
+[{{< fa file-pdf >}}](uploads/cv-wimpy.pdf){.btn-social} [{{< fa envelope >}}](mailto:cwimpy@astate.edu){.btn-social} [{{< fa brands github >}}](https://github.com/cwimpy){.btn-social rel="me"} [{{< ai google-scholar >}}](https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en){.btn-social} [{{< fa brands linkedin >}}](https://www.linkedin.com/in/cwimpy/){.btn-social rel="me"} [{{< ai orcid >}}](https://orcid.org/0000-0002-2049-5229){.btn-social rel="me"} [{{< fa brands x-twitter >}}](https://x.com/camwimpy){.btn-social rel="me"}
 :::
 ::::
 ::::::

@@ -561,9 +561,49 @@ body {
 // Additional overrides to ensure no red colors leak through
 a {
   color: var(--secondary-color);
-  
+
   &:hover {
     color: var(--primary-color);
+  }
+}
+
+// Back to top button styling
+#quarto-back-to-top {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(45, 138, 71, 0.3);
+  }
+}
+
+// Anchor section links
+.anchor-section-link {
+  color: var(--border-light) !important;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--secondary-color) !important;
+  }
+}
+
+// Reader mode toggle
+.quarto-reader-toggle {
+  .bi {
+    color: var(--text-medium);
+    transition: color 0.3s ease;
+  }
+
+  &:hover .bi {
+    color: var(--secondary-color);
   }
 }
 

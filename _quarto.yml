@@ -31,8 +31,8 @@ website:
         text: Research
       - href: software.qmd
         text: Software
-      # - href: teaching.qmd
-      #   text: Teaching
+      - href: teaching.qmd
+        text: Teaching
       - href: cv.qmd
         text: CV
       - href: now.qmd

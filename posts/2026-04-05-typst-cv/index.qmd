@@ -3,9 +3,9 @@ title: "Building a Programmatic Academic CV with Quarto and Typst"
 author: "Cameron Wimpy"
 date: "2026-04-05"
 categories: [quarto, typst, tutorial, academic]
-description: "A walkthrough of building a data-driven academic CV using Quarto and Typst---with publications pulled automatically from a BibTeX file, custom styling, and a clean design that rivals InDesign."
+description: "This is a walkthrough of building a data-driven academic CV using Quarto and Typst. It includes publications pulled automatically from a BibTeX file, custom styling, and a clean design that rivals LaTeX or InDesign."
 image: "cv-preview.png"
-draft: true
+draft: false
 format:
   html: default
 ---
@@ -18,10 +18,10 @@ The full source code is available on [GitHub](https://github.com/cwimpy/my-cv).
 
 LaTeX has been the standard for academic typesetting for decades, and for good reason---it handles complex math, cross-references, and bibliographies well. But it comes with real costs:
 
-- **Compilation is slow.** A multi-page document with bibliographies can take several seconds. Typst compiles in milliseconds.
-- **The syntax is hostile to newcomers.** Even experienced users regularly fight with vspace, hfill, and mysterious overfull hbox warnings.
-- **Error messages are cryptic.** A missing brace on line 47 might produce an error on line 312.
-- **Package management is fragile.** CTAN packages can conflict, and getting a specific look often requires stacking multiple packages.
+-   **Compilation is slow.** A multi-page document with bibliographies can take several seconds. Typst compiles in milliseconds.
+-   **The syntax is hostile to newcomers.** Even experienced users regularly fight with vspace, hfill, and mysterious overfull hbox warnings.
+-   **Error messages are cryptic.** A missing brace on line 47 might produce an error on line 312.
+-   **Package management is fragile.** CTAN packages can conflict, and getting a specific look often requires stacking multiple packages.
 
 Typst addresses all of these. Its syntax reads like a mix of Markdown and a scripting language. It compiles instantly. And because Quarto now supports Typst as a first-class output format, you can combine R or Python code chunks with Typst templates in a single .qmd file.
 
@@ -29,7 +29,7 @@ Typst addresses all of these. Its syntax reads like a mix of Markdown and a scri
 
 My CV has three files:
 
-```text
+``` text
 my-cv/
 ├── my-cv.qmd           # Content and data (Quarto document)
 ├── cv-template.typ      # Design and layout (Typst template)
@@ -42,7 +42,7 @@ The .qmd file contains the CV content and an R chunk that reads the BibTeX file.
 
 The template (cv-template.typ) is where the design lives. At the top, I define colors and fonts:
 
-```typst
+``` typst
 #let color-darknight = rgb("#131A28")
 #let color-darkgray = rgb("#333333")
 #let color-gray = rgb("#5d5d5d")
@@ -58,7 +58,7 @@ If you have Myriad Pro installed (it comes with Adobe products), the CV uses it.
 
 The core building block is cv-entry, a reusable function for employment, education, grants, and everything else:
 
-```typst
+``` typst
 #let cv-entry(
   title: "",
   organization: "",
@@ -83,7 +83,7 @@ The core building block is cv-entry, a reusable function for employment, educati
 
 This produces a clean two-line entry with the title and location on the first line (justified left and right), and the organization and dates on the second. The amount parameter is optional---I use it for grants:
 
-```typst
+``` typst
 #cv-entry(
   title: "Exploring Rural Election Administration",
   organization: "MIT Election Data and Science Lab",
@@ -98,7 +98,7 @@ Compare this to the LaTeX equivalent, which typically involves tabular environme
 
 Section headings get a bold title with a full-width rule underneath:
 
-```typst
+``` typst
 #let section(title) = {
   set block(above: 1.5em, below: 1em)
   set text(size: 16pt, weight: "regular")
@@ -112,7 +112,7 @@ Section headings get a bold title with a full-width rule underneath:
 
 Quarto's heading syntax (# Education) automatically maps to this function through a show rule:
 
-```typst
+``` typst
 #show heading.where(level: 1): it => section(it.body)
 ```
 
@@ -124,7 +124,7 @@ This is the part that makes the CV truly programmatic. Instead of manually typin
 
 ### The R chunk
 
-```r
+``` r
 library(RefManageR)
 bib <- ReadBib("publications.bib")
 
@@ -161,7 +161,7 @@ This chunk uses RefManageR to parse the BibTeX file, then emits raw Typst code a
 
 The template's format-publication function handles APSA citation style with proper hanging indents:
 
-```typst
+``` typst
 #let format-publication(entry, number: none, bold-name: "Cameron Wimpy") = {
   set text(size: 10pt, fill: color-darknight)
   set par(leading: 0.65em, hanging-indent: 2em)
@@ -175,7 +175,7 @@ The key line is hanging-indent: 2em---Typst handles this natively. In LaTeX, you
 
 The function also bolds your name automatically:
 
-```typst
+``` typst
 #let bold-author-name(authors-str, bold-name) = {
   let parts = authors-str.split(regex(" and |, and | & "))
   let formatted-parts = ()
@@ -201,7 +201,7 @@ Equal authorship is flagged automatically with a star symbol when the BibTeX ent
 
 The CV header uses Font Awesome and Academicons for social links, laid out in a three-column grid:
 
-```typst
+``` typst
 #grid(
   columns: (1fr, 1fr, 1fr),
   [
@@ -224,7 +224,7 @@ The CV header uses Font Awesome and Academicons for social links, laid out in a 
 
 The $variable$ syntax is Quarto's template variable interpolation---values come from the YAML frontmatter in the .qmd file:
 
-```yaml
+``` yaml
 firstname: "Cameron"
 lastname: "Wimpy"
 email: "cwimpy@astate.edu"
@@ -237,7 +237,7 @@ orcidurl: "https://orcid.org/0000-0002-2049-5229"
 
 Every page gets an automatic footer with the revision date, name, and page number:
 
-```typst
+``` typst
 #set page(
   footer: context [
     #set text(fill: color-lightgray, size: 8pt)
@@ -257,7 +257,7 @@ The revision date updates automatically every time you render. No more forgettin
 
 To build the CV:
 
-```bash
+``` bash
 quarto render my-cv.qmd
 ```
 
@@ -265,30 +265,30 @@ That is it. Quarto runs the R chunk, which reads the BibTeX file and emits Typst
 
 ## What I like about this approach
 
-1. **Single source of truth.** Publications live in one .bib file used across my CV, website, and papers.
-2. **Separation of content and design.** The .qmd has the data; the .typ has the styling. Change the font or colors in one place.
-3. **Readable source files.** Anyone can look at cv-entry(title: "Department Chair", ...) and understand what it does.
-4. **Fast iteration.** Typst compiles in milliseconds, so you can preview changes instantly.
-5. **Programmatic publications.** Add a BibTeX entry, re-render, done. No manual formatting.
-6. **Modern tooling.** Quarto, R, and Typst are all actively developed and well-documented.
+1.  **Single source of truth.** Publications live in one .bib file used across my CV, website, and papers.
+2.  **Separation of content and design.** The .qmd has the data; the .typ has the styling. Change the font or colors in one place.
+3.  **Readable source files.** Anyone can look at cv-entry(title: "Department Chair", ...) and understand what it does.
+4.  **Fast iteration.** Typst compiles in milliseconds, so you can preview changes instantly.
+5.  **Programmatic publications.** Add a BibTeX entry, re-render, done. No manual formatting.
+6.  **Modern tooling.** Quarto, R, and Typst are all actively developed and well-documented.
 
 ## Getting started
 
 If you want to try this yourself:
 
-1. Install [Quarto](https://quarto.org/docs/get-started/) (1.4 or later for Typst support)
-2. Clone the repository and navigate into it:
+1.  Install [Quarto](https://quarto.org/docs/get-started/) (1.4 or later for Typst support)
+2.  Clone the repository and navigate into it:
 
-```bash
+``` bash
 git clone https://github.com/cwimpy/my-cv.git
 cd my-cv
 ```
 
-3. Replace the content in my-cv.qmd with your own information
-4. Replace publications.bib with your own bibliography
-5. Render the CV:
+3.  Replace the content in my-cv.qmd with your own information
+4.  Replace publications.bib with your own bibliography
+5.  Render the CV:
 
-```bash
+``` bash
 quarto render my-cv.qmd
 ```
 

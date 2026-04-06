@@ -13,11 +13,11 @@ This is a [now page](https://nownownow.com/about). It's a snapshot of what I'm f
 
 ## At work
 
-I'm in my fourth year as chair of [Government, Law & Policy](https://www.astate.edu/college/liberal-arts-and-communication/departments/government-law-and-policy/) at Arkansas State University and my fourth year directing the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). Most of my administrative time goes toward faculty development, program review, and building out the IRI's research agenda.
+I'm in my fourth year as department chair of [Government, Law & Policy](https://www.astate.edu/college/liberal-arts-and-communication/departments/government-law-and-policy/) at Arkansas State University and my fourth year directing the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). Most of my administrative time goes toward faculty development, program review, and building out the IRI's research agenda.
 
 ## Research
 
-My primary research focus is **rural election administration** -- understanding how local election officials in small and rural jurisdictions manage elections with limited resources. I'm working with data from the Election Administration and Voting Survey (EAVS) and building tools to make rurality classification easier for researchers (see the [rurality](/software.html) R and Stata packages).
+My primary research focus is **rural election administration**. That is, I am learning how local election officials in small and rural jurisdictions manage elections with limited resources. I'm working with data from the Election Administration and Voting Survey (EAVS) and building tools to make rurality classification easier for researchers (see the [rurality](/software.html) R and Stata packages).
 
 I also have ongoing work in **political methodology**, particularly spatial econometric models and their interpretation.
 

@@ -5,59 +5,48 @@ description: "Software, data tools, and open-source projects by Cameron Wimpy."
 
 ::: {.content-container}
 
-I build tools and applications related to my research on election administration, rural public policy, and political methodology. Most projects use R and are available on [GitHub](https://github.com/cwimpy).
+I build tools and packages related to my research on election administration, rural public policy, and political methodology. Most projects use R and are available on [GitHub](https://github.com/cwimpy).
+
+## R Packages
+
+::: {.software-card}
+### rurality (R)
+Rurality classification and scoring for U.S. counties and ZIP codes. Provides USDA Rural-Urban Continuum Codes (RUCC 2023), Rural-Urban Commuting Area codes (RUCA 2020), and a composite rurality score for all 3,235 U.S. counties. Built to make rurality data easy to use in research without manually downloading and merging USDA spreadsheets.
+
+**Install:**
+```r
+devtools::install_github("cwimpy/rurality")
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality){.btn-pub}
+[{{< fa globe >}} rurality.app](https://rurality.app){.btn-pub}
+:::
+
+::: {.software-card}
+### rurality (Stata)
+Stata implementation of the rurality package. Merges USDA Rural-Urban Continuum Codes (RUCC 2023) and a composite rurality score onto any dataset by county FIPS code. Includes optional variables for population density, metro distance, median income, and age composition.
+
+**Install:**
+```stata
+net install rurality, from("https://raw.githubusercontent.com/cwimpy/rurality-stata/main/")
+rurality_install
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality-stata){.btn-pub}
+:::
+
+---
 
 ## Applications
 
 ::: {.software-card}
-### LEO Dashboard
-An interactive Shiny dashboard for exploring Local Election Official (LEO) data from the Election Administration and Voting Survey (EAVS). Includes county-level mapping, demographic overlays, and rural/urban comparisons.
-
-**Stack:** R Shiny, shinydashboard, leaflet, plotly, sf, tigris
-
-[{{< fa brands github >}} GitHub](https://github.com/cwimpy/LEO-Dashboard){.btn-pub}
-:::
-
-::: {.software-card}
 ### Rurality App
-A web application for computing and exploring rurality scores across U.S. communities.
+A web application for computing and exploring rurality scores across U.S. communities. Companion to the rurality R and Stata packages.
 
 **Stack:** React
 
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality-app){.btn-pub}
 [{{< fa globe >}} rurality.app](https://rurality.app){.btn-pub}
-:::
-
----
-
-## Data & Replication
-
-::: {.software-card}
-### Precinct-Level Election Results
-Replication data for "American Election Results at the Precinct Level" (Baltz et al., 2022, *Nature: Scientific Data*). Nearly all available precinct-level election results from 2016, 2018, and 2020.
-
-[{{< fa external-link-alt >}} Publication](https://www.nature.com/articles/s41597-022-01745-0){.btn-pub}
-:::
-
-::: {.software-card}
-### Spatial-X Models Replication
-Replication materials for "X Marks the Spot: Discovering the Treasure of Spatial-X Models" (Wimpy, Williams, and Whitten, 2021, *The Journal of Politics*).
-
-[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/RFYOH6){.btn-pub}
-:::
-
-::: {.software-card}
-### Spatial Interpretation Replication
-Replication materials for "Interpretation: The Final Spatial Frontier" (Whitten, Williams, and Wimpy, 2021, *Political Science Research and Methods*).
-
-[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/RGDEET){.btn-pub}
-:::
-
-::: {.software-card}
-### Anti-Government Violence Replication
-Replication materials for "Does Information Lead to Emulation? Spatial Dependence in Anti-Government Violence" (Garcia and Wimpy, 2016, *Political Science Research and Methods*).
-
-[{{< fa database >}} Dataverse](https://doi.org/10.7910/DVN/CTRV5Z){.btn-pub}
 :::
 
 ---

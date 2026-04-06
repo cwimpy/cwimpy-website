@@ -34,9 +34,6 @@ website:
       #   text: Teaching
       - href: cv.qmd
         text: CV
-      - icon: rss
-        href: posts/index.xml
-        aria-label: RSS
   page-footer:
     left: |
       © 2026 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
@@ -48,6 +45,7 @@ website:
       <a href="https://www.linkedin.com/in/cwimpy/" rel="me">{{< fa brands linkedin >}}</a>
       <a href="https://orcid.org/0000-0002-2049-5229" rel="me">{{< ai orcid >}}</a>
       <a href="https://x.com/camwimpy" rel="me">{{< fa brands x-twitter >}}</a>
+      <a href="/posts/index.xml">{{< fa rss >}}</a>
     right: |
       <a href="/contact.html">Contact</a>
 

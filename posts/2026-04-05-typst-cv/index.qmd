@@ -5,11 +5,12 @@ date: "2026-04-05"
 categories: [quarto, typst, tutorial, academic]
 description: "A walkthrough of building a data-driven academic CV using Quarto and Typst---with publications pulled automatically from a BibTeX file, custom styling, and a clean design that rivals InDesign."
 image: "cv-preview.png"
+draft: true
 format:
   html: default
 ---
 
-If you have ever wrestled with LaTeX to format a CV, you know the pain: cryptic error messages, fragile spacing, package conflicts, and the nagging feeling that there must be a better way. There is. [Typst](https://typst.app/) is a modern typesetting system that is fast, readable, and increasingly supported by [Posit](https://posit.co/) through [Quarto](https://quarto.org/). In this post, I walk through how I built a fully programmatic academic CV that pulls publications directly from a BibTeX file, formats them in APSA style with hanging indents and bold author highlighting, and produces a clean PDF that I think competes with anything you could design in Adobe InDesign.
+If you have ever wrestled with LaTeX to format a CV, you know the pain: cryptic error messages, fragile spacing, package conflicts, and the nagging feeling that there must be a better way. There might be. [Typst](https://typst.app/) is a modern typesetting system that is fast, readable, and increasingly supported by [Posit](https://posit.co/) through [Quarto](https://quarto.org/). In this post, I walk through how I built a fully programmatic academic CV that pulls publications directly from a BibTeX file, formats them in APSA style with hanging indents and bold author highlighting, and produces a clean PDF that I think competes with anything you could design in Adobe InDesign.
 
 The full source code is available on [GitHub](https://github.com/cwimpy/my-cv).
 
@@ -276,10 +277,20 @@ That is it. Quarto runs the R chunk, which reads the BibTeX file and emits Typst
 If you want to try this yourself:
 
 1. Install [Quarto](https://quarto.org/docs/get-started/) (1.4 or later for Typst support)
-2. Clone the [repository](https://github.com/cwimpy/my-cv)
+2. Clone the repository and navigate into it:
+
+```bash
+git clone https://github.com/cwimpy/my-cv.git
+cd my-cv
+```
+
 3. Replace the content in my-cv.qmd with your own information
 4. Replace publications.bib with your own bibliography
-5. Run quarto render my-cv.qmd
+5. Render the CV:
+
+```bash
+quarto render my-cv.qmd
+```
 
 The Typst template is designed to be modifiable. Change the colors at the top, swap the fonts, adjust the spacing---it is all in one file with clear variable names.
 

@@ -200,20 +200,21 @@ body {
     margin: 2rem 0;
   }
 
-  p {
-    text-indent: -2rem;
-    padding-left: 2rem;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-    color: #000000;
+  // APSA-style hanging indent for citations
+  .citation {
+    p {
+      padding-left: 2rem;
+      text-indent: -2rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.6;
+      color: #000000;
+    }
   }
 
-  p:has(+ .publication-buttons) {
-    text-indent: 0;
-    padding-left: 0;
-    font-style: italic;
-    color: var(--text-medium);
-    margin-left: 2rem;
+  // Standalone paragraphs (abstracts, etc.)
+  p {
+    line-height: 1.5;
+    color: #000000;
   }
 }
 
@@ -1294,13 +1295,9 @@ a {
     min-width: 120px;
   }
 
-  #research p {
-    text-indent: -1.5rem;
+  #research .citation p {
     padding-left: 1.5rem;
-  }
-
-  #research p:has(+ .publication-buttons) {
-    margin-left: 1.5rem;
+    text-indent: -1.5rem;
   }
 
   .cv-header h2 {

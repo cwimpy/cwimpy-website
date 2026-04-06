@@ -391,9 +391,11 @@ for(type_idx in 1:nrow(pub_types)) {
       # Format citation in APSA style
       citation <- format_apsa_citation(pub, current_category)
       
-      # Print the entry with section numbering
+      # Print the entry with APSA hanging indent
       entry_number <- nrow(type_pubs) - i + 1
-      cat(entry_number, ". ", citation, "\n\n", sep = "")
+      cat("\n::: {.citation}\n")
+      cat(entry_number, "\\. ", citation, "\n", sep = "")
+      cat(":::\n")
       
       # Create buttons section
       cat("\n::: {.publication-buttons}\n")

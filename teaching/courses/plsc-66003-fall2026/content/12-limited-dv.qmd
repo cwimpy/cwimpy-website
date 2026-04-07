@@ -1,0 +1,29 @@
+---
+title: "Week 12: Limited dependent variables"
+date: "2026-11-11"
+---
+
+::: {.content-container}
+
+## Overview
+
+Models for binary, ordinal, and count outcomes.
+
+## Readings
+
+TBD
+
+- Probit and logit models
+- Ordered logit/probit
+- Count models: Poisson and negative binomial
+- Predicted probabilities and marginal effects
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

@@ -1,0 +1,85 @@
+---
+title: "PLSC 66003: Advanced Political Analysis"
+description: "Graduate-level quantitative methods for political science using R."
+date: "2026-08-19"
+draft: true
+image: "../../../images/profile.png"
+categories: [graduate, methods, R]
+---
+
+::: {.content-container}
+
+## Course Details
+
+|  |  |
+|---|---|
+| **Semester** | Fall 2026 |
+| **Meeting Time** | TBD |
+| **Location** | TBD |
+| **Instructor** | Dr. Cameron Wimpy |
+| **Office** | HSS 3007 |
+| **Email** | [cwimpy@astate.edu](mailto:{{< var email >}}) |
+| **Office Hours** | By appointment --- [schedule here]({{< var scheduling >}}) |
+
+## Overview
+
+This course introduces graduate students to the theory and application of quantitative methods in political science. We cover the foundations of statistical inference, linear regression, maximum likelihood estimation, and model diagnostics using R. The goal is for students to leave the course able to conduct, interpret, and present original quantitative research.
+
+All computing is done in [R](https://www.r-project.org/) using the [tidyverse](https://www.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). We use [Quarto](https://quarto.org/) for reproducible documents.
+
+## Learning Objectives
+
+By the end of this course, students will be able to:
+
+1. Formulate testable hypotheses from political science theories
+2. Manage, clean, and visualize data using R and the tidyverse
+3. Estimate and interpret linear regression models
+4. Assess model fit and diagnose violations of assumptions
+5. Present statistical results in publication-ready tables and figures
+6. Produce reproducible research documents with Quarto
+
+---
+
+## Course Pages
+
+:::::: {.grid}
+
+::::: {.g-col-12 .g-col-md-4}
+:::: {.software-card}
+### {{< fa calendar-alt >}} Schedule
+Full semester schedule with weekly topics and important dates.
+
+[View Schedule](schedule.qmd){.btn-pub}
+::::
+:::::
+
+::::: {.g-col-12 .g-col-md-4}
+:::: {.software-card}
+### {{< fa book-open >}} Content
+Weekly readings, slides, and materials organized by topic.
+
+[View Content](content/){.btn-pub}
+::::
+:::::
+
+::::: {.g-col-12 .g-col-md-4}
+:::: {.software-card}
+### {{< fa pen-ruler >}} Assignments
+Problem sets, projects, and grading information.
+
+[View Assignments](assignments/){.btn-pub}
+::::
+:::::
+
+::::: {.g-col-12 .g-col-md-4}
+:::: {.software-card}
+### {{< fa wrench >}} Resources
+Software setup, R guides, cheat sheets, and helpful links.
+
+[View Resources](resources.qmd){.btn-pub}
+::::
+:::::
+
+::::::
+
+:::

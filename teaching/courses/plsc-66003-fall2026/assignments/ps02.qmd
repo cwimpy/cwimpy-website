@@ -1,0 +1,17 @@
+---
+title: "Problem Set 2: Probability and Inference"
+description: "Probability calculations, sampling distributions, and hypothesis testing in R."
+date: "2026-09-16"
+---
+
+::: {.content-container}
+
+**Due:** September 16, 2026 by 11:59 PM
+
+## Instructions
+
+*Detailed instructions will be posted closer to the due date.*
+
+**Format:** Quarto document rendered to PDF or HTML.
+
+:::

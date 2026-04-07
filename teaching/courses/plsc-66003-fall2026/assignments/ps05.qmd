@@ -1,0 +1,17 @@
+---
+title: "Problem Set 5: Limited Dependent Variables"
+description: "Logit, probit, and count models with substantive interpretation."
+date: "2026-11-18"
+---
+
+::: {.content-container}
+
+**Due:** November 18, 2026 by 11:59 PM
+
+## Instructions
+
+*Detailed instructions will be posted closer to the due date.*
+
+**Format:** Quarto document rendered to PDF or HTML.
+
+:::

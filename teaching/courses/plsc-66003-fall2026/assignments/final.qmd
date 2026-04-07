@@ -1,0 +1,27 @@
+---
+title: "Final Research Paper"
+description: "An original empirical analysis on a political science question of your choice."
+date: "2026-12-11"
+---
+
+::: {.content-container}
+
+**Due:** December 11, 2026 by 11:59 PM
+
+## Instructions
+
+The final paper is an original empirical research project. You should:
+
+1. Motivate your research question with a brief literature review
+2. State clear hypotheses derived from theory
+3. Describe your data, variables, and methodology
+4. Present results using appropriate statistical models
+5. Discuss the substantive and statistical significance of your findings
+
+**Length:** 15--20 pages (excluding tables, figures, and references)
+
+**Format:** Quarto document rendered to PDF
+
+**Presentation:** You will present your research during Week 14 (Dec 2).
+
+:::

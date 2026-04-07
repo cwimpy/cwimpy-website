@@ -1,0 +1,17 @@
+---
+title: "Problem Set 4: Model Extensions"
+description: "Interactions, diagnostics, and MLE models."
+date: "2026-11-04"
+---
+
+::: {.content-container}
+
+**Due:** November 04, 2026 by 11:59 PM
+
+## Instructions
+
+*Detailed instructions will be posted closer to the due date.*
+
+**Format:** Quarto document rendered to PDF or HTML.
+
+:::

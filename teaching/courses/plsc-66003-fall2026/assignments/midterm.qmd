@@ -1,0 +1,25 @@
+---
+title: "Midterm Project"
+description: "A short research design with data analysis using methods covered in the first half of the course."
+date: "2026-10-21"
+---
+
+::: {.content-container}
+
+**Due:** October 21, 2026 by 11:59 PM
+
+## Instructions
+
+This project asks you to develop a short empirical analysis using methods from the first half of the course. You should:
+
+1. Identify a political science research question
+2. State a testable hypothesis
+3. Describe your data and variables
+4. Estimate and interpret an appropriate regression model
+5. Present your results with tables and/or figures
+
+**Length:** 8--10 pages (excluding tables and figures)
+
+**Format:** Quarto document rendered to PDF
+
+:::

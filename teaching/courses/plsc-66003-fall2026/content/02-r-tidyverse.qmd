@@ -1,0 +1,29 @@
+---
+title: "Week 02: R fundamentals and the tidyverse"
+date: "2026-08-26"
+---
+
+::: {.content-container}
+
+## Overview
+
+Getting comfortable with R, RStudio, and the tidyverse ecosystem.
+
+## Readings
+
+{{< fa book >}} Wickham, Cetinkaya-Rundel, and Grolemund, [R for Data Science](https://r4ds.hadley.nz/) Chapters 1--4
+
+- R and RStudio orientation
+- Data types, vectors, and data frames
+- Introduction to dplyr: filter, select, mutate, summarize
+- Pipes and workflow
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

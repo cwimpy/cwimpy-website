@@ -1,0 +1,29 @@
+---
+title: "Week 05: Statistical inference and hypothesis testing"
+date: "2026-09-16"
+---
+
+::: {.content-container}
+
+## Overview
+
+From samples to populations: confidence intervals, p-values, and hypothesis tests.
+
+## Readings
+
+TBD
+
+- Sampling distributions and the Central Limit Theorem
+- Confidence intervals
+- Hypothesis testing framework
+- t-tests and difference of means
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

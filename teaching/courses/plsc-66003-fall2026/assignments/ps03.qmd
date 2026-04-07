@@ -1,0 +1,17 @@
+---
+title: "Problem Set 3: Regression"
+description: "Estimate, interpret, and present bivariate and multiple regression models."
+date: "2026-09-30"
+---
+
+::: {.content-container}
+
+**Due:** September 30, 2026 by 11:59 PM
+
+## Instructions
+
+*Detailed instructions will be posted closer to the due date.*
+
+**Format:** Quarto document rendered to PDF or HTML.
+
+:::

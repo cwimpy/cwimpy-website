@@ -1,0 +1,28 @@
+---
+title: "Week 01: Introduction and course overview"
+date: "2026-08-19"
+---
+
+::: {.content-container}
+
+## Overview
+
+What is political analysis? Course logistics, expectations, and getting set up with R.
+
+## Readings
+
+{{< fa book >}} Kellstedt and Whitten, Chapter 1
+
+- Course syllabus and expectations
+- Why quantitative methods matter in political science
+- Overview of the semester
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

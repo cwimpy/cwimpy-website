@@ -1,0 +1,29 @@
+---
+title: "Week 10: Model diagnostics and assumptions"
+date: "2026-10-28"
+---
+
+::: {.content-container}
+
+## Overview
+
+Checking and addressing violations of OLS assumptions.
+
+## Readings
+
+TBD
+
+- Linearity, normality, and homoscedasticity
+- Multicollinearity
+- Influential observations
+- Robust standard errors
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

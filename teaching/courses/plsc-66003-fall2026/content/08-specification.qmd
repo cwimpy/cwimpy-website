@@ -1,0 +1,29 @@
+---
+title: "Week 08: Model specification and interpretation"
+date: "2026-10-07"
+---
+
+::: {.content-container}
+
+## Overview
+
+Choosing the right model and interpreting coefficients substantively.
+
+## Readings
+
+TBD
+
+- Functional form: log transformations, polynomials
+- Standardized coefficients
+- Marginal effects with marginaleffects
+- Presentation with modelsummary
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

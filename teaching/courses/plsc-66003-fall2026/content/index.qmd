@@ -1,0 +1,11 @@
+---
+title: "Content"
+subtitle: "PLSC 66003: Advanced Political Analysis"
+listing:
+  contents: "*.qmd"
+  sort: "date"
+  type: table
+  fields: [date, title]
+  table-striped: true
+  table-hover: true
+---

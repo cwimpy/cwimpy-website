@@ -1,0 +1,29 @@
+---
+title: "Week 04: Probability and distributions"
+date: "2026-09-09"
+---
+
+::: {.content-container}
+
+## Overview
+
+Foundations of probability theory and common distributions used in political science.
+
+## Readings
+
+TBD
+
+- Probability rules and conditional probability
+- Random variables and expectations
+- Normal, t, and chi-squared distributions
+- Simulation in R
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

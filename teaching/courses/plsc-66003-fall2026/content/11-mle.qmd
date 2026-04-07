@@ -1,0 +1,29 @@
+---
+title: "Week 11: Maximum likelihood estimation"
+date: "2026-11-04"
+---
+
+::: {.content-container}
+
+## Overview
+
+The logic of MLE and its application to political science models.
+
+## Readings
+
+TBD
+
+- The likelihood function
+- Properties of MLE estimators
+- Logistic regression
+- Interpretation of logit coefficients
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

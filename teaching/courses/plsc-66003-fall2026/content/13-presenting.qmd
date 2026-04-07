@@ -1,0 +1,29 @@
+---
+title: "Week 13: Presenting and communicating results"
+date: "2026-11-18"
+---
+
+::: {.content-container}
+
+## Overview
+
+Turning statistical output into clear, compelling academic writing.
+
+## Readings
+
+TBD
+
+- Tables with modelsummary and tinytable
+- Coefficient plots and marginal effects plots
+- Writing a results section
+- Reproducible documents with Quarto
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

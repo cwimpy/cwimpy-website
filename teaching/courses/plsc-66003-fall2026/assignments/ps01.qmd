@@ -1,0 +1,17 @@
+---
+title: "Problem Set 1: R and Data Visualization"
+description: "Practice with R fundamentals, tidyverse data wrangling, and ggplot2."
+date: "2026-09-02"
+---
+
+::: {.content-container}
+
+**Due:** September 02, 2026 by 11:59 PM
+
+## Instructions
+
+*Detailed instructions will be posted closer to the due date.*
+
+**Format:** Quarto document rendered to PDF or HTML.
+
+:::

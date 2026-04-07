@@ -1,0 +1,29 @@
+---
+title: "Week 03: Data visualization with ggplot2"
+date: "2026-09-02"
+---
+
+::: {.content-container}
+
+## Overview
+
+The grammar of graphics and building publication-quality plots.
+
+## Readings
+
+{{< fa book >}} Wickham et al., [R for Data Science](https://r4ds.hadley.nz/) Chapters 1--2 (Data Visualization)
+
+- The grammar of graphics
+- Aesthetics, geoms, and layers
+- Facets, scales, and themes
+- Saving and exporting figures
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

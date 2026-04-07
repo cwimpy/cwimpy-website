@@ -3,7 +3,7 @@ title: "Teaching"
 description: "Courses taught by Cameron Wimpy at Arkansas State University."
 listing:
   - id: current-courses
-    contents: "teaching/courses/*.qmd"
+    contents: "teaching/courses/*/index.qmd"
     sort: "date desc"
     type: grid
     grid-columns: 2

@@ -1,0 +1,27 @@
+---
+title: "Week 14: Research presentations"
+date: "2026-12-02"
+---
+
+::: {.content-container}
+
+## Overview
+
+Student presentations of final research projects.
+
+## Readings
+
+No readings
+
+- Present your research to the class
+- Peer feedback and discussion
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

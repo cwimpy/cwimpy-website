@@ -1,0 +1,29 @@
+---
+title: "Week 09: Dummy variables and interactions"
+date: "2026-10-21"
+---
+
+::: {.content-container}
+
+## Overview
+
+Modeling categorical predictors and conditional relationships.
+
+## Readings
+
+TBD
+
+- Dummy variable coding
+- Interaction terms
+- Marginal effects plots
+- Interpreting interactions substantively
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

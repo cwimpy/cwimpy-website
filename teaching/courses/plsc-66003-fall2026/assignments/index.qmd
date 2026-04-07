@@ -1,0 +1,26 @@
+---
+title: "Assignments"
+subtitle: "PLSC 66003: Advanced Political Analysis"
+listing:
+  contents: "*.qmd"
+  sort: "date"
+  type: table
+  fields: [date, title, description]
+  table-striped: true
+  table-hover: true
+---
+
+::: {.content-container}
+
+## Grading
+
+| Component | Weight |
+|-----------|--------|
+| Problem sets (5) | 40% |
+| Midterm project | 20% |
+| Final research paper | 30% |
+| Participation | 10% |
+
+All assignments are submitted as rendered Quarto documents (PDF or HTML). Late assignments are penalized 10% per day.
+
+:::

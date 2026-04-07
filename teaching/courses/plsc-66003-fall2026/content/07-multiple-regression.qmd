@@ -1,0 +1,29 @@
+---
+title: "Week 07: Multiple regression"
+date: "2026-09-30"
+---
+
+::: {.content-container}
+
+## Overview
+
+Extending OLS to multiple predictors and controlling for confounders.
+
+## Readings
+
+TBD
+
+- Multiple regression model
+- Omitted variable bias
+- Adjusted R-squared
+- F-tests and joint significance
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

@@ -1,0 +1,29 @@
+---
+title: "Week 06: Bivariate regression"
+date: "2026-09-23"
+---
+
+::: {.content-container}
+
+## Overview
+
+Ordinary least squares with one predictor.
+
+## Readings
+
+TBD
+
+- The linear model
+- OLS estimation and interpretation
+- Residuals and goodness of fit
+- Inference for regression coefficients
+
+## Slides
+
+*Slides will be posted before class.*
+
+## Additional Resources
+
+*Additional resources and code examples will be added as the semester progresses.*
+
+:::

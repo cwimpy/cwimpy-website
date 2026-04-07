@@ -1,0 +1,28 @@
+---
+title: "Schedule"
+subtitle: "PLSC 66003: Advanced Political Analysis"
+---
+
+::: {.content-container}
+
+| Week | Dates | Topic | Content | Due |
+|:----:|-------|-------|:-------:|:---:|
+| 1 | Aug 19 | [Introduction and course overview](content/01-intro.qmd) | {{< fa book-open >}} | |
+| 2 | Aug 26 | [R fundamentals and the tidyverse](content/02-r-tidyverse.qmd) | {{< fa book-open >}} | |
+| 3 | Sep 2 | [Data visualization with ggplot2](content/03-dataviz.qmd) | {{< fa book-open >}} | [PS 1](assignments/ps01.qmd) |
+| 4 | Sep 9 | [Probability and distributions](content/04-probability.qmd) | {{< fa book-open >}} | |
+| 5 | Sep 16 | [Statistical inference and hypothesis testing](content/05-inference.qmd) | {{< fa book-open >}} | [PS 2](assignments/ps02.qmd) |
+| 6 | Sep 23 | [Bivariate regression](content/06-bivariate.qmd) | {{< fa book-open >}} | |
+| 7 | Sep 30 | [Multiple regression](content/07-multiple-regression.qmd) | {{< fa book-open >}} | [PS 3](assignments/ps03.qmd) |
+| 8 | Oct 7 | [Model specification and interpretation](content/08-specification.qmd) | {{< fa book-open >}} | |
+| -- | Oct 14--15 | **Fall break --- no class** | | |
+| 9 | Oct 21 | [Dummy variables and interactions](content/09-interactions.qmd) | {{< fa book-open >}} | [Midterm](assignments/midterm.qmd) |
+| 10 | Oct 28 | [Model diagnostics and assumptions](content/10-diagnostics.qmd) | {{< fa book-open >}} | |
+| 11 | Nov 4 | [Maximum likelihood estimation](content/11-mle.qmd) | {{< fa book-open >}} | [PS 4](assignments/ps04.qmd) |
+| 12 | Nov 11 | [Limited dependent variables](content/12-limited-dv.qmd) | {{< fa book-open >}} | |
+| 13 | Nov 18 | [Presenting and communicating results](content/13-presenting.qmd) | {{< fa book-open >}} | [PS 5](assignments/ps05.qmd) |
+| -- | Nov 23--27 | **Thanksgiving break --- no class** | | |
+| 14 | Dec 2 | [Research presentations](content/14-presentations.qmd) | {{< fa book-open >}} | |
+| -- | Dec 7--11 | **Final exam period** | | [Final paper](assignments/final.qmd) |
+
+:::

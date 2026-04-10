@@ -11,13 +11,14 @@ I build tools and packages related to my research on election administration, ru
 
 ::: {.software-card}
 ### rurality (R)
-Rurality classification and scoring for U.S. counties and ZIP codes. Provides USDA Rural-Urban Continuum Codes (RUCC 2023), Rural-Urban Commuting Area codes (RUCA 2020), and a composite rurality score for all 3,235 U.S. counties. Built to make rurality data easy to use in research without manually downloading and merging USDA spreadsheets.
+Rurality classification and scoring for U.S. counties and ZIP codes. Provides USDA Rural-Urban Continuum Codes (RUCC 2023), Rural-Urban Commuting Area codes (RUCA 2020), and a composite rurality score for all 3,235 U.S. counties. Built to make rurality data easy to use in research without manually downloading and merging USDA spreadsheets. Now available on [CRAN](https://cran.r-project.org/package=rurality).
 
 **Install:**
 ```r
-devtools::install_github("cwimpy/rurality")
+install.packages("rurality")
 ```
 
+[{{< fa brands r-project >}} CRAN](https://cran.r-project.org/package=rurality){.btn-pub}
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality){.btn-pub}
 [{{< fa globe >}} rurality.app](https://rurality.app){.btn-pub}
 :::

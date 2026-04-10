@@ -23,7 +23,7 @@ I also have ongoing work in **political methodology**, particularly spatial econ
 
 ## Building
 
-- [rurality](https://github.com/cwimpy/rurality) -- R package for rurality classification and scoring
+- [rurality](https://cran.r-project.org/package=rurality) -- R package for rurality classification and scoring (now on CRAN)
 - [rurality-stata](https://github.com/cwimpy/rurality-stata) -- Stata implementation
 - [rurality.app](https://rurality.app) -- web app companion
 

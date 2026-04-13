@@ -42,6 +42,20 @@ rurality_install
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality-stata){.btn-pub}
 :::
 
+::: {.software-card}
+### slxr (R)
+Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition --- no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods.
+
+**Install:**
+```r
+remotes::install_github("cwimpy/slxr")
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/slxr){.btn-pub}
+[{{< fa book >}} Documentation](https://cwimpy.github.io/slxr/){.btn-pub}
+[{{< fa file-lines >}} Paper](https://doi.org/10.1086/710089){.btn-pub}
+:::
+
 ---
 
 ## Applications

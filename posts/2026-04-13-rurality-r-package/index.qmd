@@ -5,6 +5,7 @@ date: "2026-04-13"
 date-modified: last-modified
 categories: [R, package, rural, methodology, rurality]
 description: "A new R package that puts USDA's Rural–Urban Continuum Codes, Commuting Areas, and a composite rurality score one install away — no more hunting USDA spreadsheets."
+image: "hex.png"
 ---
 
 If you do any applied work on rural America, you've probably hit the same wall
@@ -25,11 +26,11 @@ install.packages("rurality")
 
 The package ships three things, all on CRAN, all keyed by FIPS or ZIP:
 
-- **USDA Rural–Urban Continuum Codes (RUCC 2023)** --- the nine-point
+- **USDA Rural–Urban Continuum Codes (RUCC 2023)**: the nine-point
   metro–nonmetro scale, one row per county.
-- **USDA Rural–Urban Commuting Area Codes (RUCA 2020)** --- finer-grained,
+- **USDA Rural–Urban Commuting Area Codes (RUCA 2020)**: finer-grained,
   commuting-flow-based, one row per ZIP.
-- **A composite rurality score** --- a single continuous measure I built for
+- **A composite rurality score**: a single continuous measure I built for
   situations where you want more resolution than RUCC but don't want to hand
   your reviewers two different classification systems to reconcile.
 
@@ -67,7 +68,7 @@ project folder.
 
 **Second, a consistent API is what social scientists actually need.** Half
 the "rural" studies I review are built on whichever classification the author
-happened to find first. A package standardizes the choice — everyone is
+happened to find first. A package possible standardizes those choices, everyone is
 using the same definitions, with the same vintages, documented in one place.
 
 ## Behind the composite score
@@ -81,7 +82,7 @@ Under the hood it combines RUCC, population density, distance to the nearest
 metro, and a handful of other county characteristics into a single scalar,
 standardized across the full 3,235-county universe. If you use it in a paper,
 please cite the package and the
-[documentation site](https://cran.r-project.org/package=rurality) — I'd like
+[documentation site](https://cran.r-project.org/package=rurality), I'd like
 to know where it's showing up.
 
 ## A companion: the rurality app
@@ -112,13 +113,13 @@ A few things on the roadmap:
   make that kind of analysis one line of code.)
 - **RUCA on a county-aggregate basis** for users who need commuting-flow
   information without descending to ZIP level.
-- **Vignettes** for common applied workflows --- merging onto survey data,
+- **Vignettes** for common applied workflowsm which involve merging onto survey data,
   stratifying outcomes by rurality, building the kind of figures that make
   rural variation legible to readers who don't live there.
 
 If you have thoughts, feature requests, or a use case I haven't anticipated,
 the [GitHub issue tracker](https://github.com/cwimpy/rurality/issues) is open,
-and I try to respond within a week or two. Pull requests welcome too — the
+and I try to respond within a week or two. Pull requests welcome too as the
 package is MIT-licensed.
 
 If you just want to try it, the whole thing is one install away:

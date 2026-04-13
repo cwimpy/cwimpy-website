@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 600" width="520" height="600">
+  <defs>
+    <!-- Hex clip path (pointy-top) -->
+    <clipPath id="hexClip">
+      <polygon points="260,10 505,150 505,450 260,590 15,450 15,150"/>
+    </clipPath>
+
+    <!-- Vertical gradient: deep forest at top, lighter at bottom -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#143d28"/>
+      <stop offset="100%" stop-color="#2d8a47"/>
+    </linearGradient>
+
+    <!-- Subtle radial glow behind the wordmark -->
+    <radialGradient id="glow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Web link to the right font in case the SVG is ever inlined in HTML -->
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600;1,9..144,600;0,9..144,400;1,9..144,400;0,9..144,500..700;1,9..144,500..700&family=Inter:wght@600&display=swap');
+      .wordmark { font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+                  font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;
+                  font-style: italic; fill: #fdfcf8; }
+      .tagline  { font-family: 'Inter', sans-serif; font-weight: 600;
+                  font-size: 16px; letter-spacing: 0.24em;
+                  text-transform: uppercase; fill: #d4e5da; }
+      .version  { font-family: 'Inter', sans-serif; font-weight: 600;
+                  font-size: 13px; letter-spacing: 0.18em; fill: #9ad9b3; }
+    ]]></style>
+  </defs>
+
+  <!-- Hex fill -->
+  <g clip-path="url(#hexClip)">
+    <rect width="520" height="600" fill="url(#bgGrad)"/>
+
+    <!-- Topographic contour arcs (echoes the site's OG cards and hero) -->
+    <g fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.16">
+      <path d="M -60 140 Q 160 60 390 200 T 660 230"/>
+      <path d="M -60 200 Q 170 130 390 260 T 660 290"/>
+      <path d="M -60 260 Q 180 200 390 320 T 660 350"/>
+      <path d="M -60 320 Q 190 270 390 380 T 660 410"/>
+      <path d="M -60 380 Q 200 340 390 440 T 660 470"/>
+      <path d="M -60 440 Q 210 410 390 500 T 660 520"/>
+      <path d="M -60 500 Q 220 480 390 555 T 660 570"/>
+    </g>
+
+    <!-- Radial glow under the wordmark so the text reads against the arcs -->
+    <rect width="520" height="600" fill="url(#glow)"/>
+
+    <!-- Small "R" monogram badge, echoing CRAN's R in a subtle corner mark -->
+    <g transform="translate(88, 110)">
+      <circle r="22" fill="#fdfcf8" fill-opacity="0.10" stroke="#fdfcf8" stroke-opacity="0.35" stroke-width="1.2"/>
+      <text x="0" y="7" text-anchor="middle"
+            font-family="Fraunces, Georgia, serif" font-style="italic"
+            font-weight="700" font-size="26" fill="#fdfcf8">R</text>
+    </g>
+
+    <!-- Wordmark -->
+    <text x="260" y="325" text-anchor="middle" class="wordmark" font-size="108">rurality</text>
+
+    <!-- Tagline -->
+    <text x="260" y="372" text-anchor="middle" class="tagline">rural · urban · continuum</text>
+
+    <!-- Version / author micro-print near bottom point -->
+    <text x="260" y="520" text-anchor="middle" class="version">cwimpy / rurality</text>
+  </g>
+
+  <!-- Hex stroke -->
+  <polygon points="260,10 505,150 505,450 260,590 15,450 15,150"
+           fill="none" stroke="#9ad9b3" stroke-width="4" stroke-linejoin="round"/>
+</svg>

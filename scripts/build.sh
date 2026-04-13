@@ -51,6 +51,17 @@ if [[ -d .quarto ]]; then
   find .quarto -maxdepth 2 -name 'quarto-session-temp*' -delete 2>/dev/null || true
 fi
 
+# Sweep macOS-sync duplicate files ("foo 2.html", "bar 5.pdf", etc.) that
+# accumulate in _site/ across successive renders and otherwise get uploaded
+# to Netlify. Also catches stray duplicates anywhere in the tree that aren't
+# already gitignored (e.g. "site_libs 3/").
+say "Sweeping macOS-sync duplicate files"
+find _site -name "* [0-9]*" -delete 2>/dev/null || true
+find . -path ./.git -prune -o -path ./_site -prune \
+       -o \( -name "* [0-9].qmd" -o -name "* [0-9].pdf" \
+          -o -name "* [0-9].html" -o -name "* [0-9].md" \) \
+       -print -delete 2>/dev/null || true
+
 if [[ $PUBLISH -eq 1 ]]; then
   say "Publishing to Netlify (quarto publish netlify)"
   quarto publish netlify

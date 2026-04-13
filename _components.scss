@@ -1963,6 +1963,52 @@ a {
     line-height: 1.6;
     margin-bottom: $space-3;
   }
+
+  // Cards with a hex thumbnail: split text/media horizontally
+  &.has-media {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: $space-6;
+    align-items: start;
+  }
+
+  .software-card-body {
+    min-width: 0;  // allow long text to wrap inside the grid cell
+  }
+
+  .software-card-media {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: $space-1;
+
+    figure { margin: 0; }
+    figcaption { display: none; }
+
+    img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.18));
+      transition: transform $transition-base;
+    }
+  }
+
+  &.has-media:hover .software-card-media img {
+    transform: translateY(-2px) rotate(-1.5deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .software-card.has-media {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+  .software-card-media {
+    order: -1;  // on mobile, put the hex above the text
+    img { max-width: 140px; }
+  }
 }
 
 .quarto-title-meta {

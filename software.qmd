@@ -15,7 +15,8 @@ I build tools and packages related to my research on election administration, ru
 
 ## R/Stata Packages
 
-::: {.software-card}
+:::: {.software-card .has-media}
+::: {.software-card-body}
 ### rurality (R)
 Rurality classification and scoring for U.S. counties and ZIP codes. Provides USDA Rural-Urban Continuum Codes (RUCC 2023), Rural-Urban Commuting Area codes (RUCA 2020), and a composite rurality score for all 3,235 U.S. counties. Built to make rurality data easy to use in research without manually downloading and merging USDA spreadsheets. Now available on [CRAN](https://cran.r-project.org/package=rurality).
 
@@ -28,6 +29,11 @@ install.packages("rurality")
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality){.btn-pub}
 [{{< fa globe >}} rurality.app](https://rurality.app){.btn-pub}
 :::
+
+::: {.software-card-media}
+![rurality hex sticker](images/rurality-hex.png){fig-alt="rurality package hex sticker: italic wordmark over topographic contour lines with a bar-chart-and-hills motif at top"}
+:::
+::::
 
 ::: {.software-card}
 ### rurality (Stata)
@@ -42,7 +48,8 @@ rurality_install
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/rurality-stata){.btn-pub}
 :::
 
-::: {.software-card}
+:::: {.software-card .has-media}
+::: {.software-card-body}
 ### slxr (R)
 Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition --- no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods.
 
@@ -55,6 +62,11 @@ remotes::install_github("cwimpy/slxr")
 [{{< fa book >}} Documentation](https://cwimpy.github.io/slxr/){.btn-pub}
 [{{< fa file-lines >}} Paper](https://doi.org/10.1086/710089){.btn-pub}
 :::
+
+::: {.software-card-media}
+![slxr hex sticker](images/slxr-hex.png){fig-alt="slxr package hex sticker: three overlapping networks on a shared node set, representing variable-specific weights matrices"}
+:::
+::::
 
 ---
 

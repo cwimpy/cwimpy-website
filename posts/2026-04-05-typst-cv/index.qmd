@@ -2,6 +2,7 @@
 title: "Building a Programmatic Academic CV with Quarto and Typst"
 author: "Cameron Wimpy"
 date: "2026-04-05"
+date-modified: "2026-04-10"
 categories: [quarto, typst, tutorial, academic]
 description: "This is a walkthrough of building a data-driven academic CV using Quarto and Typst. It includes publications pulled automatically from a BibTeX file, custom styling, and a clean design that rivals LaTeX or InDesign."
 image: "cv-preview.png"
@@ -16,7 +17,7 @@ The full source code is available on [GitHub](https://github.com/cwimpy/my-cv).
 
 ## Why Typst?
 
-LaTeX has been the standard for academic typesetting for decades, and for good reason---it handles complex math, cross-references, and bibliographies well. But it comes with real costs:
+LaTeX has been the standard for academic typesetting for decades, and for good reason. It handles complex math, cross-references, and bibliographies well. But it comes with real costs:
 
 -   **Compilation is slow.** A multi-page document with bibliographies can take several seconds. Typst compiles in milliseconds.
 -   **The syntax is hostile to newcomers.** Even experienced users regularly fight with vspace, hfill, and mysterious overfull hbox warnings.
@@ -27,16 +28,23 @@ Typst addresses all of these. Its syntax reads like a mix of Markdown and a scri
 
 ## The architecture
 
-My CV has three files:
+My CV has four files:
 
 ``` text
 my-cv/
 ├── my-cv.qmd           # Content and data (Quarto document)
 ├── cv-template.typ      # Design and layout (Typst template)
-└── publications.bib     # Bibliography (BibTeX)
+├── publications.bib     # Bibliography (BibTeX)
+└── _quarto.yml          # Project config (post-render cleanup)
 ```
 
-The .qmd file contains the CV content and an R chunk that reads the BibTeX file. The .typ file defines the visual design---fonts, colors, spacing, and custom functions for entries. The .bib file is the same one I use for my website and papers. One source of truth for publications, used everywhere.
+The .qmd file contains the CV content and an R chunk that reads the BibTeX file. The .typ file defines the visual design (e.g., fonts, colors, spacing, and custom functions for entries). The .bib file is the same one I use for my website and papers. One source of truth for publications, used everywhere. The `_quarto.yml` file handles a small annoyance: Quarto generates a mediabag folder (`my-cv_files/`) during rendering that is not needed after the PDF is built. A post-render hook takes care of it:
+
+``` yaml
+project:
+  post-render:
+    - "rm -rf my-cv_files"
+```
 
 ## The Typst template
 
@@ -81,7 +89,7 @@ The core building block is cv-entry, a reusable function for employment, educati
 }
 ```
 
-This produces a clean two-line entry with the title and location on the first line (justified left and right), and the organization and dates on the second. The amount parameter is optional---I use it for grants:
+This produces a clean two-line entry with the title and location on the first line (justified left and right), and the organization and dates on the second. The amount parameter is optional, but I use it for grants:
 
 ``` typst
 #cv-entry(
@@ -93,6 +101,8 @@ This produces a clean two-line entry with the title and location on the first li
 ```
 
 Compare this to the LaTeX equivalent, which typically involves tabular environments, manual hfill calls, and careful spacing. In Typst, the function handles all of that.
+
+One style note: for conference and invited presentation titles, I wrap them in typographic curly quotes (\u201c \u201d) in the .qmd source to follow standard academic citation conventions for shorter works. Grant titles and employment entries remain unquoted. Since the template renders titles in bold, the quotes provide a visual cue that distinguishes presentation titles from section labels or position titles.
 
 ### Section headings
 
@@ -171,7 +181,7 @@ The template's format-publication function handles APSA citation style with prop
 }
 ```
 
-The key line is hanging-indent: 2em---Typst handles this natively. In LaTeX, you would need something like the hangparas environment from the hanging package, or manual hangindent and hangafter commands.
+The key line is hanging-indent: 2em, as Typst handles this natively. In LaTeX, you would need something like the hangparas environment from the hanging package, or manual hangindent and hangafter commands.
 
 The function also bolds your name automatically:
 
@@ -292,6 +302,6 @@ cd my-cv
 quarto render my-cv.qmd
 ```
 
-The Typst template is designed to be modifiable. Change the colors at the top, swap the fonts, adjust the spacing---it is all in one file with clear variable names.
+The Typst template is designed to be modifiable. Change the colors at the top, swap the fonts, and adjust the spacing as needed. It is all in one file with clear variable names.
 
-Typst is still young, but Posit's investment in Quarto integration signals that it has a real future in academic publishing. For CVs, it is already better than LaTeX in almost every way that matters.
+Typst is still young, but Posit's investment in Quarto integration signals that it has a real future in academic publishing. For CVs, at least in my experience so far, it is already beating LaTeX in almost every way that matters.

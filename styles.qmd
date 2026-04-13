@@ -1,0 +1,386 @@
+---
+title: "Style guide"
+description: "Component reference for cwimpy.com — not linked from anywhere, used to iterate on the design system."
+page-layout: full
+toc: true
+toc-location: right
+toc-depth: 2
+listing: false
+search: false
+sidebar: false
+draft: false
+sitemap: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .sg-section { margin: 4rem 0; padding-top: 2rem; border-top: 1px dashed var(--color-border); }
+          .sg-section:first-of-type { border-top: none; padding-top: 0; }
+          .sg-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-subtle); margin: 1.5rem 0 0.5rem 0; display: block; }
+          .sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0; }
+          .sg-swatch { display: flex; flex-direction: column; gap: 0.25rem; padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); }
+          .sg-swatch-chip { width: 100%; height: 56px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.06); margin-bottom: 0.4rem; }
+          .sg-swatch-name { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--color-text); }
+          .sg-swatch-val  { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--color-text-subtle); }
+          .sg-type-row { display: grid; grid-template-columns: 110px 1fr; align-items: baseline; gap: 1.5rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--color-border); }
+          .sg-type-row > :first-child { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--color-text-subtle); letter-spacing: 0.05em; text-transform: uppercase; }
+          .sg-type-row > :nth-child(2) { line-height: 1.1; margin: 0; }
+          .sg-type-row > :nth-child(2) p { margin: 0; }
+          .sg-type-row h1, .sg-type-row h2, .sg-type-row h3, .sg-type-row h4 { margin: 0; }
+          .sg-token-row { display: grid; grid-template-columns: 90px 90px 1fr; align-items: center; gap: 1rem; padding: 0.5rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; border-bottom: 1px dashed var(--color-border); color: var(--color-text); }
+          .sg-token-row .sg-spacer { background: var(--color-accent); height: 14px; opacity: 0.85; border-radius: 2px; }
+          .sg-spacer { background: var(--color-accent); height: 14px; opacity: 0.85; border-radius: 2px; }
+          .sg-spacing-table { width: 100%; border-collapse: collapse; }
+          .sg-spacing-table td { padding: 0.5rem 0.75rem; border-bottom: 1px dashed var(--color-border); vertical-align: middle; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+          .sg-spacing-table td:first-child { width: 110px; color: var(--color-text); }
+          .sg-spacing-table td:nth-child(2) { width: 90px; color: var(--color-text-subtle); }
+          .sg-spacing-table code { background: transparent; color: inherit; padding: 0; }
+          .sg-radius-box { width: 90px; height: 90px; background: var(--color-bg-muted); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--color-text-subtle); }
+          .sg-radius-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+          .sg-note { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; margin: 0.5rem 0; }
+          .sg-stack > * + * { margin-top: 1.5rem; }
+
+          /* Per-course accent override demo (mirrors what's on PLSC 66003 pages) */
+          .course-page.course-plsc66003 {
+            --course-accent: #b07a1f;
+            --course-accent-soft: rgba(176, 122, 31, 0.10);
+            --course-accent-on: #ffffff;
+          }
+          [data-bs-theme="dark"] .course-page.course-plsc66003,
+          .quarto-dark .course-page.course-plsc66003 {
+            --course-accent: #d9a44a;
+            --course-accent-soft: rgba(217, 164, 74, 0.14);
+            --course-accent-on: #1a120a;
+          }
+        </style>
+---
+
+::: {.content-container}
+
+This page is for internal reference only — every component used across the site is rendered here so I can iterate on the design system without hunting through pages. Not linked from the navbar.
+
+# Typography
+
+<div class="sg-section">
+
+<span class="sg-label">heading scale</span>
+
+<div class="sg-type-row"><div>h1 display</div><h1>Heading One</h1></div>
+<div class="sg-type-row"><div>h2 display</div><h2>Heading Two</h2></div>
+<div class="sg-type-row"><div>h3 display</div><h3>Heading Three</h3></div>
+<div class="sg-type-row"><div>h4 display</div><h4>Heading Four</h4></div>
+<div class="sg-type-row"><div>body serif</div><div><p>This is a body paragraph in Source Serif 4. Long-form prose for posts and research. <em>Italic</em> and <strong>bold</strong> both pull from the same variable family. Line height 1.65 so a wall of text still breathes.</p></div></div>
+<div class="sg-type-row"><div>caption sans</div><div><span class="section-eyebrow">Tracked uppercase metadata · Inter</span></div></div>
+<div class="sg-type-row"><div>mono</div><div><code>code uses JetBrains Mono</code></div></div>
+
+</div>
+
+# Color tokens
+
+<div class="sg-section">
+
+<span class="sg-label">CSS custom properties — set in styles.scss / custom-dark.scss</span>
+
+<div class="sg-grid">
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-bg);"></div><div class="sg-swatch-name">--color-bg</div><div class="sg-swatch-val">page background</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-bg-muted);"></div><div class="sg-swatch-name">--color-bg-muted</div><div class="sg-swatch-val">cards, form fields</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-bg-subtle);"></div><div class="sg-swatch-name">--color-bg-subtle</div><div class="sg-swatch-val">badges, callouts</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-surface);"></div><div class="sg-swatch-name">--color-surface</div><div class="sg-swatch-val">base panel/table</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-text);"></div><div class="sg-swatch-name">--color-text</div><div class="sg-swatch-val">body</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-text-muted);"></div><div class="sg-swatch-name">--color-text-muted</div><div class="sg-swatch-val">secondary copy</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-primary);"></div><div class="sg-swatch-name">--color-primary</div><div class="sg-swatch-val">headings, brand</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-accent);"></div><div class="sg-swatch-name">--color-accent</div><div class="sg-swatch-val">links, CTAs, hover</div></div>
+  <div class="sg-swatch"><div class="sg-swatch-chip" style="background: var(--color-border);"></div><div class="sg-swatch-name">--color-border</div><div class="sg-swatch-val">hairlines</div></div>
+</div>
+
+<p class="sg-note">Toggle dark mode (moon icon, top right) to see dark-theme values applied to the same component rules.</p>
+
+</div>
+
+# Spacing scale
+
+<div class="sg-section">
+
+<span class="sg-label">space-1 … space-9 — defined in _tokens.scss</span>
+
+```{=html}
+<table class="sg-spacing-table">
+  <tr><td><code>$space-1</code></td><td><code>0.25rem</code></td><td><div class="sg-spacer" style="width: 0.25rem;"></div></td></tr>
+  <tr><td><code>$space-2</code></td><td><code>0.5rem</code></td><td><div class="sg-spacer" style="width: 0.5rem;"></div></td></tr>
+  <tr><td><code>$space-3</code></td><td><code>0.75rem</code></td><td><div class="sg-spacer" style="width: 0.75rem;"></div></td></tr>
+  <tr><td><code>$space-4</code></td><td><code>1rem</code></td><td><div class="sg-spacer" style="width: 1rem;"></div></td></tr>
+  <tr><td><code>$space-5</code></td><td><code>1.5rem</code></td><td><div class="sg-spacer" style="width: 1.5rem;"></div></td></tr>
+  <tr><td><code>$space-6</code></td><td><code>2rem</code></td><td><div class="sg-spacer" style="width: 2rem;"></div></td></tr>
+  <tr><td><code>$space-7</code></td><td><code>3rem</code></td><td><div class="sg-spacer" style="width: 3rem;"></div></td></tr>
+  <tr><td><code>$space-8</code></td><td><code>4rem</code></td><td><div class="sg-spacer" style="width: 4rem;"></div></td></tr>
+  <tr><td><code>$space-9</code></td><td><code>6rem</code></td><td><div class="sg-spacer" style="width: 6rem;"></div></td></tr>
+</table>
+```
+
+</div>
+
+# Radius
+
+<div class="sg-section">
+
+<div class="sg-radius-row">
+  <div class="sg-radius-box" style="border-radius: 4px;">sm 4px</div>
+  <div class="sg-radius-box" style="border-radius: 8px;">md 8px</div>
+  <div class="sg-radius-box" style="border-radius: 12px;">lg 12px</div>
+  <div class="sg-radius-box" style="border-radius: 16px;">xl 16px</div>
+  <div class="sg-radius-box" style="border-radius: 999px;">full</div>
+</div>
+
+</div>
+
+# Buttons
+
+<div class="sg-section">
+
+<span class="sg-label">.btn-social — homepage hero, contact page</span>
+
+::: {.social-buttons}
+[{{< fa file-pdf >}}](#){.btn-social} [{{< fa envelope >}}](#){.btn-social} [{{< fa brands github >}}](#){.btn-social} [{{< ai google-scholar >}}](#){.btn-social} [{{< fa brands linkedin >}}](#){.btn-social} [{{< ai orcid >}}](#){.btn-social}
+:::
+
+<span class="sg-label">.publication-buttons + .btn-pub — segmented pill (research entries)</span>
+
+::: {.publication-buttons}
+[<i class="fas fa-file-pdf"></i> PDF](#){.btn-pub}
+[<i class="fas fa-external-link-alt"></i> DOI](#){.btn-pub}
+[<i class="fas fa-database"></i> Data](#){.btn-pub}
+[<i class="fas fa-code"></i> Code](#){.btn-pub}
+[<i class="fas fa-quote-right"></i> Cite](#){.btn-pub}
+:::
+
+<span class="sg-label">single-button case</span>
+
+::: {.publication-buttons}
+[<i class="fas fa-quote-right"></i> Cite](#){.btn-pub}
+:::
+
+<span class="sg-label">.cv-button — primary CTA (CV page)</span>
+
+::: {.cv-actions}
+[{{< fa download >}} Download PDF](#){.cv-button}
+[{{< fa external-link-alt >}} Open in new tab](#){.cv-button}
+:::
+
+<span class="sg-label">.course-quick-link — pill row (course pages)</span>
+
+::: {.course-quick-links}
+[{{< fa calendar-days >}} Schedule](#){.course-quick-link}
+[{{< fa book-open >}} Weekly content](#){.course-quick-link}
+[{{< fa pen-ruler >}} Assignments](#){.course-quick-link}
+[{{< fa wrench >}} Resources](#){.course-quick-link}
+:::
+
+<span class="sg-label">.week-action — active and disabled state</span>
+
+::: {.week-actions}
+[{{< fa person-chalkboard >}} Slides](#){.week-action}
+[{{< fa file-code >}} Code](#){.week-action}
+[{{< fa video >}} Recording](#){.week-action .is-disabled}
+:::
+
+</div>
+
+# Cards & containers
+
+<div class="sg-section">
+
+<span class="sg-label">.software-card — software / list / quick info</span>
+
+::: {.software-card}
+### A software card heading
+
+This is a software card. It uses a muted background, soft border, lifts on hover. Used on the software page and re-used elsewhere when a tile/box is needed.
+
+::: {.publication-buttons}
+[<i class="fas fa-code"></i> Source](#){.btn-pub}
+[<i class="fas fa-book"></i> Docs](#){.btn-pub}
+:::
+:::
+
+<span class="sg-label">.course-meta-bar — at-a-glance strip (course pages)</span>
+
+::: {.course-page .course-plsc66003}
+::: {.course-meta-bar}
+::: {.course-meta-cell}
+[Credits]{.label}
+[3]{.value}
+:::
+
+::: {.course-meta-cell}
+[Meets]{.label}
+[1×/wk]{.value}
+:::
+
+::: {.course-meta-cell}
+[Format]{.label}
+[Seminar]{.value}
+:::
+
+::: {.course-meta-cell}
+[Office]{.label}
+[HSS 3007]{.value}
+:::
+:::
+:::
+
+<span class="sg-label">.social-card — contact page</span>
+
+::: {.social-grid}
+::: {.social-card}
+### Connect
+
+- [GitHub](#)
+- [LinkedIn](#)
+- [ORCID](#)
+:::
+
+::: {.social-card}
+### Reach out
+
+- [Email](#)
+- [Schedule meeting](#)
+- [Office](#)
+:::
+:::
+
+</div>
+
+# Callouts & accents
+
+<div class="sg-section">
+
+<span class="sg-label">.section-eyebrow + .section-title — homepage section heads</span>
+
+::: {.section-eyebrow}
+Latest
+:::
+
+## Recent writing {.section-title}
+
+<span class="sg-label">.course-chip — pill above course/week titles</span>
+
+::: {.course-page .course-plsc66003}
+[{{< fa graduation-cap >}} PLSC 66003 · Fall 2026]{.course-chip}
+:::
+
+<span class="sg-label">.learning-goals — tinted callout (week pages)</span>
+
+::: {.course-page .course-plsc66003}
+::: {.learning-goals}
+### Learning goals
+
+- Articulate what quantitative methods can (and cannot) do for political science
+- Walk through course expectations, grading, and weekly rhythm
+- Have a working install of R, RStudio/Positron, and Quarto by week's end
+:::
+:::
+
+<span class="sg-label">.search-suggestion — accent-bordered callout (404 page)</span>
+
+::: {.search-suggestion}
+### Looking for something specific?
+
+Try using the search function in the navigation bar above, or browse through the main sections of the site.
+:::
+
+</div>
+
+# Schedule table
+
+<div class="sg-section">
+
+<span class="sg-label">.course-schedule — sticky-header syllabus table</span>
+
+::: {.course-page .course-plsc66003}
+::: {.course-schedule}
+
+| Wk | Date | Topic | Due |
+|:--:|------|-------|:---:|
+| 01 | Aug 19 | Introduction & course overview | |
+| 02 | Aug 26 | R fundamentals and the tidyverse | |
+| 03 | Sep 2  | Data visualization with ggplot2 | PS 1 |
+|    | Oct 14 | *Fall break — no class* | |
+| 04 | Oct 21 | Dummy variables and interactions | Midterm |
+
+:::
+:::
+
+</div>
+
+# Readings list
+
+<div class="sg-section">
+
+<span class="sg-label">.readings-list — annotated reading list (week pages)</span>
+
+::: {.course-page .course-plsc66003}
+::: {.readings-list}
+- [Kellstedt and Whitten, *The Fundamentals of Political Science Research*, ch. 1]{.reading-cite}
+  [Sets up the empirical-theory loop and why we care about systematic inquiry.]{.reading-note}
+
+- [Wickham et al., *R for Data Science*, ch. 2]{.reading-cite}
+  [Tidy data — read carefully. Most everything in the course assumes you've internalized this.]{.reading-note}
+:::
+:::
+
+</div>
+
+# Course hero
+
+<div class="sg-section">
+
+<span class="sg-label">.course-hero — full hero block (course landing pages)</span>
+
+::: {.course-page .course-plsc66003}
+::: {.course-hero}
+::: {.course-hero-text}
+[{{< fa graduation-cap >}} PLSC 66003 · Fall 2026]{.course-chip}
+
+# Advanced Political Analysis {.course-title}
+
+[Graduate-level quantitative methods for political science. Build the toolkit you need to design, run, and present original research — entirely in R.]{.course-tagline}
+:::
+:::
+:::
+
+</div>
+
+# Learning objectives
+
+<div class="sg-section">
+
+<span class="sg-label">.learning-objectives — numbered "what you'll learn" list</span>
+
+::: {.course-page .course-plsc66003}
+::: {.learning-objectives}
+- Formulate testable hypotheses from political science theories
+- Manage, clean, and visualize data using R and the tidyverse
+- Estimate and interpret linear regression models
+:::
+:::
+
+</div>
+
+# Citation entry
+
+<div class="sg-section">
+
+<span class="sg-label">.citation — APSA-style hanging indent (research page)</span>
+
+::: {.citation}
+McLean, William P. and **Cameron Wimpy**. 2026. "Rural Election Administration in the Lower Mississippi Delta." *Journal of Election Administration Research & Practice* Forthcoming.
+:::
+
+::: {.publication-buttons}
+[<i class="fas fa-quote-right"></i> Cite](#){.btn-pub}
+:::
+
+</div>
+
+:::

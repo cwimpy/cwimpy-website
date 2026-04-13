@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - "images/*.webp"
 
 freeze: true
 
@@ -15,13 +17,15 @@ website:
   back-to-top-navigation: true
   llms-txt: true
   twitter-card:
-    image: "images/profile.png"
-    card-style: summary
+    image: "/images/og/index.png"
+    card-style: summary_large_image
     creator: "@camwimpy"
   open-graph:
     title: "Dr. Cameron Wimpy"
     description: "Political Science Research & Teaching"
-    image: "images/profile.png"
+    image: "/images/og/index.png"
+    image-width: 1200
+    image-height: 630
   navbar:
     pinned: true
     right:
@@ -41,19 +45,64 @@ website:
         href: posts/index.xml
         aria-label: RSS
   page-footer:
+    border: false
+    background: light
     left: |
-      © 2026 Cameron Wimpy ∙ Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)
-    center: |
-      <a href="uploads/cv-wimpy.pdf">{{< ai cv >}}</a>
-      <a href="mailto:{{< var email >}}">{{< fa envelope >}}</a>
-      <a href="https://github.com/cwimpy" rel="me">{{< fa brands github >}}</a>
-      <a href="{{< var scholar >}}">{{< ai google-scholar >}}</a>
-      <a href="{{< var linkedin >}}" rel="me">{{< fa brands linkedin >}}</a>
-      <a href="https://orcid.org/{{< var orcid >}}" rel="me">{{< ai orcid >}}</a>
-      <a href="{{< var twitter >}}" rel="me">{{< fa brands x-twitter >}}</a>
-      <a href="/posts/index.xml">{{< fa rss >}}</a>
-    right: |
-      <a href="/contact.html">Contact</a>
+      ::: {.site-footer}
+      :::: {.footer-grid}
+
+      ::: {.footer-col .footer-col-about}
+      **Cameron Wimpy**
+      <br>Associate Professor & Chair
+      <br>Government, Law & Policy
+      <br>Arkansas State University
+      :::
+
+      ::: {.footer-col}
+      #### Site
+      - [Research](/research.html)
+      - [Teaching](/teaching.html)
+      - [Software](/software.html)
+      - [CV](/cv.html)
+      - [Posts](/posts/)
+      - [Now](/now.html)
+      :::
+
+      ::: {.footer-col}
+      #### Connect
+      - [Email](mailto:{{< var email >}})
+      - [Schedule a meeting]({{< var scheduling >}})
+      - [GitHub](https://github.com/cwimpy)
+      - [Google Scholar]({{< var scholar >}})
+      - [ORCID](https://orcid.org/{{< var orcid >}})
+      - [X / Twitter]({{< var twitter >}})
+      :::
+
+      ::: {.footer-col}
+      #### Also
+      - [Institute for Rural Initiatives](https://www.astate.edu/a/iri/)
+      - [Arkansas Biosciences Institute](https://www.astate.edu/abi)
+      - [MIT Election Data + Science Lab](http://electionlab.mit.edu)
+      - [Contact](/contact.html)
+      - [RSS feed](/posts/index.xml)
+      :::
+
+      ::::
+      :::
+
+      ::: {.footer-bottom}
+      <span>© 2026 Cameron Wimpy · Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org)</span>
+      <span class="footer-social">
+        <a href="/uploads/cv-wimpy.pdf" aria-label="CV">{{< ai cv >}}</a>
+        <a href="mailto:{{< var email >}}" aria-label="Email">{{< fa envelope >}}</a>
+        <a href="https://github.com/cwimpy" rel="me" aria-label="GitHub">{{< fa brands github >}}</a>
+        <a href="{{< var scholar >}}" aria-label="Google Scholar">{{< ai google-scholar >}}</a>
+        <a href="{{< var linkedin >}}" rel="me" aria-label="LinkedIn">{{< fa brands linkedin >}}</a>
+        <a href="https://orcid.org/{{< var orcid >}}" rel="me" aria-label="ORCID">{{< ai orcid >}}</a>
+        <a href="{{< var twitter >}}" rel="me" aria-label="X/Twitter">{{< fa brands x-twitter >}}</a>
+        <a href="/posts/index.xml" aria-label="RSS">{{< fa rss >}}</a>
+      </span>
+      :::
 
 format:
   html:
@@ -66,6 +115,8 @@ format:
     footnotes-hover: true
     code-copy: true
     lightbox: true
+    include-in-header:
+      - _includes/person-schema.html
 
 filters:
   - fontawesome

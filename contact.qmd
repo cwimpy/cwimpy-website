@@ -2,6 +2,12 @@
 title: "Contact"
 description: "Get in touch with Cameron Wimpy at Arkansas State University."
 format: html
+image: /images/og/contact.png
+twitter-card:
+  image: /images/og/contact.png
+open-graph:
+  image: /images/og/contact.png
+  image-alt: "Cameron Wimpy — Contact"
 ---
 
 ## Get in Touch

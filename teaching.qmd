@@ -1,6 +1,12 @@
 ---
 title: "Teaching"
 description: "Courses taught by Cameron Wimpy at Arkansas State University."
+image: /images/og/teaching.png
+twitter-card:
+  image: /images/og/teaching.png
+open-graph:
+  image: /images/og/teaching.png
+  image-alt: "Cameron Wimpy — Teaching"
 listing:
   - id: current-courses
     contents: "teaching/courses/*/index.qmd"

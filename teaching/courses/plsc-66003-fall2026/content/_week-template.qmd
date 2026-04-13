@@ -1,0 +1,81 @@
+---
+title: "Week NN: Topic"
+date: "YYYY-MM-DD"
+draft: true
+page-layout: full
+toc: false
+title-block-style: none
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .course-page.course-plsc66003 {
+            --course-accent: #b07a1f;
+            --course-accent-soft: rgba(176, 122, 31, 0.10);
+            --course-accent-on: #ffffff;
+          }
+          [data-bs-theme="dark"] .course-page.course-plsc66003,
+          .quarto-dark .course-page.course-plsc66003 {
+            --course-accent: #d9a44a;
+            --course-accent-soft: rgba(217, 164, 74, 0.14);
+            --course-accent-on: #1a120a;
+          }
+          header#title-block-header { display: none; }
+        </style>
+        <link rel="icon" type="image/png" sizes="32x32" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-32.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-180.png">
+---
+
+::: {.content-container .course-page .course-plsc66003}
+::: {.week-page}
+
+::: {.week-breadcrumb}
+[PLSC 66003](../index.qmd) [/]{.sep} [Schedule](../schedule.qmd) [/]{.sep} Week NN
+:::
+
+[Week NN · PLSC 66003]{.course-chip}
+
+# Topic Title
+
+::: {.week-meta}
+[Date]{.week-date}
+·
+Reading load: light/standard/heavy
+·
+Optional: PSet due, slides ready, etc.
+:::
+
+::: {.learning-goals}
+### Learning goals
+- Goal 1
+- Goal 2
+- Goal 3
+:::
+
+## Readings
+
+::: {.readings-list}
+- [Citation here]{.reading-cite}
+  [Optional one-line annotation about why it matters or what to focus on.]{.reading-note}
+
+- [Another citation]{.reading-cite}
+  [Annotation.]{.reading-note}
+:::
+
+## In class
+
+Brief description of what we'll do in the session — lecture topics, problem-set workshop, dataset we'll work with, etc.
+
+::: {.week-actions}
+[{{< fa person-chalkboard >}} Slides](#){.week-action .is-disabled}
+[{{< fa file-code >}} Code](#){.week-action .is-disabled}
+[{{< fa video >}} Recording](#){.week-action .is-disabled}
+:::
+
+## Further reading
+
+Optional list of supplementary references for students who want to go deeper.
+
+:::
+:::

@@ -1,4 +1,0 @@
-# Clear any cached bib data
-rm(list = ls())
-install.packages(c("purrr", "rprojroot"))
-install.packages(c("DT", "gargle", "googlesheets4", "insight", "leaflet", "ragg", "textshaping"))

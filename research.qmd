@@ -1,6 +1,14 @@
 ---
 title: "Research"
-description: "Publications and working papers by Cameron Wimpy on election administration, political methodology, and rural public policy."
+description: "Publications and working papers by Cameron Wimpy on comparative, politics, election administration, political methodology, and rural public policy."
+image: /images/og/research.png
+twitter-card:
+  image: /images/og/research.png
+open-graph:
+  image: /images/og/research.png
+  image-alt: "Cameron Wimpy — Research"
+include-after-body:
+  - _includes/cite-modal.html
 ---
 
 ```{r}
@@ -286,6 +294,166 @@ get_manual_pubtype <- function(title, bibtex_key, category) {
   return("")
 }
 
+# Simple APA / MLA formatters — attached as data-* attrs on the cite button so
+# the modal can show multiple citation styles without a JS citation library.
+
+# Returns a clean character vector of author names, handling bib2df list output
+parse_authors <- function(raw) {
+  if(is.null(raw) || (is.character(raw) && length(raw) == 1 && raw == "")) return(character(0))
+  names_vec <- if(is.list(raw)) unlist(raw) else raw
+  names_vec <- gsub('c\\("', '', names_vec)
+  names_vec <- gsub('"\\)', '', names_vec)
+  names_vec <- gsub('"', '', names_vec)
+  names_vec <- trimws(names_vec)
+  # Handle case where still a single string with " and " separator
+  if(length(names_vec) == 1 && grepl(" and ", names_vec)) {
+    names_vec <- trimws(strsplit(names_vec, " and ", fixed = TRUE)[[1]])
+  }
+  names_vec[names_vec != "" & !is.na(names_vec)]
+}
+
+format_author_apa <- function(raw) {
+  authors <- parse_authors(raw)
+  if(length(authors) == 0) return("")
+  formatted <- vapply(authors, function(a) {
+    parts <- trimws(strsplit(a, " ", fixed = TRUE)[[1]])
+    parts <- parts[parts != ""]
+    if(length(parts) < 2) return(a)
+    last <- parts[length(parts)]
+    # Initials from each non-last token (strip existing dots)
+    initials <- paste0(
+      paste(vapply(parts[-length(parts)], function(p) substr(gsub("\\.", "", p), 1, 1), character(1)),
+            collapse = ". "), "."
+    )
+    paste0(last, ", ", initials)
+  }, character(1))
+  if(length(formatted) == 1) return(formatted)
+  if(length(formatted) == 2) return(paste(formatted, collapse = ", & "))
+  paste0(paste(formatted[-length(formatted)], collapse = ", "), ", & ", formatted[length(formatted)])
+}
+
+format_author_mla <- function(raw) {
+  authors <- parse_authors(raw)
+  if(length(authors) == 0) return("")
+  first <- authors[1]
+  parts <- trimws(strsplit(first, " ", fixed = TRUE)[[1]])
+  parts <- parts[parts != ""]
+  first_fmt <- if(length(parts) >= 2) {
+    paste0(parts[length(parts)], ", ", paste(parts[-length(parts)], collapse = " "))
+  } else first
+  if(length(authors) == 1) return(first_fmt)
+  if(length(authors) == 2) return(paste0(first_fmt, ", and ", authors[2]))
+  paste0(first_fmt, ", et al.")
+}
+
+format_apa_citation <- function(pub) {
+  authors <- format_author_apa(pub$AUTHOR)
+  year    <- pub$year_clean
+  title   <- safe_get(pub$TITLE, "")
+  journal <- safe_get(pub$JOURNAL)
+  vol     <- safe_get(pub$VOLUME)
+  num     <- safe_get(pub$NUMBER)
+  pages   <- safe_get(pub$PAGES)
+  doi     <- safe_get(pub$DOI)
+
+  out <- paste0(authors, " (", year, "). ", title, ".")
+  if(journal != "") {
+    venue <- paste0(" *", journal, "*")
+    if(vol != "") venue <- paste0(venue, ", *", vol, "*")
+    if(num != "") venue <- paste0(venue, "(", num, ")")
+    if(pages != "") venue <- paste0(venue, ", ", pages)
+    out <- paste0(out, venue, ".")
+  }
+  if(doi != "") {
+    doi_url <- if(startsWith(doi, "http")) doi else paste0("https://doi.org/", doi)
+    out <- paste0(out, " ", doi_url)
+  }
+  out
+}
+
+format_mla_citation <- function(pub) {
+  authors <- format_author_mla(pub$AUTHOR)
+  year    <- pub$year_clean
+  title   <- safe_get(pub$TITLE, "")
+  journal <- safe_get(pub$JOURNAL)
+  vol     <- safe_get(pub$VOLUME)
+  num     <- safe_get(pub$NUMBER)
+  pages   <- safe_get(pub$PAGES)
+
+  out <- paste0(authors, ". \"", title, ".\"")
+  if(journal != "") {
+    venue <- paste0(" *", journal, "*")
+    if(vol != "") venue <- paste0(venue, ", vol. ", vol)
+    if(num != "") venue <- paste0(venue, ", no. ", num)
+    venue <- paste0(venue, ", ", year)
+    if(pages != "") venue <- paste0(venue, ", pp. ", pages)
+    venue <- paste0(venue, ".")
+    out <- paste0(out, venue)
+  } else {
+    out <- paste0(out, " ", year, ".")
+  }
+  out
+}
+
+# Function to create ScholarlyArticle JSON-LD for one publication
+# (surfaces the paper to Google Scholar, Knowledge Graph, and SEO crawlers)
+json_escape <- function(x) {
+  if(is.null(x) || is.na(x) || !nchar(x)) return("")
+  x <- gsub("\\\\", "\\\\\\\\", x)
+  x <- gsub("\"", "\\\\\"", x)
+  x <- gsub("\n", " ", x)
+  x <- gsub("\r", " ", x)
+  x
+}
+
+create_scholarly_article_jsonld <- function(pub, pub_type) {
+  title  <- json_escape(safe_get(pub$TITLE, ""))
+  year   <- json_escape(as.character(pub$year_clean))
+  doi    <- safe_get(pub$DOI)
+  url    <- safe_get(pub$URL); if(url == "") url <- safe_get(pub$url)
+  venue  <- json_escape(safe_get(pub$JOURNAL, if(pub_type == "inproceedings") safe_get(pub$BOOKTITLE) else ""))
+  vol    <- json_escape(safe_get(pub$VOLUME))
+  pages  <- json_escape(safe_get(pub$PAGES))
+  abstr  <- safe_get(pub$ABSTRACT); if(abstr == "") abstr <- safe_get(pub$abstract)
+  abstr  <- json_escape(substr(abstr, 1, 800))
+
+  doi_url <- if(doi != "") (if(startsWith(doi, "http")) doi else paste0("https://doi.org/", doi)) else ""
+  canonical_url <- if(doi_url != "") doi_url else url
+
+  # Parse authors (handles bib2df list output)
+  author_list <- parse_authors(pub$AUTHOR)
+  author_json <- if(length(author_list) > 0) {
+    paste0('[',
+      paste0(sapply(author_list, function(a) {
+        a <- trimws(a)
+        paste0('{"@type":"Person","name":"', json_escape(a), '"}')
+      }), collapse = ","),
+    ']')
+  } else '[]'
+
+  type <- if(!is.null(pub_type) && pub_type == "inproceedings") "ScholarlyArticle" else "ScholarlyArticle"
+
+  parts <- c(
+    '{',
+    '"@context":"https://schema.org",',
+    paste0('"@type":"', type, '",'),
+    paste0('"headline":"', title, '",'),
+    paste0('"name":"', title, '",'),
+    paste0('"datePublished":"', year, '",'),
+    paste0('"author":', author_json, ',')
+  )
+  if(venue != "") parts <- c(parts, paste0('"isPartOf":{"@type":"Periodical","name":"', venue, '"},'))
+  if(canonical_url != "") parts <- c(parts, paste0('"url":"', canonical_url, '",'))
+  if(doi_url != "")       parts <- c(parts, paste0('"sameAs":"', doi_url, '",'))
+  if(vol != "")           parts <- c(parts, paste0('"volumeNumber":"', vol, '",'))
+  if(pages != "")         parts <- c(parts, paste0('"pagination":"', pages, '",'))
+  if(nchar(abstr))        parts <- c(parts, paste0('"abstract":"', abstr, '",'))
+  parts <- c(parts, '"creator":{"@id":"https://cwimpy.com/#person"}')
+  parts <- c(parts, '}')
+
+  paste(parts, collapse = "")
+}
+
 # Function to create individual BibTeX citation file
 create_bibtex_citation <- function(pub, pub_type) {
   authors <- safe_get(pub$AUTHOR)
@@ -429,6 +597,10 @@ for(type_idx in 1:nrow(pub_types)) {
       cat("\n::: {.citation}\n")
       cat(entry_number, "\\. ", citation, "\n", sep = "")
       cat(":::\n")
+
+      # JSON-LD (schema.org ScholarlyArticle) for each entry — boosts Scholar / SEO
+      jsonld <- create_scholarly_article_jsonld(pub, current_category)
+      cat("\n```{=html}\n<script type=\"application/ld+json\">\n", jsonld, "\n</script>\n```\n", sep = "")
       
       # Create buttons section
       cat("\n::: {.publication-buttons}\n")
@@ -473,12 +645,26 @@ for(type_idx in 1:nrow(pub_types)) {
         cat("\n[<i class=\"fas fa-paperclip\"></i> Supplement](", supplement_url, "){.btn-pub}", sep = "")
       }
       
-      # Citation button (BibTeX popup)
+      # Citation button — stash all five formats on data-* attrs.
+      # APSA is the primary style for political science; we already compute
+      # it into `citation` above. Chicago author-date is functionally identical.
       bib_content <- create_bibtex_citation(pub, current_category)
-      # Escape quotes and newlines for JavaScript
-      bib_content_escaped <- gsub("\"", "&quot;", bib_content)
-      bib_content_escaped <- gsub("\n", "\\n", bib_content_escaped)
-      cat("\n[<i class=\"fas fa-quote-right\"></i> Cite](#){.btn-pub .citation-btn data-citation=\"", bib_content_escaped, "\"}", sep = "")
+      apsa_text    <- citation
+      apa_text     <- format_apa_citation(pub)
+      mla_text     <- format_mla_citation(pub)
+      chicago_text <- citation
+      escape_attr <- function(s) {
+        s <- gsub("\"", "&quot;", s)
+        s <- gsub("\n", "\\n", s)
+        s
+      }
+      cat("\n[<i class=\"fas fa-quote-right\"></i> Cite](#){.btn-pub .citation-btn",
+          " data-citation=\"",     escape_attr(bib_content),   "\"",
+          " data-apsa=\"",         escape_attr(apsa_text),     "\"",
+          " data-apa=\"",          escape_attr(apa_text),      "\"",
+          " data-mla=\"",          escape_attr(mla_text),      "\"",
+          " data-chicago=\"",      escape_attr(chicago_text),  "\"}",
+          sep = "")
       
       # Summary/Abstract toggle button (if abstract exists)
       full_abstract <- safe_get(pub$ABSTRACT)
@@ -527,145 +713,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // JavaScript to handle citation popup functionality
-  const citationButtons = document.querySelectorAll('.citation-btn');
-  
-  citationButtons.forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      const citation = this.getAttribute('data-citation').replace(/\\n/g, '\n').replace(/&quot;/g, '"');
-      
-      // Create modal
-      const modal = document.createElement('div');
-      modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      `;
-      
-      const isDark = document.body.dataset.bsTheme === 'dark' || document.documentElement.dataset.bsTheme === 'dark';
-      const bgColor = isDark ? '#1e293b' : 'white';
-      const textColor = isDark ? '#f8fafc' : '#333';
-      const mutedColor = isDark ? '#94a3b8' : '#666';
-      const borderColor = isDark ? '#334155' : '#ddd';
-      const inputBg = isDark ? '#0f172a' : '#f8f9fa';
-
-      const modalContent = document.createElement('div');
-      modalContent.style.cssText = `
-        background: ${bgColor};
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 600px;
-        max-height: 70vh;
-        overflow-y: auto;
-        position: relative;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      `;
-
-      modalContent.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-          <h3 style="margin: 0; color: ${textColor};">BibTeX Citation</h3>
-          <button id="closeModal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: ${mutedColor};">&times;</button>
-        </div>
-        <textarea id="citationText" readonly style="
-          width: 100%;
-          height: 200px;
-          font-family: 'Courier New', monospace;
-          font-size: 12px;
-          border: 1px solid ${borderColor};
-          border-radius: 4px;
-          padding: 10px;
-          resize: vertical;
-          background-color: ${inputBg};
-          color: ${textColor};
-        ">${citation}</textarea>
-        <div style="margin-top: 15px; text-align: right;">
-          <button id="copyBtn" style="
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-          ">Copy to Clipboard</button>
-          <button id="closeBtn" style="
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-          ">Close</button>
-        </div>
-      `;
-      
-      modal.appendChild(modalContent);
-      document.body.appendChild(modal);
-      
-      // Focus and select text
-      const textarea = document.getElementById('citationText');
-      textarea.focus();
-      textarea.select();
-      
-      // Copy functionality
-      document.getElementById('copyBtn').addEventListener('click', function() {
-        textarea.select();
-        navigator.clipboard.writeText(citation).then(function() {
-          const btn = document.getElementById('copyBtn');
-          const originalText = btn.textContent;
-          btn.textContent = 'Copied!';
-          btn.style.backgroundColor = '#28a745';
-          setTimeout(function() {
-            btn.textContent = originalText;
-            btn.style.backgroundColor = '#007bff';
-          }, 2000);
-        }).catch(function() {
-          // Fallback for older browsers
-          document.execCommand('copy');
-          const btn = document.getElementById('copyBtn');
-          const originalText = btn.textContent;
-          btn.textContent = 'Copied!';
-          btn.style.backgroundColor = '#28a745';
-          setTimeout(function() {
-            btn.textContent = originalText;
-            btn.style.backgroundColor = '#007bff';
-          }, 2000);
-        });
-      });
-      
-      // Close functionality
-      function handleEscape(e) {
-        if (e.key === 'Escape') {
-          closeModal();
-        }
-      }
-
-      function closeModal() {
-        document.removeEventListener('keydown', handleEscape);
-        document.body.removeChild(modal);
-      }
-
-      document.getElementById('closeModal').addEventListener('click', closeModal);
-      document.getElementById('closeBtn').addEventListener('click', closeModal);
-
-      // Close on background click
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-
-      // Close on Escape key
-      document.addEventListener('keydown', handleEscape);
-    });
-  });
+  // Citation modal handled by _includes/cite-modal.html
 });
 </script>

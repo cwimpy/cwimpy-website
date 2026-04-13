@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 578" width="500" height="578">
+  <defs>
+    <!-- Inner hex for content area -->
+    <clipPath id="hex-inner">
+      <polygon points="250,28 474,155 474,423 250,550 26,423 26,155"/>
+    </clipPath>
+    <!-- Subtle gradient for background depth -->
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#24704a"/>
+      <stop offset="100%" stop-color="#173d2d"/>
+    </linearGradient>
+    <!-- Glow for the regression line -->
+    <filter id="line-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Border hex -->
+  <polygon points="250,0 500,144 500,434 250,578 0,434 0,144"
+           fill="#2d8a47" stroke="none"/>
+
+  <!-- Background hex -->
+  <polygon points="250,18 484,152 484,426 250,560 16,426 16,152"
+           fill="url(#bg-grad)" stroke="none"/>
+
+  <!-- Content group clipped to inner hex -->
+  <g clip-path="url(#hex-inner)">
+
+    <!-- Subtle grid lines (shifted down) -->
+    <line x1="26" y1="380" x2="474" y2="380" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+    <line x1="26" y1="320" x2="474" y2="320" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+    <line x1="26" y1="440" x2="474" y2="440" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+    <line x1="140" y1="250" x2="140" y2="550" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+    <line x1="250" y1="250" x2="250" y2="550" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+    <line x1="360" y1="250" x2="360" y2="550" stroke="#2a6b45" stroke-width="0.8" opacity="0.35"/>
+
+    <!-- Confidence band (shifted down) -->
+    <polygon points="55,530 150,480 230,440 310,395 380,355 440,320 440,275 380,305 310,340 230,385 150,425 55,470"
+             fill="#ffffff" opacity="0.06"/>
+
+    <!-- Scatter points — shifted into lower 60% of hex -->
+    <!-- Lower-left -->
+    <circle cx="72" cy="510" r="7" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="95" cy="485" r="5.5" fill="#c1e6ce" opacity="0.6"/>
+    <circle cx="85" cy="520" r="6" fill="#8bc9a4" opacity="0.65"/>
+    <circle cx="110" cy="495" r="7.5" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="62" cy="490" r="5" fill="#c1e6ce" opacity="0.55"/>
+    <circle cx="105" cy="465" r="6.5" fill="#8bc9a4" opacity="0.6"/>
+
+    <!-- Lower-middle -->
+    <circle cx="148" cy="460" r="6.5" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="168" cy="435" r="7" fill="#c1e6ce" opacity="0.65"/>
+    <circle cx="155" cy="475" r="5.5" fill="#8bc9a4" opacity="0.55"/>
+    <circle cx="182" cy="445" r="6" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="175" cy="420" r="8" fill="#c1e6ce" opacity="0.6"/>
+
+    <!-- Middle -->
+    <circle cx="215" cy="405" r="7" fill="#a8d5ba" opacity="0.75"/>
+    <circle cx="235" cy="380" r="6.5" fill="#c1e6ce" opacity="0.65"/>
+    <circle cx="248" cy="410" r="5.5" fill="#8bc9a4" opacity="0.6"/>
+    <circle cx="228" cy="365" r="7.5" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="258" cy="390" r="6" fill="#c1e6ce" opacity="0.55"/>
+    <circle cx="205" cy="385" r="5.5" fill="#c1e6ce" opacity="0.6"/>
+    <circle cx="245" cy="355" r="7" fill="#a8d5ba" opacity="0.7"/>
+
+    <!-- Upper-middle -->
+    <circle cx="290" cy="345" r="6.5" fill="#a8d5ba" opacity="0.75"/>
+    <circle cx="312" cy="320" r="7.5" fill="#c1e6ce" opacity="0.65"/>
+    <circle cx="302" cy="355" r="5.5" fill="#8bc9a4" opacity="0.6"/>
+    <circle cx="328" cy="330" r="6" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="282" cy="325" r="7" fill="#c1e6ce" opacity="0.6"/>
+    <circle cx="308" cy="300" r="6" fill="#c1e6ce" opacity="0.65"/>
+
+    <!-- Upper -->
+    <circle cx="355" cy="295" r="7" fill="#a8d5ba" opacity="0.75"/>
+    <circle cx="378" cy="275" r="6.5" fill="#c1e6ce" opacity="0.7"/>
+    <circle cx="362" cy="310" r="5.5" fill="#8bc9a4" opacity="0.6"/>
+    <circle cx="392" cy="282" r="7.5" fill="#a8d5ba" opacity="0.7"/>
+    <circle cx="345" cy="272" r="5" fill="#a8d5ba" opacity="0.55"/>
+
+    <!-- Upper-right -->
+    <circle cx="415" cy="260" r="7" fill="#a8d5ba" opacity="0.75"/>
+    <circle cx="435" cy="245" r="6.5" fill="#c1e6ce" opacity="0.65"/>
+    <circle cx="425" cy="275" r="5.5" fill="#8bc9a4" opacity="0.6"/>
+    <circle cx="445" cy="235" r="6" fill="#a8d5ba" opacity="0.7"/>
+
+    <!-- Regression line — bold white diagonal -->
+    <line x1="45" y1="535" x2="460" y2="225"
+          stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"
+          filter="url(#line-glow)" opacity="0.95"/>
+
+  </g>
+
+  <!-- Text labels — positioned in upper portion of hex -->
+  <text x="250" y="172" text-anchor="middle"
+        font-family="'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif"
+        font-size="42" font-weight="700" fill="#ffffff" letter-spacing="1">
+    PLSC 66003
+  </text>
+  <text x="250" y="215" text-anchor="middle"
+        font-family="'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif"
+        font-size="22" font-weight="400" fill="#c1e6ce" letter-spacing="0.5">
+    Advanced Political Analysis
+  </text>
+
+</svg>

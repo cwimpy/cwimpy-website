@@ -1,13 +1,19 @@
 ---
 title: "Software"
 description: "Software, data tools, and open-source projects by Cameron Wimpy."
+image: /images/og/software.png
+twitter-card:
+  image: /images/og/software.png
+open-graph:
+  image: /images/og/software.png
+  image-alt: "Cameron Wimpy — Software"
 ---
 
 ::: {.content-container}
 
 I build tools and packages related to my research on election administration, rural public policy, and political methodology. Most projects use R and are available on [GitHub](https://github.com/cwimpy).
 
-## R Packages
+## R/Stata Packages
 
 ::: {.software-card}
 ### rurality (R)

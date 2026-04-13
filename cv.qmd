@@ -2,6 +2,12 @@
 title: "Curriculum Vitae"
 description: "CV for Cameron Wimpy, Associate Professor and Department Chair at Arkansas State University."
 page-layout: full
+image: /images/og/cv.png
+twitter-card:
+  image: /images/og/cv.png
+open-graph:
+  image: /images/og/cv.png
+  image-alt: "Cameron Wimpy — CV"
 ---
 
 ::: {.cv-container}

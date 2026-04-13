@@ -1,0 +1,129 @@
+<template id="cite-modal-template">
+  <div class="cite-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="cite-modal-title">
+    <div class="cite-modal">
+      <header class="cite-modal-head">
+        <h3 id="cite-modal-title">Cite this work</h3>
+        <button class="cite-modal-close" aria-label="Close">&times;</button>
+      </header>
+      <nav class="cite-modal-tabs" role="tablist">
+        <button class="cite-tab is-active" data-fmt="apsa"    role="tab" aria-selected="true">APSA</button>
+        <button class="cite-tab"           data-fmt="apa"     role="tab" aria-selected="false">APA</button>
+        <button class="cite-tab"           data-fmt="mla"     role="tab" aria-selected="false">MLA</button>
+        <button class="cite-tab"           data-fmt="chicago" role="tab" aria-selected="false">Chicago</button>
+        <button class="cite-tab"           data-fmt="bibtex"  role="tab" aria-selected="false">BibTeX</button>
+      </nav>
+      <div class="cite-modal-body">
+        <div class="cite-output" data-fmt="apsa"    role="tabpanel"></div>
+        <div class="cite-output" data-fmt="apa"     role="tabpanel" hidden></div>
+        <div class="cite-output" data-fmt="mla"     role="tabpanel" hidden></div>
+        <div class="cite-output" data-fmt="chicago" role="tabpanel" hidden></div>
+        <pre class="cite-output cite-output-code" data-fmt="bibtex" role="tabpanel" hidden></pre>
+      </div>
+      <footer class="cite-modal-foot">
+        <button class="cite-copy">Copy</button>
+        <span class="cite-copy-status" aria-live="polite"></span>
+      </footer>
+    </div>
+  </div>
+</template>
+
+<script>
+(function() {
+  function closeModal(el) {
+    el.classList.add("is-closing");
+    setTimeout(() => el.remove(), 180);
+    document.removeEventListener("keydown", onEscape);
+    const prev = document.activeElement;
+    if (prev && prev.blur) prev.blur();
+  }
+
+  function onEscape(e) {
+    if (e.key !== "Escape") return;
+    const modal = document.querySelector(".cite-modal-backdrop");
+    if (modal) closeModal(modal);
+  }
+
+  function decode(raw) {
+    if (!raw) return "";
+    return raw.replace(/&quot;/g, '"').replace(/\\n/g, "\n");
+  }
+
+  function openCiteModal(btn) {
+    const tpl = document.getElementById("cite-modal-template");
+    if (!tpl) return;
+    const node = tpl.content.cloneNode(true);
+    const backdrop = node.querySelector(".cite-modal-backdrop");
+
+    const formats = {
+      apsa:    decode(btn.getAttribute("data-apsa")),
+      apa:     decode(btn.getAttribute("data-apa")),
+      mla:     decode(btn.getAttribute("data-mla")),
+      chicago: decode(btn.getAttribute("data-chicago")),
+      bibtex:  decode(btn.getAttribute("data-citation")),
+    };
+
+    backdrop.querySelectorAll(".cite-output").forEach(out => {
+      const fmt = out.getAttribute("data-fmt");
+      if (fmt === "bibtex") {
+        out.textContent = formats.bibtex || "(no BibTeX available)";
+      } else {
+        // Markdown-lite: **bold** first, then *italic* (on whatever's left)
+        const text = formats[fmt] || "(not available)";
+        out.innerHTML = text
+          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+          .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      }
+    });
+
+    // Tab switching
+    const tabs = backdrop.querySelectorAll(".cite-tab");
+    const panels = backdrop.querySelectorAll(".cite-output");
+    tabs.forEach(t => t.addEventListener("click", () => {
+      const fmt = t.getAttribute("data-fmt");
+      tabs.forEach(x => {
+        x.classList.toggle("is-active", x === t);
+        x.setAttribute("aria-selected", x === t ? "true" : "false");
+      });
+      panels.forEach(p => p.hidden = p.getAttribute("data-fmt") !== fmt);
+    }));
+
+    // Copy
+    const copyBtn = backdrop.querySelector(".cite-copy");
+    const status  = backdrop.querySelector(".cite-copy-status");
+    copyBtn.addEventListener("click", async () => {
+      const active = backdrop.querySelector(".cite-tab.is-active")?.getAttribute("data-fmt") || "apa";
+      const text   = formats[active] || "";
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = "Copied to clipboard";
+        copyBtn.classList.add("is-success");
+        setTimeout(() => {
+          status.textContent = "";
+          copyBtn.classList.remove("is-success");
+        }, 1800);
+      } catch (e) {
+        status.textContent = "Copy failed — select and ⌘/Ctrl+C";
+      }
+    });
+
+    // Close handlers
+    backdrop.querySelector(".cite-modal-close").addEventListener("click", () => closeModal(backdrop));
+    backdrop.addEventListener("click", e => {
+      if (e.target === backdrop) closeModal(backdrop);
+    });
+
+    document.body.appendChild(backdrop);
+    document.addEventListener("keydown", onEscape);
+
+    // Focus first tab for keyboard users
+    requestAnimationFrame(() => backdrop.querySelector(".cite-tab.is-active")?.focus());
+  }
+
+  document.addEventListener("click", e => {
+    const btn = e.target.closest(".citation-btn");
+    if (!btn) return;
+    e.preventDefault();
+    openCiteModal(btn);
+  });
+})();
+</script>

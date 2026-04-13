@@ -1,28 +1,83 @@
 ---
 title: "Week 01: Introduction and course overview"
 date: "2026-08-19"
+page-layout: full
+toc: false
+title-block-style: none
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .course-page.course-plsc66003 {
+            --course-accent: #b07a1f;
+            --course-accent-soft: rgba(176, 122, 31, 0.10);
+            --course-accent-on: #ffffff;
+          }
+          [data-bs-theme="dark"] .course-page.course-plsc66003,
+          .quarto-dark .course-page.course-plsc66003 {
+            --course-accent: #d9a44a;
+            --course-accent-soft: rgba(217, 164, 74, 0.14);
+            --course-accent-on: #1a120a;
+          }
+          header#title-block-header { display: none; }
+        </style>
+        <link rel="icon" type="image/png" sizes="32x32" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-32.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-180.png">
 ---
 
-::: {.content-container}
+::: {.content-container .course-page .course-plsc66003}
+::: {.week-page}
 
-## Overview
+::: {.week-breadcrumb}
+[PLSC 66003](../index.qmd) [/]{.sep} [Schedule](../schedule.qmd) [/]{.sep} Week 01
+:::
 
-What is political analysis? Course logistics, expectations, and getting set up with R.
+[Week 01 · PLSC 66003]{.course-chip}
+
+# Introduction & course overview
+
+::: {.week-meta}
+[Aug 19, 2026]{.week-date}
+·
+First day — light reading
+·
+Bring a laptop with R installed
+:::
+
+::: {.learning-goals}
+### Learning goals
+- Articulate what quantitative methods can (and cannot) do for political science
+- Walk through course expectations, grading, and weekly rhythm
+- Have a working install of R, RStudio/Positron, and Quarto by week's end
+:::
 
 ## Readings
 
-{{< fa book >}} Kellstedt and Whitten, Chapter 1
+::: {.readings-list}
+- [Kellstedt and Whitten, *The Fundamentals of Political Science Research*, ch. 1]{.reading-cite}
+  [Sets up the empirical-theory loop and why we care about systematic inquiry. Skim — we'll come back to this.]{.reading-note}
 
-- Course syllabus and expectations
-- Why quantitative methods matter in political science
-- Overview of the semester
+- [Course syllabus]{.reading-cite}
+  [Read in full. Assignments, attendance, AI policy, late-work policy.]{.reading-note}
+:::
 
-## Slides
+## In class
 
-*Slides will be posted before class.*
+We'll spend the first half on logistics — going through the syllabus, the [schedule](../schedule.qmd), and how problem sets and the final paper fit together. The second half is a hands-on tour of R and Quarto: opening a project, running a first script, rendering a Quarto document, and pushing to GitHub.
 
-## Additional Resources
+If your install is misbehaving, see the [Resources page](../resources.qmd) for troubleshooting links and come to office hours.
 
-*Additional resources and code examples will be added as the semester progresses.*
+::: {.week-actions}
+[{{< fa person-chalkboard >}} Slides](#){.week-action .is-disabled}
+[{{< fa file-code >}} Demo code](#){.week-action .is-disabled}
+[{{< fa video >}} Recording](#){.week-action .is-disabled}
+:::
 
+## Further reading
+
+- Imai, *Quantitative Social Science*, ch. 1 — alternative motivation for quant methods
+- Wickham et al., *R for Data Science*, ch. 1–2 — for students new to R, work through these before Week 02
+
+:::
 :::

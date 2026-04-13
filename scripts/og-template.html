@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Inter:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fdfcf8;
+    --primary:   #1e5f3e;
+    --accent:    #2d8a47;
+    --text:      #1a2520;
+    --muted:     #4a6b56;
+    --subtle:    #d4e5da;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    position: relative;
+  }
+
+  /* Topographic decoration on right edge — meaningful nod to "rural America" */
+  .topo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 700px;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.10;
+    overflow: hidden;
+  }
+  .topo svg { width: 100%; height: 100%; display: block; }
+
+  /* Subtle rule across the very top */
+  .top-rule {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--accent);
+  }
+
+  .card {
+    padding: 70px 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    font-weight: 600;
+    font-size: 92px;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    max-width: 960px;
+    /* Title vertical position adjusted via flex */
+  }
+  .title.long  { font-size: 78px; }
+  .title.x-long{ font-size: 62px; line-height: 1.04; }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--muted);
+    max-width: 760px;
+    flex: 1;
+  }
+
+  .lockup {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .lockup .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.02em;
+  }
+  .lockup .name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 60, "SOFT" 30;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .body-spacer { flex: 1; }
+</style>
+</head>
+<body>
+  <div class="top-rule"></div>
+
+  <div class="topo">
+    <svg viewBox="0 0 700 630" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <!-- Concentric arc set hinting at topographic contour lines -->
+      <g stroke="#1e5f3e" stroke-width="1.5">
+        <path d="M 700 -100 Q 250 315 700 730" />
+        <path d="M 700 -50  Q 300 315 700 680" />
+        <path d="M 700 0    Q 350 315 700 630" />
+        <path d="M 700 50   Q 400 315 700 580" />
+        <path d="M 700 100  Q 450 315 700 530" />
+        <path d="M 700 150  Q 500 315 700 480" />
+        <path d="M 700 200  Q 550 315 700 430" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow" id="eyebrow">CAMERON WIMPY</div>
+    <div class="body-spacer"></div>
+    <h1 class="title" id="title">Title goes here</h1>
+    <div class="body-spacer"></div>
+    <div class="footer">
+      <div class="subtitle" id="subtitle">Subtitle line</div>
+      <div class="lockup">
+        <div class="name">Cameron Wimpy</div>
+        <div class="url">cwimpy.com</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Read URL hash params: #eyebrow=...&title=...&subtitle=...
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const eyebrow  = params.get('eyebrow');
+    const title    = params.get('title');
+    const subtitle = params.get('subtitle');
+    if (eyebrow)  document.getElementById('eyebrow').textContent  = eyebrow.toUpperCase();
+    if (subtitle) document.getElementById('subtitle').textContent = subtitle;
+    if (title) {
+      const titleEl = document.getElementById('title');
+      titleEl.innerHTML = title.replace(/\\n|\|/g, '<br>');
+      // Auto-shrink for longer titles
+      const len = title.length;
+      if (len > 50) titleEl.classList.add('x-long');
+      else if (len > 28) titleEl.classList.add('long');
+    }
+  </script>
+</body>
+</html>

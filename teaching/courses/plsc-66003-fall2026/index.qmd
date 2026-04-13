@@ -3,83 +3,132 @@ title: "PLSC 66003: Advanced Political Analysis"
 description: "Graduate-level quantitative methods for political science using R."
 date: "2026-08-19"
 draft: true
-image: "../../../images/profile.png"
+image: /images/og/plsc-66003-fall2026.png
+twitter-card:
+  image: /images/og/plsc-66003-fall2026.png
+open-graph:
+  image: /images/og/plsc-66003-fall2026.png
+  image-alt: "PLSC 66003 — Advanced Political Analysis"
 categories: [graduate, methods, R]
+page-layout: full
+toc: false
+title-block-style: none
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .course-page.course-plsc66003 {
+            --course-accent: #b07a1f;
+            --course-accent-soft: rgba(176, 122, 31, 0.10);
+            --course-accent-on: #ffffff;
+          }
+          [data-bs-theme="dark"] .course-page.course-plsc66003,
+          .quarto-dark .course-page.course-plsc66003 {
+            --course-accent: #d9a44a;
+            --course-accent-soft: rgba(217, 164, 74, 0.14);
+            --course-accent-on: #1a120a;
+          }
+          /* Hide Quarto's auto title block — the .course-hero replaces it */
+          header#title-block-header { display: none; }
+        </style>
+        <link rel="icon" type="image/png" sizes="32x32" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-32.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/teaching/courses/plsc-66003-fall2026/hex-plsc66003-180.png">
 ---
 
-::: {.content-container}
+::: {.content-container .course-page .course-plsc66003}
 
-## Course Details
+::: {.course-hero}
+::: {.course-hero-text}
+[{{< fa graduation-cap >}} PLSC 66003 · Fall 2026]{.course-chip}
 
-|  |  |
-|---|---|
-| **Semester** | Fall 2026 |
-| **Meeting Time** | TBD |
-| **Location** | TBD |
-| **Instructor** | Dr. Cameron Wimpy |
-| **Office** | HSS 3007 |
-| **Email** | [cwimpy@astate.edu](mailto:{{< var email >}}) |
-| **Office Hours** | By appointment --- [schedule here]({{< var scheduling >}}) |
+# Advanced Political Analysis {.course-title}
+
+[Graduate-level quantitative methods for political science. Build the toolkit you need to design, run, and present original research — entirely in R.]{.course-tagline}
+:::
+
+::: {.course-hero-art}
+![](hex-plsc66003.png){fig-alt="PLSC 66003 hex sticker"}
+:::
+:::
+
+::: {.course-meta-bar}
+::: {.course-meta-cell}
+[Credits]{.label}
+[3]{.value}
+:::
+::: {.course-meta-cell}
+[Meets]{.label}
+[1×/wk]{.value}
+:::
+::: {.course-meta-cell}
+[Format]{.label}
+[Seminar]{.value}
+:::
+::: {.course-meta-cell}
+[Instructor]{.label}
+[[Wimpy](mailto:cwimpy@astate.edu)]{.value}
+:::
+:::
+
+::: {.course-quick-links}
+[{{< fa calendar-days >}} Schedule](schedule.qmd){.course-quick-link}
+[{{< fa book-open >}} Weekly content](content/){.course-quick-link}
+[{{< fa pen-ruler >}} Assignments](assignments/){.course-quick-link}
+[{{< fa wrench >}} Resources](resources.qmd){.course-quick-link}
+[{{< fa file-pdf >}} Office hours]({{< var scheduling >}}){.course-quick-link}
+:::
 
 ## Overview
 
-This course introduces graduate students to the theory and application of quantitative methods in political science. We cover the foundations of statistical inference, linear regression, maximum likelihood estimation, and model diagnostics using R. The goal is for students to leave the course able to conduct, interpret, and present original quantitative research.
+This course introduces graduate students to the theory and application of quantitative methods in political science. We cover the foundations of statistical inference, linear regression, maximum likelihood estimation, and model diagnostics using R. The goal is for students to leave the course able to **conduct, interpret, and present original quantitative research**.
 
 All computing is done in [R](https://www.r-project.org/) using the [tidyverse](https://www.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). We use [Quarto](https://quarto.org/) for reproducible documents.
 
-## Learning Objectives
+## What you'll learn
 
-By the end of this course, students will be able to:
+::: {.learning-objectives}
+- Formulate testable hypotheses from political science theories
+- Manage, clean, and visualize data using R and the tidyverse
+- Estimate and interpret linear regression models
+- Assess model fit and diagnose violations of assumptions
+- Present statistical results in publication-ready tables and figures
+- Produce reproducible research documents with Quarto
+:::
 
-1. Formulate testable hypotheses from political science theories
-2. Manage, clean, and visualize data using R and the tidyverse
-3. Estimate and interpret linear regression models
-4. Assess model fit and diagnose violations of assumptions
-5. Present statistical results in publication-ready tables and figures
-6. Produce reproducible research documents with Quarto
+## Logistics
 
----
+::: {.course-meta-bar}
+::: {.course-meta-cell}
+[Meeting time]{.label}
+[TBD]{.value}
+:::
+::: {.course-meta-cell}
+[Location]{.label}
+[TBD]{.value}
+:::
+::: {.course-meta-cell}
+[Office]{.label}
+[HSS 3007]{.value}
+:::
+::: {.course-meta-cell}
+[Office hours]{.label}
+[[By appt.]({{< var scheduling >}})]{.value}
+:::
+:::
 
-## Course Pages
+## First three weeks {#schedule-preview}
 
-:::::: {.grid}
+::: {.course-schedule}
 
-::::: {.g-col-12 .g-col-md-4}
-:::: {.software-card}
-### {{< fa calendar-alt >}} Schedule
-Full semester schedule with weekly topics and important dates.
+| Wk | Date | Topic | Due |
+|:--:|------|-------|:---:|
+| 01 | Aug 19 | [Introduction & course overview](content/01-intro.qmd) | |
+| 02 | Aug 26 | [R fundamentals and the tidyverse](content/02-r-tidyverse.qmd) | |
+| 03 | Sep 2  | [Data visualization with ggplot2](content/03-dataviz.qmd) | [PS 1](assignments/ps01.qmd) |
 
-[View Schedule](schedule.qmd){.btn-pub}
-::::
-:::::
+:::
 
-::::: {.g-col-12 .g-col-md-4}
-:::: {.software-card}
-### {{< fa book-open >}} Content
-Weekly readings, slides, and materials organized by topic.
-
-[View Content](content/){.btn-pub}
-::::
-:::::
-
-::::: {.g-col-12 .g-col-md-4}
-:::: {.software-card}
-### {{< fa pen-ruler >}} Assignments
-Problem sets, projects, and grading information.
-
-[View Assignments](assignments/){.btn-pub}
-::::
-:::::
-
-::::: {.g-col-12 .g-col-md-4}
-:::: {.software-card}
-### {{< fa wrench >}} Resources
-Software setup, R guides, cheat sheets, and helpful links.
-
-[View Resources](resources.qmd){.btn-pub}
-::::
-:::::
-
-::::::
+[See the full 14-week schedule →](schedule.qmd){.schedule-preview-link}
 
 :::

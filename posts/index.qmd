@@ -1,5 +1,11 @@
 ---
 title: "Posts"
+image: /images/og/posts.png
+twitter-card:
+  image: /images/og/posts.png
+open-graph:
+  image: /images/og/posts.png
+  image-alt: "Cameron Wimpy — Posts"
 format: 
   html: 
     toc: false

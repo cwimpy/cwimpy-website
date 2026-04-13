@@ -3,6 +3,12 @@ title: "Now"
 description: "What I'm currently working on."
 date: last-modified
 date-format: "MMMM YYYY"
+image: /images/og/now.png
+twitter-card:
+  image: /images/og/now.png
+open-graph:
+  image: /images/og/now.png
+  image-alt: "Cameron Wimpy — Now"
 ---
 
 ::: {.content-container}

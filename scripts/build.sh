@@ -44,6 +44,13 @@ if [[ $REGEN_OG -eq 1 ]]; then
   python3 scripts/generate-og.py
 fi
 
+# Sweep stale quarto session-temp files. A crashed `quarto preview` can leave
+# these orphaned; on the next `quarto publish` the project walker stats them
+# mid-GC and crashes with a NotFound on the temp path. Safe to remove any time.
+if [[ -d .quarto ]]; then
+  find .quarto -maxdepth 2 -name 'quarto-session-temp*' -delete 2>/dev/null || true
+fi
+
 if [[ $PUBLISH -eq 1 ]]; then
   say "Publishing to Netlify (quarto publish netlify)"
   quarto publish netlify

@@ -18,6 +18,17 @@
       <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
 
+    <!-- Official R-logo gradients, palette-shifted for the cream hex context.
+         Logo shapes CC-BY-SA 4.0 via The R Foundation (r-project.org/logo). -->
+    <linearGradient id="rOvalGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f2ece0"/>
+      <stop offset="1" stop-color="#cfc9b9"/>
+    </linearGradient>
+    <linearGradient id="rLetterGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1e5f3e"/>
+      <stop offset="1" stop-color="#143d28"/>
+    </linearGradient>
+
     <!-- Web link to the right font in case the SVG is ever inlined in HTML -->
     <style><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600;1,9..144,600;0,9..144,400;1,9..144,400;0,9..144,500..700;1,9..144,500..700&family=Inter:wght@600&display=swap');
@@ -50,12 +61,13 @@
     <!-- Radial glow under the wordmark so the text reads against the arcs -->
     <rect width="520" height="600" fill="url(#glow)"/>
 
-    <!-- Small "R" monogram badge, echoing CRAN's R in a subtle corner mark -->
-    <g transform="translate(140, 170)">
-      <circle r="24" fill="#fdfcf8" fill-opacity="0.14" stroke="#fdfcf8" stroke-opacity="0.55" stroke-width="1.4"/>
-      <text x="0" y="9" text-anchor="middle"
-            font-family="Fraunces, Georgia, 'Times New Roman', serif" font-style="italic"
-            font-weight="700" font-size="30" fill="#fdfcf8" fill-opacity="0.95">R</text>
+    <!-- Official R Project logo, recolored to palette. Source viewBox 724x561;
+         scale 0.12 → ~87x67, center at (140, 170). -->
+    <g transform="translate(140, 170) scale(0.12) translate(-362, -280.5)">
+      <path fill="url(#rOvalGrad)" fill-rule="evenodd"
+            d="M361.453,485.937 C162.329,485.937 0.906,377.828 0.906,244.469 C0.906,111.109 162.329,3.000 361.453,3.000 C560.578,3.000 722.000,111.109 722.000,244.469 C722.000,377.828 560.578,485.937 361.453,485.937 ZM416.641,97.406 C265.289,97.406 142.594,171.314 142.594,262.484 C142.594,353.654 265.289,427.562 416.641,427.562 C567.992,427.562 679.687,377.033 679.687,262.484 C679.687,147.971 567.992,97.406 416.641,97.406 Z"/>
+      <path fill="url(#rLetterGrad)" fill-rule="evenodd"
+            d="M550.000,377.000 C550.000,377.000 571.822,383.585 584.500,390.000 C588.899,392.226 596.510,396.668 602.000,402.500 C607.378,408.212 610.000,414.000 610.000,414.000 L696.000,559.000 L557.000,559.062 L492.000,437.000 C492.000,437.000 478.690,414.131 470.500,407.500 C463.668,401.969 460.755,400.000 454.000,400.000 C449.298,400.000 420.974,400.000 420.974,400.000 L421.000,558.974 L298.000,559.026 L298.000,152.938 L545.000,152.938 C545.000,152.938 657.500,154.967 657.500,262.000 C657.500,369.033 550.000,377.000 550.000,377.000 ZM496.500,241.024 L422.037,240.976 L422.000,310.026 L496.500,310.002 C496.500,310.002 531.000,309.895 531.000,274.877 C531.000,239.155 496.500,241.024 496.500,241.024 Z"/>
     </g>
 
     <!-- Wordmark -->

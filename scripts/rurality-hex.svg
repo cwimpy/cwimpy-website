@@ -18,17 +18,6 @@
       <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Official R-logo gradients, palette-shifted for the cream hex context.
-         Logo shapes CC-BY-SA 4.0 via The R Foundation (r-project.org/logo). -->
-    <linearGradient id="rOvalGrad" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#f2ece0"/>
-      <stop offset="1" stop-color="#cfc9b9"/>
-    </linearGradient>
-    <linearGradient id="rLetterGrad" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#1e5f3e"/>
-      <stop offset="1" stop-color="#143d28"/>
-    </linearGradient>
-
     <!-- Web link to the right font in case the SVG is ever inlined in HTML -->
     <style><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600;1,9..144,600;0,9..144,400;1,9..144,400;0,9..144,500..700;1,9..144,500..700&family=Inter:wght@600&display=swap');
@@ -61,23 +50,32 @@
     <!-- Radial glow under the wordmark so the text reads against the arcs -->
     <rect width="520" height="600" fill="url(#glow)"/>
 
-    <!-- Official R Project logo, recolored to palette. Source viewBox 724x561;
-         scale 0.12 → ~87x67, center at (140, 170). -->
-    <g transform="translate(140, 170) scale(0.12) translate(-362, -280.5)">
-      <path fill="url(#rOvalGrad)" fill-rule="evenodd"
-            d="M361.453,485.937 C162.329,485.937 0.906,377.828 0.906,244.469 C0.906,111.109 162.329,3.000 361.453,3.000 C560.578,3.000 722.000,111.109 722.000,244.469 C722.000,377.828 560.578,485.937 361.453,485.937 ZM416.641,97.406 C265.289,97.406 142.594,171.314 142.594,262.484 C142.594,353.654 265.289,427.562 416.641,427.562 C567.992,427.562 679.687,377.033 679.687,262.484 C679.687,147.971 567.992,97.406 416.641,97.406 Z"/>
-      <path fill="url(#rLetterGrad)" fill-rule="evenodd"
-            d="M550.000,377.000 C550.000,377.000 571.822,383.585 584.500,390.000 C588.899,392.226 596.510,396.668 602.000,402.500 C607.378,408.212 610.000,414.000 610.000,414.000 L696.000,559.000 L557.000,559.062 L492.000,437.000 C492.000,437.000 478.690,414.131 470.500,407.500 C463.668,401.969 460.755,400.000 454.000,400.000 C449.298,400.000 420.974,400.000 420.974,400.000 L421.000,558.974 L298.000,559.026 L298.000,152.938 L545.000,152.938 C545.000,152.938 657.500,154.967 657.500,262.000 C657.500,369.033 550.000,377.000 550.000,377.000 ZM496.500,241.024 L422.037,240.976 L422.000,310.026 L496.500,310.002 C496.500,310.002 531.000,309.895 531.000,274.877 C531.000,239.155 496.500,241.024 496.500,241.024 Z"/>
+    <!-- rurality.app logo mark (bars over rolling hills) centered in the upper
+         portion of the hex. Source: scripts/logo.svg (100x100 viewBox),
+         scaled to 170x170 and positioned at x=(260-85)=175, y=95. -->
+    <g transform="translate(175, 95) scale(1.7)">
+      <rect width="100" height="100" rx="20" fill="#1a3a2a"/>
+      <!-- Rolling hills -->
+      <path d="M0 82 Q15 68 30 78 Q45 65 60 75 Q75 62 90 72 Q95 76 100 74 L100 100 L0 100 Z"
+            fill="#2d5a3a" opacity="0.6"/>
+      <path d="M0 88 Q20 75 40 84 Q55 72 70 80 Q85 70 100 80 L100 100 L0 100 Z"
+            fill="#3a6b48" opacity="0.5"/>
+      <!-- Bars rising from landscape -->
+      <rect x="12" y="62" width="12" height="20" rx="3" fill="#c4704b"/>
+      <rect x="28" y="48" width="12" height="34" rx="3" fill="#d4a843"/>
+      <rect x="44" y="34" width="12" height="48" rx="3" fill="#b8c97a"/>
+      <rect x="60" y="20" width="12" height="62" rx="3" fill="#7db87d"/>
+      <rect x="76" y="8"  width="12" height="74" rx="3" fill="#f0ead6"/>
     </g>
 
-    <!-- Wordmark -->
-    <text x="260" y="325" text-anchor="middle" class="wordmark" font-size="108">rurality</text>
+    <!-- Wordmark — moved down to give the logo breathing room -->
+    <text x="260" y="430" text-anchor="middle" class="wordmark" font-size="96">rurality</text>
 
     <!-- Tagline -->
-    <text x="260" y="372" text-anchor="middle" class="tagline">rural · urban · continuum</text>
+    <text x="260" y="472" text-anchor="middle" class="tagline">rural · urban · continuum</text>
 
     <!-- Version / author micro-print near bottom point -->
-    <text x="260" y="520" text-anchor="middle" class="version">cwimpy / rurality</text>
+    <text x="260" y="545" text-anchor="middle" class="version">cwimpy / rurality</text>
   </g>
 
   <!-- Hex stroke -->

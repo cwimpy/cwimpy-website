@@ -19,6 +19,10 @@ Associate Professor & Department Chair • Government, Law & Policy • Arkansas
 [<i class="fas fa-download"></i> Download PDF](uploads/cv-wimpy.pdf){.cv-button download="CV-Cameron-Wimpy.pdf"}
 [<i class="fas fa-external-link"></i> Open in New Tab](uploads/cv-wimpy.pdf){.cv-button target="_blank"}
 :::
+
+::: {.cv-note}
+Want to know how I make my CV? [See here →](posts/2026-04-05-typst-cv/)
+:::
 :::
 
 ::: {.mobile-cv-notice}

@@ -1,6 +1,7 @@
 ---
 title: "Schedule"
 subtitle: "PLSC 66003 · Fall 2026"
+draft: true
 page-layout: full
 toc: false
 title-block-style: none

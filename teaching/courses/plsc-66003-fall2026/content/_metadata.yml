@@ -1,0 +1,4 @@
+# Week-page content is in progress — hide all files in this directory
+# from rendering and listings until the course launches. Flip to false
+# when ready to ship.
+draft: true

@@ -72,10 +72,6 @@ format:
 :::
 
 ::: {.course-quick-links}
-[{{< fa calendar-days >}} Schedule](schedule.qmd){.course-quick-link}
-[{{< fa book-open >}} Weekly content](content/){.course-quick-link}
-[{{< fa pen-ruler >}} Assignments](assignments/){.course-quick-link}
-[{{< fa wrench >}} Resources](resources.qmd){.course-quick-link}
 [{{< fa file-pdf >}} Office hours]({{< var scheduling >}}){.course-quick-link}
 :::
 
@@ -117,18 +113,8 @@ All computing is done in [R](https://www.r-project.org/) using the [tidyverse](h
 :::
 :::
 
-## First three weeks {#schedule-preview}
+## Coming together
 
-::: {.course-schedule}
-
-| Wk | Date | Topic | Due |
-|:--:|------|-------|:---:|
-| 01 | Aug 19 | [Introduction & course overview](content/01-intro.qmd) | |
-| 02 | Aug 26 | [R fundamentals and the tidyverse](content/02-r-tidyverse.qmd) | |
-| 03 | Sep 2  | [Data visualization with ggplot2](content/03-dataviz.qmd) | [PS 1](assignments/ps01.qmd) |
-
-:::
-
-[See the full 14-week schedule →](schedule.qmd){.schedule-preview-link}
+Schedule, weekly content, assignments, and resources will be posted closer to the start of the term. If you're a prospective or enrolled student and want to know more, [send me a note](mailto:cwimpy@astate.edu).
 
 :::

@@ -20,6 +20,10 @@ Rplots.pdf
 .Ruserdata
 *.Rproj
 
+# Quarto / knitr caches
+*_cache/
+*_files/
+
 # Python
 __pycache__/
 *.py[cod]

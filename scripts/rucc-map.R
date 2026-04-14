@@ -7,7 +7,6 @@
 # where it became less rural (arrow length scaled by magnitude of change).
 #
 # Output: images/rucc-map.png (wide, 2000x1200) for retina embed
-#         images/rucc-map-social.png (1200x700) for mobile / card use
 #
 # Re-render:  Rscript scripts/rucc-map.R
 # -----------------------------------------------------------------------------
@@ -40,7 +39,6 @@ showtext_opts(dpi = 150)
 # Paths
 CACHE    <- here::here("scripts", "rucc-cache")
 OUT_WIDE <- here::here("images", "rucc-map.png")
-OUT_CARD <- here::here("images", "rucc-map-social.png")
 dir.create(CACHE, recursive = TRUE, showWarnings = FALSE)
 
 # Brand
@@ -276,9 +274,5 @@ render_map <- function(path, width_px, height_px, title_size, subtitle_size,
 render_map(OUT_WIDE, width_px = 2000, height_px = 1200,
            title_size = 22, subtitle_size = 12, caption_size = 8,
            legend_size = 9, arrow_width = 0.38)
-
-render_map(OUT_CARD, width_px = 1600, height_px = 980,
-           title_size = 20, subtitle_size = 11, caption_size = 7.5,
-           legend_size = 8.5, arrow_width = 0.32)
 
 message("\nDone.")

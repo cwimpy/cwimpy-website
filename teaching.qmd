@@ -7,26 +7,20 @@ twitter-card:
 open-graph:
   image: /images/og/teaching.png
   image-alt: "Cameron Wimpy — Teaching"
-listing:
-  - id: current-courses
-    contents: "teaching/courses/*/index.qmd"
-    sort: "date desc"
-    type: grid
-    grid-columns: 2
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    fields: [image, title, description]
 ---
 
 ::: {.content-container}
 
 I teach courses in political methodology, comparative politics, and public policy at Arkansas State University. My approach emphasizes hands-on data analysis, real-world applications, and building practical skills that students carry into their careers.
 
-## Current Courses
+## Fall 2026
 
-:::{#current-courses}
-:::
+I'm teaching two courses in Fall 2026:
+
+- **PLSC 66003 — Advanced Political Analysis** *(graduate)*. Quantitative methods for political science in R: inference, linear regression, maximum likelihood, diagnostics, and reproducible reporting with Quarto.
+- **PLSC 4489V / 6680V — Election Administration and Voting** *(cross-listed undergraduate/graduate)*. A seminar on how American elections actually get run --- officials, laws, machines, and the research on all three.
+
+Course sites will appear here closer to the start of the semester. If you're a prospective or enrolled student and want to know more in the meantime, [email me](mailto:cwimpy@astate.edu).
 
 ---
 

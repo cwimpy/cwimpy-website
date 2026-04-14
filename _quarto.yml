@@ -3,18 +3,16 @@ project:
   output-dir: _site
   resources:
     - "images/*.webp"
-  # Explicit render list: courses are drafted until they launch, so we
-  # exclude their content/, assignments/, schedule.qmd, resources.qmd.
-  # Only the course landing pages ship. Remove the `!…` lines below when
-  # the course is ready to go live.
+  # Explicit render list: all course pages are excluded until content is
+  # ready to ship. The course .qmd files stay in git — they just don't
+  # get rendered or published. To launch:
+  #   1. Remove the "teaching/courses/" exclusion below, and
+  #   2. Add `teaching/courses/*/index.qmd` as an include, and
+  #   3. Restore the course-grid listing in teaching.qmd.
   render:
     - "*.qmd"
     - "posts/**/*.qmd"
-    - "teaching/courses/*/index.qmd"
-    - "!teaching/courses/plsc-66003-fall2026/content/**"
-    - "!teaching/courses/plsc-66003-fall2026/assignments/**"
-    - "!teaching/courses/plsc-66003-fall2026/schedule.qmd"
-    - "!teaching/courses/plsc-66003-fall2026/resources.qmd"
+    - "!teaching/courses/**"
 
 freeze: true
 

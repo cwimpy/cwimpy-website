@@ -2,7 +2,7 @@
 title: "PLSC 66003: Advanced Political Analysis"
 description: "Graduate-level quantitative methods for political science using R."
 date: "2026-08-19"
-draft: true
+draft: false
 image: /images/og/plsc-66003-fall2026.png
 twitter-card:
   image: /images/og/plsc-66003-fall2026.png

@@ -1,0 +1,107 @@
+---
+title: "PLSC 4489V / 6680V: Election Administration and Voting"
+description: "How American elections actually get run — and what that means for who gets to vote."
+date: "2026-08-19"
+draft: false
+categories: [undergraduate, graduate, elections, policy]
+image: /images/og/plsc-4489v-fall2026.png
+twitter-card:
+  image: /images/og/plsc-4489v-fall2026.png
+open-graph:
+  image: /images/og/plsc-4489v-fall2026.png
+  image-alt: "PLSC 4489V / 6680V — Election Administration and Voting"
+page-layout: full
+toc: false
+title-block-style: none
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+          .course-page.course-plsc4489v {
+            --course-accent: #2c5d8f;
+            --course-accent-soft: rgba(44, 93, 143, 0.10);
+            --course-accent-on: #ffffff;
+          }
+          [data-bs-theme="dark"] .course-page.course-plsc4489v,
+          .quarto-dark .course-page.course-plsc4489v {
+            --course-accent: #7fb0d6;
+            --course-accent-soft: rgba(127, 176, 214, 0.14);
+            --course-accent-on: #0e2338;
+          }
+          header#title-block-header { display: none; }
+        </style>
+---
+
+::: {.content-container .course-page .course-plsc4489v}
+
+::: {.course-hero}
+::: {.course-hero-text}
+[{{< fa landmark-dome >}} PLSC 4489V / 6680V · Fall 2026]{.course-chip}
+
+# Election Administration and Voting {.course-title}
+
+[Cross-listed undergraduate and graduate seminar on how American elections actually get run --- the officials, the machines, the laws, and the research --- and what that plumbing means for who gets to vote.]{.course-tagline}
+:::
+:::
+
+::: {.course-meta-bar}
+::: {.course-meta-cell}
+[Credits]{.label}
+[3]{.value}
+:::
+::: {.course-meta-cell}
+[Meets]{.label}
+[1×/wk]{.value}
+:::
+::: {.course-meta-cell}
+[Format]{.label}
+[Seminar]{.value}
+:::
+::: {.course-meta-cell}
+[Instructor]{.label}
+[[Wimpy](mailto:cwimpy@astate.edu)]{.value}
+:::
+:::
+
+## Overview
+
+This cross-listed undergraduate/graduate course introduces students to the field of **election administration** --- the people, processes, laws, and technology that make voting possible in the United States. We read foundational and current research on election officials, voter registration, voting systems, ballot design, voting rights, rural and urban election challenges, and the integrity and accessibility of American elections.
+
+Graduate students (PLSC 6680V) complete additional readings and a research paper; undergraduates (PLSC 4489V) complete a shorter applied project.
+
+## What you'll learn
+
+::: {.learning-objectives}
+- Describe the institutional landscape of U.S. election administration, from precinct to secretary of state
+- Read and evaluate empirical research on voting, voters, and election officials
+- Identify the tradeoffs behind contested policy choices (voter ID, mail voting, polling-place consolidation, etc.)
+- Communicate research findings to both academic and public audiences
+:::
+
+## Logistics
+
+::: {.course-meta-bar}
+::: {.course-meta-cell}
+[Meeting time]{.label}
+[TBD]{.value}
+:::
+::: {.course-meta-cell}
+[Location]{.label}
+[TBD]{.value}
+:::
+::: {.course-meta-cell}
+[Office]{.label}
+[HSS 3007]{.value}
+:::
+::: {.course-meta-cell}
+[Office hours]{.label}
+[[By appt.]({{< var scheduling >}})]{.value}
+:::
+:::
+
+## Coming together
+
+Syllabus, schedule, and readings will be posted closer to the start of the term. If you're a prospective student and want to know more, [send me a note](mailto:cwimpy@astate.edu).
+
+:::

@@ -2454,14 +2454,17 @@ a {
   border-radius: $radius-full;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
+  // Decorative pulsing dot — purely visual, hidden from screen readers.
+  // The "IN PROGRESS" text does the communicating.
   &::before {
     content: "";
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #b07a1f;
-    // Soft pulse so the pill feels alive, not static
     animation: pill-pulse 2.4s ease-in-out infinite;
+    // ::before pseudos can't take aria attrs; generated content is already
+    // reliably ignored by AT here because content is empty.
   }
 }
 

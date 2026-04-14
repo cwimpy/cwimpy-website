@@ -4,7 +4,7 @@ author: "Cameron Wimpy"
 date: "2026-04-13"
 date-modified: last-modified
 categories: [R, package, rural, methodology, rurality]
-description: "A new R package that puts USDA's Rural–Urban Continuum Codes, Commuting Areas, and a composite rurality score one install away — no more hunting USDA spreadsheets."
+description: "A new R package that puts USDA's Rural–Urban Continuum Codes, Commuting Areas, and a composite rurality score."
 image: "hex.png"
 ---
 

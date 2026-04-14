@@ -60,6 +60,10 @@ PAGES = [
      "Advanced|Political Analysis",
      "Graduate quantitative methods in R"),
 
+    ("plsc-4489v-fall2026", "PLSC 4489V / 6680V · Fall 2026",
+     "Election Administration|and Voting",
+     "How American elections actually get run"),
+
     ("404", "Not Found",
      "Page not found",
      "Looks like you wandered off the Ridge."),

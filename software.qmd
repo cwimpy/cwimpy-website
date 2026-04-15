@@ -84,6 +84,22 @@ A web application for computing and exploring rurality scores across U.S. commun
 
 ---
 
+## Templates
+
+::: {.software-card}
+### wimpy-paper
+Quarto + Typst manuscript template for academic papers. Ships with APSA citation style, sensible typography and spacing defaults, YAML-driven metadata (authors, affiliations, ORCID, abstract, keywords), and a single `manuscript.qmd` entry point. Typst renders in a fraction of the time LaTeX takes, and the format is easily retargeted to other disciplines by swapping the `.csl` file.
+
+**Install:**
+```bash
+quarto use template cwimpy/wimpy-paper
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/wimpy-paper){.btn-pub}
+:::
+
+---
+
 *Have questions about any of these projects? [Get in touch.](contact.qmd)*
 
 :::

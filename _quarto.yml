@@ -25,7 +25,7 @@ website:
     type: overlay
   google-analytics: "G-TYNMV5ZKBT"
   back-to-top-navigation: true
-  llms-txt: true
+  llms-txt: true  
   twitter-card:
     image: "/images/og/index.png"
     card-style: summary_large_image

@@ -113,7 +113,7 @@ A few things on the roadmap:
   make that kind of analysis one line of code.)
 - **RUCA on a county-aggregate basis** for users who need commuting-flow
   information without descending to ZIP level.
-- **Vignettes** for common applied workflowsm which involve merging onto survey data,
+- **Vignettes** for common applied workflows, which involve merging onto survey data,
   stratifying outcomes by rurality, building the kind of figures that make
   rural variation legible to readers who don't live there.
 

@@ -51,7 +51,7 @@ rurality_install
 :::: {.software-card .has-media}
 ::: {.software-card-body}
 ### slxr (R)
-Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition --- no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods.
+Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition with no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods.
 
 **Install:**
 ```r
@@ -84,11 +84,37 @@ A web application for computing and exploring rurality scores across U.S. commun
 
 ---
 
+## Typesetting & Bibliography
+
+::: {.software-card}
+### ab-annotate
+Cross-format package for producing annotated bibliographies that display both abstracts and user-written annotations beneath each citation entry. Provides three independent implementations that share the same `.bib` file format: a **LaTeX** biblatex package, a **Typst** module, and a **Quarto** Lua filter (targeting PDF, HTML, Typst, and Word). Reads standard `abstract` and `annotation`/`annote` BibTeX fields. No custom entry types are required to get started.
+
+**Use:** clone or download from GitHub, then load the LaTeX `.sty`, Typst module, or Quarto Lua filter alongside your `.bib` file.
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/ab-annotate){.btn-pub}
+:::
+
+---
+
 ## Templates
 
 ::: {.software-card}
+### astate-pres
+Arkansas State University presentation templates for **Beamer (LaTeX)** and **revealjs (Quarto)**, available with six installable Quarto extensions: a generic A-State pair plus unit-specific variants for GLP (Government, Law & Policy) and IRI (Institute for Rural Initiatives). All share Inter + Fraunces typography, A-State brand colors, ORCID/affiliation metadata handling, and a `Makefile` build workflow; variants differ only in logo and contact-slide content.
+
+**Install (generic A-State):**
+```bash
+quarto use template cwimpy/astate-pres/astate-beamer
+quarto use template cwimpy/astate-pres/astate-revealjs
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/astate-pres){.btn-pub}
+:::
+
+::: {.software-card}
 ### wimpy-paper
-Quarto + Typst manuscript template for academic papers. Ships with APSA citation style, sensible typography and spacing defaults, YAML-driven metadata (authors, affiliations, ORCID, abstract, keywords), and a single `manuscript.qmd` entry point. Typst renders in a fraction of the time LaTeX takes, and the format is easily retargeted to other disciplines by swapping the `.csl` file.
+Quarto + Typst manuscript template for academic papers. It uses APSA citation style, sensible typography and spacing defaults, YAML-driven metadata (authors, affiliations, ORCID, abstract, keywords), and a single `manuscript.qmd` entry point. Typst renders in a fraction of the time LaTeX takes, and the format is easily shifted to other disciplines by swapping the `.csl` file.
 
 **Install:**
 ```bash
@@ -96,6 +122,18 @@ quarto use template cwimpy/wimpy-paper
 ```
 
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/wimpy-paper){.btn-pub}
+:::
+
+::: {.software-card}
+### nsf-proposal
+Quarto + Typst template for NSF proposals. Produces PAPPG-compliant PDFs (NSF 24-1) with Times New Roman 11pt, 1″ margins, correct line spacing, and no page numbers (Research.gov auto-paginates). Each upload component renders as an independent PDF via a `Makefile` build system, with files numbered to match the Research.gov upload order. An R-powered checklist auto-flags placeholders, missing required sections, and tracks completion before submission. Includes stubs for project summary, description, references, budget justification, facilities, data management, synergistic activities, mentoring plan, and current & pending.
+
+**Install:**
+```bash
+quarto use template cwimpy/nsf-proposal
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/nsf-proposal){.btn-pub}
 :::
 
 ---

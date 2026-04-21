@@ -88,11 +88,16 @@ A web application for computing and exploring rurality scores across U.S. commun
 
 ::: {.software-card}
 ### ab-annotate
-Cross-format package for producing annotated bibliographies that display both abstracts and user-written annotations beneath each citation entry. Provides three independent implementations that share the same `.bib` file format: a **LaTeX** biblatex package (available on CTAN as [`biblatex-abs-annote`](https://ctan.org/pkg/biblatex-abs-annote), shipping with TeX Live and MiKTeX), a **Typst** module (manifest ready for Typst Universe), and a **Quarto** extension (Lua filter targeting PDF, HTML, Typst, and Word). Reads standard `abstract` and `annotation`/`annote` BibTeX fields. No custom entry types are required to get started.
+Cross-format package for producing annotated bibliographies that display both abstracts and user-written annotations beneath each citation entry. Provides three independent implementations that share the same `.bib` file format: a **LaTeX** biblatex package (available on CTAN as [`biblatex-abs-annote`](https://ctan.org/pkg/biblatex-abs-annote), shipping with TeX Live and MiKTeX), a **Typst** module (published on [Typst Universe](https://typst.app/universe/package/ab-annotate) as `ab-annotate`), and a **Quarto** extension (Lua filter targeting PDF, HTML, Typst, and Word). Reads standard `abstract` and `annotation`/`annote` BibTeX fields. No custom entry types are required to get started.
 
 **Install (LaTeX via CTAN):**
 ```bash
 tlmgr install biblatex-abs-annote
+```
+
+**Import (Typst Universe):**
+```typst
+#import "@preview/ab-annotate:0.1.0": annotated-bib
 ```
 
 **Install (Quarto extension):**
@@ -100,10 +105,11 @@ tlmgr install biblatex-abs-annote
 quarto add cwimpy/ab-annotate
 ```
 
-For Typst, clone and `#import "ab-annotate.typ": annotated-bib` pending Typst Universe publication. A working Quarto example lives in [`examples/quarto/`](https://github.com/cwimpy/ab-annotate/tree/main/examples/quarto).
+A working Quarto example lives in [`examples/quarto/`](https://github.com/cwimpy/ab-annotate/tree/main/examples/quarto).
 
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/ab-annotate){.btn-pub}
 [{{< fa box >}} CTAN](https://ctan.org/pkg/biblatex-abs-annote){.btn-pub}
+[{{< fa cube >}} Typst Universe](https://typst.app/universe/package/ab-annotate){.btn-pub}
 :::
 
 ---

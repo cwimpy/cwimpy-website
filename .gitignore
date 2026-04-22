@@ -49,6 +49,14 @@ pip-delete-this-directory.txt
 ehthumbs.db
 Thumbs.db
 
+# macOS duplicate-folder cruft from iCloud / Dropbox sync conflicts
+* 2
+* 2.*
+* 3
+* 3.*
+** 2
+** 2/*
+
 # Windows
 Desktop.ini
 $RECYCLE.BIN/

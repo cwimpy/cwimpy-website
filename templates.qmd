@@ -1,0 +1,152 @@
+---
+title: "Templates"
+description: "A collection of Quarto + Typst templates for academic writing, reports, presentations, and administration."
+---
+
+::: {.content-container}
+
+A collection of [Quarto](https://quarto.org) + [Typst](https://typst.app) templates I use day-to-day and have cleaned up for public use. Each one installs as a Quarto extension via a single command, then set the `format:` field in your `.qmd` and go.
+
+[{{< fa brands github >}} All templates on GitHub](https://github.com/cwimpy/typst-templates){.btn-pub}
+
+## Research & publishing
+
+:::: {.template-grid}
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/working-paper">
+  ![](/images/templates/working-paper.png){.template-thumb fig-alt="Working paper template thumbnail"}
+</a>
+### working-paper
+Double-spaced manuscript with title page, abstract, keywords, ORCID footnote affiliations, and a bibliography with CSL support.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/cover-letter">
+  ![](/images/templates/cover-letter.png){.template-thumb fig-alt="Cover letter template thumbnail"}
+</a>
+### cover-letter
+Journal submission cover letter with letterhead-style sender block, recipient, and auto-formatted date.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/peer-review-memo">
+  ![](/images/templates/peer-review-memo.png){.template-thumb fig-alt="Peer review memo template thumbnail"}
+</a>
+### peer-review-memo
+Structured memo for journal peer reviews — manuscript metadata header, summary, major and minor comments.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/review-response">
+  ![](/images/templates/review-response.png){.template-thumb fig-alt="Review response template thumbnail"}
+</a>
+### review-response
+Point-by-point response to reviewers with gray reviewer-comment blocks and styled "Response:" replies.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/nsf-proposal">
+  ![](/images/templates/nsf-proposal.png){.template-thumb fig-alt="NSF proposal template thumbnail"}
+</a>
+### nsf-proposal
+PAPPG-compliant multi-document NSF proposal with a Makefile build system and section-by-section PDFs matching Research.gov upload order.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/cv">
+  ![](/images/templates/cv.png){.template-thumb fig-alt="CV template thumbnail"}
+</a>
+### cv
+Academic CV with icon-decorated contact header (Font Awesome + academicons), clean section headers, and entry helpers for employment, publications, teaching, and service.
+:::
+
+::::
+
+## Communications
+
+:::: {.template-grid}
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/report">
+  ![](/images/templates/report.png){.template-thumb fig-alt="Report template thumbnail"}
+</a>
+### report
+Formal project or grant report with a cover page, running header and footer, accent-colored block headings, and note / tip / important / warning callouts.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/policy-brief">
+  ![](/images/templates/policy-brief.png){.template-thumb fig-alt="Policy brief template thumbnail"}
+</a>
+### policy-brief
+Short skim-friendly brief with a colored banner, key-findings box, pull-quote sidebar, recommendations block, and a citation footer.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/poster">
+  ![](/images/templates/poster.png){.template-thumb fig-alt="Conference poster template thumbnail"}
+</a>
+### poster
+A0 landscape conference poster with title banner, hero pull-quote, stat cards, numbered chips, and optional footer logos.
+:::
+
+::::
+
+## Teaching
+
+:::: {.template-grid}
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/notes">
+  ![](/images/templates/notes.png){.template-thumb fig-alt="Lecture notes template thumbnail"}
+</a>
+### notes
+Lecture or long-form notes with numbered headings, a toggle-able table of contents, colored theorem / definition / example boxes, and syntax-highlighted code.
+:::
+
+::::
+
+## Administration
+
+:::: {.template-grid}
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/letterhead">
+  ![](/images/templates/letterhead.png){.template-thumb fig-alt="Letterhead template thumbnail"}
+</a>
+### letterhead
+Generic institutional letter with configurable logos, YAML-driven footer, recipient address block, and optional signature image.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/memo">
+  ![](/images/templates/memo.png){.template-thumb fig-alt="Memo template thumbnail"}
+</a>
+### memo
+Generic institutional memo — To / From / Date / Re header, optional department branding, signature and co-signatory blocks.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/meeting-agenda">
+  ![](/images/templates/meeting-agenda.png){.template-thumb fig-alt="Meeting agenda template thumbnail"}
+</a>
+### meeting-agenda
+Department or committee agenda and minutes — members, apologies, guests, and structured agenda sections.
+:::
+
+::: {.template-card}
+<a href="https://github.com/cwimpy/typst-templates/tree/main/sign-in-sheet">
+  ![](/images/templates/sign-in-sheet.png){.template-thumb fig-alt="Sign-in sheet template thumbnail"}
+</a>
+### sign-in-sheet
+Grouped signature tables for meetings — one section per unit, blank print-name and signature columns.
+:::
+
+::::
+
+---
+
+*These templates are MIT-licensed and pull requests are welcome. If you'd like a template added for a specific use case, [get in touch](contact.qmd).*
+
+:::

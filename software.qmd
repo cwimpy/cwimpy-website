@@ -51,13 +51,14 @@ rurality_install
 :::: {.software-card .has-media}
 ::: {.software-card-body}
 ### slxr (R)
-Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition with no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods. CRAN submission (v0.1.1) is currently under review.
+Spatial-X (SLX) regression models for applied researchers. Provides a formula-based interface with first-class support for variable-specific weights matrices, higher-order spatial lags, temporally-lagged spatial variables, and tidy direct/indirect/total effects decomposition with no matrix inversion or simulation required. Built to center SLX rather than treat it as a consolation prize for SAR, and to make the variable-specific-`W` approach from [Wimpy, Whitten, and Williams (2021)](https://doi.org/10.1086/710089) easy to actually use. `modelsummary`-compatible via `tidy()` and `glance()` methods. Now available on [CRAN](https://cran.r-project.org/package=slxr).
 
-**Install (GitHub):**
+**Install:**
 ```r
-remotes::install_github("cwimpy/slxr")
+install.packages("slxr")
 ```
 
+[{{< fa brands r-project >}} CRAN](https://cran.r-project.org/package=slxr){.btn-pub}
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/slxr){.btn-pub}
 [{{< fa book >}} Documentation](https://cwimpy.github.io/slxr/){.btn-pub}
 [{{< fa file-lines >}} Paper](https://doi.org/10.1086/710089){.btn-pub}
@@ -117,6 +118,14 @@ A working Quarto example lives in [`examples/quarto/`](https://github.com/cwimpy
 ## Templates
 
 ::: {.software-card}
+### typst-templates
+A collection of Quarto + Typst templates for common academic documents. Right now I have working papers, CVs, posters, policy briefs, reports, peer reviews, cover letters, and administrative documents. Each downloads as a Quarto extension you can install with one command.
+
+[{{< fa th >}} Browse all templates](/templates.html){.btn-pub}
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/typst-templates){.btn-pub}
+:::
+
+::: {.software-card}
 ### astate-pres
 Arkansas State University presentation templates for **Beamer (LaTeX)** and **revealjs (Quarto)**, available with six installable Quarto extensions: a generic A-State pair plus unit-specific variants for GLP (Government, Law & Policy) and IRI (Institute for Rural Initiatives). All share Inter + Fraunces typography, A-State brand colors, ORCID/affiliation metadata handling, and a `Makefile` build workflow; variants differ only in logo and contact-slide content.
 
@@ -127,30 +136,6 @@ quarto use template cwimpy/astate-pres/astate-revealjs
 ```
 
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/astate-pres){.btn-pub}
-:::
-
-::: {.software-card}
-### wimpy-paper
-Quarto + Typst manuscript template for academic papers. It uses APSA citation style, sensible typography and spacing defaults, YAML-driven metadata (authors, affiliations, ORCID, abstract, keywords), and a single `manuscript.qmd` entry point. Typst renders in a fraction of the time LaTeX takes, and the format is easily shifted to other disciplines by swapping the `.csl` file.
-
-**Install:**
-```bash
-quarto use template cwimpy/wimpy-paper
-```
-
-[{{< fa brands github >}} GitHub](https://github.com/cwimpy/wimpy-paper){.btn-pub}
-:::
-
-::: {.software-card}
-### nsf-proposal
-Quarto + Typst template for NSF proposals. Produces PAPPG-compliant PDFs (NSF 24-1) with Times New Roman 11pt, 1″ margins, correct line spacing, and no page numbers (Research.gov auto-paginates). Each upload component renders as an independent PDF via a `Makefile` build system, with files numbered to match the Research.gov upload order. An R-powered checklist auto-flags placeholders, missing required sections, and tracks completion before submission. Includes stubs for project summary, description, references, budget justification, facilities, data management, synergistic activities, mentoring plan, and current & pending.
-
-**Install:**
-```bash
-quarto use template cwimpy/nsf-proposal
-```
-
-[{{< fa brands github >}} GitHub](https://github.com/cwimpy/nsf-proposal){.btn-pub}
 :::
 
 ---

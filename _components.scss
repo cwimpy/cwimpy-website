@@ -123,7 +123,9 @@ a {
   width: 100%;
   max-width: 280px;
   height: auto;
-  border-radius: $radius-lg;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 8px 32px var(--color-shadow);
 }
 

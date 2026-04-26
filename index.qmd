@@ -42,10 +42,10 @@ listing:
 <picture>
   <source
     type="image/webp"
-    srcset="images/profile-360.webp 360w, images/profile-720.webp 720w"
+    srcset="images/headshot-360.webp 360w, images/headshot-720.webp 720w"
     sizes="(max-width: 768px) 200px, 280px">
   <img
-    src="images/profile.png"
+    src="images/headshot.png"
     alt="Cameron Wimpy"
     class="profile-image"
     width="720"

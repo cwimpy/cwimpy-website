@@ -1,5 +1,6 @@
 ---
 title: "Research"
+freeze: false
 description: "Publications and working papers by Cameron Wimpy on comparative, politics, election administration, political methodology, and rural public policy."
 image: /images/og/research.png
 twitter-card:

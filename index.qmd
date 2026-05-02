@@ -76,29 +76,36 @@ I formerly served as the Research Director in the [MIT Election Data and Science
 
 ::::: {.featured-card}
 :::: {.featured-card-body}
-[Featured · Forthcoming]{.featured-chip}
+[Featured · New]{.featured-chip}
 
 ### [Rural Election Administration in the Lower Mississippi Delta](research.html) {.featured-title}
 
-[with William P. McLean · *Journal of Election Administration Research & Practice*, 2026]{.featured-meta}
+[with William P. McLean · *Journal of Election Administration Research & Practice* 5(1): 70–95, 2026]{.featured-meta}
 
 [Drawing on interviews with local election officials across 17 counties in six states, this study traces how rural election administration actually runs in the Delta. We elucidate the communication gaps left by shrinking local media, the fight to recruit poll workers amid population decline, the vote-by-mail and bipartisan-balance challenges. We also discuss the quieter advantages of small populations, high local trust, and strong federal and state support.]{.featured-hook}
 
 ::: {.publication-buttons}
+[<i class="fas fa-file-pdf"></i> PDF](uploads/mclean2026rural.pdf){.btn-pub}
+[<i class="fas fa-external-link-alt"></i> Publisher](https://electioncenter.org/wp-content/uploads/2026/04/JEARP-Volume-05-Issue-01.pdf){.btn-pub}
 [<i class="fas fa-quote-right"></i> Cite](#){.btn-pub .citation-btn
-  data-citation="@article{mclean2026rural,&#10;  author = {William P. McLean and Cameron Wimpy},&#10;  journal = {Journal of Election Administration Research &amp; Practice},&#10;  title = {Rural Election Administration in the Lower Mississippi Delta},&#10;  volume = {Forthcoming},&#10;  year = {2026}&#10;}"
-  data-apsa="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* Forthcoming."
-  data-apa="McLean, W. P., &amp; Wimpy, C. (2026). Rural Election Administration in the Lower Mississippi Delta. *Journal of Election Administration Research &amp; Practice*, *Forthcoming*."
-  data-mla="McLean, William P., and Cameron Wimpy. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice*, 2026."
-  data-chicago="McLean, William P. and Cameron Wimpy. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* Forthcoming."}
+  data-citation="@article{mclean2026rural,&#10;  author = {William P. McLean and Cameron Wimpy},&#10;  title = {Rural Election Administration in the Lower Mississippi Delta},&#10;  year = {2026},&#10;  journal = {Journal of Election Administration Research &amp; Practice},&#10;  volume = {5},&#10;  number = {1},&#10;  pages = {70--95},&#10;  url = {https://electioncenter.org/wp-content/uploads/2026/04/JEARP-Volume-05-Issue-01.pdf}&#10;}"
+  data-apsa="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70--95."
+  data-apa="McLean, W. P., &amp; Wimpy, C. (2026). Rural Election Administration in the Lower Mississippi Delta. *Journal of Election Administration Research &amp; Practice*, *5*(1), 70--95."
+  data-mla="McLean, William P., and Cameron Wimpy. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice*, vol. 5, no. 1, 2026, pp. 70--95."
+  data-chicago="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70-95."}
+[<i class="fas fa-align-left"></i> Summary](#){.btn-pub .abstract-toggle data-target="abstract-mclean2026rural-home"}
+:::
+
+::: {.abstract-full #abstract-mclean2026rural-home style="display: none; margin-top: 10px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;"}
+**Abstract:** Less than one-fifth of the voting-age population lives in rural areas, yet nearly two-thirds of elections occur in jurisdictions classified as rural by the U.S. government. This study examines election administration in the Lower Mississippi Delta, a unique rural region with distinct socioeconomic and geographic challenges. Through qualitative interviews with local election officials (LEOs) across 17 counties in six states, this research identifies key challenges---including communication barriers due to declining local media, difficulties in recruiting poll workers amid population decline, issues with vote-by-mail delivery, and challenges in maintaining bipartisan poll worker balance. Conversely, LEOs report opportunities such as enhanced voter access due to smaller populations, high local trust, and robust federal and state support---particularly during the COVID-19 pandemic. These findings highlight the interplay of rurality and election administration, offering insights for LEOs, policymakers, and researchers.
 :::
 ::::
 
 :::: {.featured-card-aside}
 ::: {.featured-card-media}
 <picture>
-  <source type="image/webp" srcset="images/delta-study-450.webp 450w, images/delta-study-900.webp 900w" sizes="(max-width: 768px) 92vw, 420px">
-  <img src="images/delta-study-900.png" alt="Study area map of the Lower Mississippi Delta. The 17 sample counties spanning six states are highlighted in green against a gray background of the surrounding region." width="900" height="900" loading="lazy">
+  <source type="image/webp" srcset="images/map-450.webp 450w, images/map-900.webp 900w" sizes="(max-width: 768px) 92vw, 420px">
+  <img src="images/map-900.png" alt="Study area map of the Lower Mississippi Delta. The 17 sample counties spanning six states are highlighted against a gray background of the surrounding region." width="900" height="900" loading="lazy">
 </picture>
 [17 counties · 6 states · study area]{.featured-card-media-caption}
 :::
@@ -106,6 +113,23 @@ I formerly served as the Research Director in the [MIT Election Data and Science
 [Less than one-fifth of the voting-age population lives in rural areas, yet nearly two-thirds of U.S. elections are administered in rural jurisdictions.]{.featured-tag}
 ::::
 :::::
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.abstract-toggle').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById(this.getAttribute('data-target'));
+      if (!target) return;
+      const hidden = target.style.display === 'none' || target.style.display === '';
+      target.style.display = hidden ? 'block' : 'none';
+      this.innerHTML = hidden
+        ? '<i class="fas fa-eye-slash"></i> Hide Summary'
+        : '<i class="fas fa-align-left"></i> Summary';
+    });
+  });
+});
+</script>
 
 ::::::
 

@@ -14,7 +14,7 @@ project:
     - "posts/**/*.qmd"
     - "!teaching/courses/**"
 
-freeze: true
+freeze: auto
 
 website:
   title: "Cameron Wimpy"

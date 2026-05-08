@@ -69,6 +69,45 @@ install.packages("slxr")
 :::
 ::::
 
+:::: {.software-card .has-media}
+::: {.software-card-body}
+### spimpacts (R)
+Model-agnostic interpretation layer for spatial econometric models. Computes the partial-derivatives matrix, partitions direct, indirect, and total effects by order of the weights matrix, produces simulation-based uncertainty intervals, and generates origin-specific shock maps and per-unit decay plots. Built around the general approach in [Whitten, Williams, and Wimpy (2021)](https://doi.org/10.1017/psrm.2019.9). Ships with first-class support for `slxr` SLX fits and `spatialreg` SAR/SDM fits.
+
+**Install:**
+```r
+# install.packages("remotes")
+remotes::install_github("cwimpy/spimpacts")
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/spimpacts){.btn-pub}
+[{{< fa file-lines >}} Paper](https://doi.org/10.1017/psrm.2019.9){.btn-pub}
+:::
+
+::: {.software-card-media}
+![spimpacts hex sticker](images/spimpacts-hex.png){fig-alt="spimpacts package hex sticker: three overlapping decay-plot lines in yellow, white, and slate-blue on a navy ground, evoking the per-unit decay plots the package produces"}
+:::
+::::
+
+:::: {.software-card .has-media}
+::: {.software-card-body}
+### certify (R)
+Generates branded landscape PDF certificates with configurable color themes, optional logos, decorative borders, laurels, and corner ornaments. Built on base R's `grid` graphics with no LaTeX or Quarto dependency required. Suitable for academic awards, professional recognition, and similar uses.
+
+**Install:**
+```r
+# install.packages("remotes")
+remotes::install_github("cwimpy/certify")
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/certify){.btn-pub}
+:::
+
+::: {.software-card-media}
+![certify hex sticker](images/certify-hex.png){fig-alt="certify package hex sticker: an illustrated landscape certificate with gold border centered on a cream hexagon with navy border, italic 'certify' wordmark below"}
+:::
+::::
+
 ---
 
 ## Applications
@@ -85,7 +124,7 @@ A web application for computing and exploring rurality scores across U.S. commun
 
 ---
 
-## Typesetting & Bibliography
+## Typesetting
 
 ::: {.software-card}
 ### ab-annotate
@@ -111,6 +150,18 @@ A working Quarto example lives in [`examples/quarto/`](https://github.com/cwimpy
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/ab-annotate){.btn-pub}
 [{{< fa box >}} CTAN](https://ctan.org/pkg/biblatex-abs-annote){.btn-pub}
 [{{< fa cube >}} Typst Universe](https://typst.app/universe/package/ab-annotate){.btn-pub}
+:::
+
+::: {.software-card}
+### nametags
+Pure-Typst package for conference nametag badges (4×3 in lanyard inserts) and table tents (tabloid landscape, folded to 11×4.25 in), driven from any CSV or iterable. No LaTeX, no R, no preprocessing — `typst compile` produces print-ready output directly. Ships with two ready-to-go layouts (`nametag` and `nametent`) plus a small helper API for customizing affiliation, conference, and logo metadata.
+
+**Import (local checkout):**
+```typst
+#import "/path/to/nametags-package/lib.typ": nametag, nametent
+```
+
+[{{< fa brands github >}} GitHub](https://github.com/cwimpy/typst-templates/tree/main/nametags-package){.btn-pub}
 :::
 
 ---

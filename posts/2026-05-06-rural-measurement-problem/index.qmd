@@ -1,0 +1,154 @@
+---
+title: "The Rural Measurement Problem"
+subtitle: "Why a finding about rural America is only as good as the rurality measure that produced it"
+author: "Cameron Wimpy"
+date: "2026-05-06"
+date-modified: last-modified
+categories: [rural-notes, measurement, methodology, rurality]
+description: "Five ways to be rural in U.S. survey data — and why the choice often drives the result. Opening post in the Rural Notes series."
+image: "featured.png"
+draft: true
+format:
+  html:
+    toc: true
+    toc-depth: 2
+  typst:
+    pdf-engine: typst
+    date-format: "M/D/YYYY"
+    highlight-style: none
+    margin:
+      top: 1in
+      left: 1in
+      right: 1in
+      bottom: 1in
+    mainfont: "Minion Pro"
+    sansfont: "Myriad Pro"
+    template: "../../templates/post-template.typ"
+---
+
+::: {.content-visible when-format="html"}
+::: {.callout-note title="Rural Notes"}
+This is the opening post in [Rural Notes](/rural.html), a working-notes series
+on rural measurement and rural political behavior. Posts in the series ship
+with replication code and a downloadable PDF.
+:::
+:::
+
+<!-- ============================================================
+OUTLINE / DRAFT — flesh out the prose; structure is intentional.
+The argument arc:
+  Hook (one finding, two measures, two answers)
+  → Five ways to be rural
+  → When they agree / when they don't
+  → Why the divergence is substantive, not housekeeping
+  → What the series will do about it
+============================================================ -->
+
+## A finding is only as good as the measure
+
+<!-- Lead with one concrete example. Best candidates:
+     (a) rural Trump support gap that shrinks/grows depending on whether
+         you use F_METRO vs. USR_SELFID in Pew ATP, or
+     (b) rural attitudes toward immigration where RUCC and Cramer-style
+         cultural-rural produce different stories.
+     Two short paragraphs. Name the puzzle, don't resolve it yet. -->
+
+The question is not whether rural Americans differ from urban Americans on
+[X] — they do, on almost everything we measure. The question is *which* rural
+Americans, and *how* we know. This post is about that second question, which
+turns out to do more analytical work than most of us treat it as doing.
+
+## Five ways to be rural
+
+Most published work on rural political behavior reaches for one of five
+operationalizations. Each measures something slightly different. None is
+wrong. They are not interchangeable.
+
+### Rural–Urban Continuum Codes (RUCC)
+
+<!-- USDA, county-level, nine-point metro/non-metro scale. Most common in
+     applied work. Available in the rurality package. -->
+
+### Rural–Urban Commuting Areas (RUCA)
+
+<!-- USDA, ZIP-level, commuting-flow-based. Finer grain. Useful when the
+     county is too coarse — e.g. Los Angeles County contains both. -->
+
+### Census/ATP metropolitan indicator (F_METRO)
+
+<!-- Binary metro / non-metro. The default in most public-opinion datasets.
+     Coarse but ubiquitous. -->
+
+### Self-identified urban / suburban / rural (USR_SELFID)
+
+<!-- Pew's USR variable. Captures cultural identification rather than
+     geography. Diverges meaningfully from F_METRO — many suburban
+     residents self-identify as rural. -->
+
+### Cultural-rural (Cramer-style)
+
+<!-- Not a variable on a file. A construct built from regional identity,
+     resentment, and consumption patterns. Hardest to measure in
+     existing data; most consequential for the dependent variables we
+     actually care about. -->
+
+## When the measures agree, and when they don't
+
+<!-- Short empirical section. Use rurality + Pew ATP to show overlap
+     statistics across measures. Probably one figure: 5x5 agreement
+     matrix or a Sankey of how respondents flow across operationalizations.
+     The "diagonal cases" are not the interesting ones; the off-diagonals
+     are where the substantive findings get made or unmade. -->
+
+A first-pass tabulation across Pew ATP Wave [W] illustrates the gap. Roughly
+[X]% of respondents are classified the same way by all five measures. The
+remaining [Y]% sit in a measurement no-man's-land where the choice of
+instrument determines whether they appear in the "rural" cell of any given
+crosstab.
+
+## Why this is substantive, not housekeeping
+
+<!-- The argument: the off-diagonal respondents are systematically different.
+     Self-identified rural / geographically suburban respondents look more
+     like Cramer's "rural consciousness" group than they do like their
+     geographic neighbors. The choice of measure is therefore not neutral
+     even when the headline N stays similar.
+
+     One paragraph on the political-methodology framing: this is a latent-
+     construct problem dressed up as a coding choice. -->
+
+## What this series will do about it
+
+<!-- Preview the next three posts:
+     (1) Rural attitudes on FP using Pew W145 — multiple measures, side by side
+     (2) Review of Cramer / Munis / Jacobs and where measurement stands
+     (3) Rural attitudes on Israel using Pew W143 — religion as a moderator
+
+     Close with the long-game: the eventual fielded survey will include
+     all five measures plus a battery designed to pin down cultural-rural
+     as a latent construct. The posts here are pilot evidence. -->
+
+## Replication
+
+<!-- Code block(s) showing the basic join: Pew ATP + rurality package by
+     county FIPS or ZIP. Link to a GitHub repo or an in-post `code/`
+     directory. -->
+
+::: {.content-visible when-format="html"}
+```r
+library(rurality)
+library(tidyverse)
+# survey_data |> rurality_join(by = "fips")
+```
+:::
+
+::: {.content-visible when-format="typst"}
+*Replication code is included with the online version of this post at
+[cwimpy.com/rural](https://cwimpy.com/rural.html).*
+:::
+
+::: {.content-visible when-format="html"}
+*Rural Notes is a working-notes series. The posts are research-in-progress,
+not finished work. Replication materials and a citable PDF accompany each
+post. Subscribe via [RSS](/rural.xml) for occasional updates.*
+:::

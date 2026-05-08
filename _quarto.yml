@@ -41,6 +41,8 @@ website:
     right:
       - href: posts/index.qmd
         text: Posts
+      - href: rural.qmd
+        text: Rural Notes
       - href: research.qmd
         text: Research
       - href: software.qmd
@@ -49,8 +51,6 @@ website:
         text: Teaching
       - href: cv.qmd
         text: CV
-      - href: now.qmd
-        text: Now
       - icon: rss
         href: posts/index.xml
         aria-label: RSS

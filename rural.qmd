@@ -1,0 +1,89 @@
+---
+title: "Rural Notes"
+description: "Working notes on rural attitudes, policy, and research-in-progress from Cameron Wimpy."
+image: /images/og/rural.png
+twitter-card:
+  image: /images/og/rural.png
+open-graph:
+  image: /images/og/rural.png
+  image-alt: "Rural Notes — Cameron Wimpy"
+freeze: false
+format:
+  html:
+    toc: false
+listing:
+  - id: rural-posts
+    contents: "posts/**/*.qmd"
+    include:
+      categories: "rural-notes"
+    sort: "date desc"
+    type: default
+    fields: [image, date, title, reading-time, description, categories]
+    sort-ui: false
+    filter-ui: false
+    feed:
+      title: "Rural Notes — Cameron Wimpy"
+      type: full
+      items: 20
+    categories: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+:::: content-container
+**Rural Notes** is my working-notes outlet for an ongoing research
+program on rural measurement and rural-related attitudes and policy in
+the United States. My work here is really research-in-progress:
+descriptive analyses, methodological essays, and short reviews of other
+people's work. My aim is to develop, in public and at a sustainable
+pace, the measurement infrastructure and substantive findings that will
+eventually become a fielded survey and a set of peer-reviewed papers.
+
+My organizing premise is that a finding about "rural America" is only
+as good as the rurality measure that produced it. Most published work
+picks one operationalization (e.g., geographic, self-identified,
+density-based, cultural) without justifying the choice. That choice
+often drives the result. My posts here treat the measurement question as
+substantive, not methodological housekeeping, and I hope to apply that
+lens across a variety of domains.
+
+A note on what these posts are *not*. They are not press releases for
+finished work, and they are not opinion pieces. They are my own research
+notes. I plan for any post involving data to come with reproducible code
+and a PDF should anyone need it.
+
+## What to expect
+
+Right now I plan to do four things on a roughly monthly cadence:
+
+- **Measurement essays** that argue for or against a particular way of
+  operationalizing "rural," typically without new data.
+- **Re-analyses of public data** (e.g., Pew ATP, ANES, CES, GSS)
+  applying multiple rurality measures side-by-side to the same
+  substantive question.
+- **Reviews of other people's work**, with attention to what was
+  measured well and what the next round of rural research needs to
+  address.
+- **Open puzzles**: short pieces that name an unanswered question and
+  propose what an ideal survey would have to measure to answer it.
+
+## Posts
+
+::: {#rural-posts}
+:::
+
+## Related work
+
+The methodological backbone for this program is my
+[**rurality**](https://cran.r-project.org/package=rurality) R package,
+which provides USDA Rural–Urban Continuum Codes, Rural–Urban Commuting
+Area codes, and a composite rurality score under a single consistent
+interface. A Stata port is also available (see
+[Software](/software.html) for installation details). For the broader
+research record in this area, see [Research](/research.html).
+
+[Subscribe via RSS](/rural.xml){.btn-pub} [{{< fa brands r-project >}}
+rurality on CRAN](https://cran.r-project.org/package=rurality){.btn-pub}
+[{{< fa envelope >}} Email Cameron](mailto:{{< var email >}}){.btn-pub}
+::::

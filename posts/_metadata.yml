@@ -5,11 +5,17 @@ format:
     date-format: "M/D/YYYY"
     reading-time: true
 
-# Typst PDF config for posts that opt in (add to individual post YAML):
+# Typst PDF config for posts that opt in (add to individual post YAML).
+# `highlight-style: none` is required — the post-template.typ defines `raw`
+# styling but not the syntax-highlighting tokens (NormalTok, FunctionTok,
+# Skylighting, callout, horizontalrule). Until those helpers are added to
+# the template, posts opting in to Typst should also wrap any callouts,
+# block code, or `---` dividers in `::: {.content-visible when-format="html"}`.
 # format:
 #   typst:
 #     pdf-engine: typst
 #     date-format: "M/D/YYYY"
+#     highlight-style: none
 #     margin:
 #       top: 1in
 #       left: 1in

@@ -92,14 +92,14 @@ remotes::install_github("cwimpy/spimpacts")
 :::: {.software-card .has-media}
 ::: {.software-card-body}
 ### certify (R)
-Generates branded landscape PDF certificates with configurable color themes, optional logos, decorative borders, laurels, and corner ornaments. Built on base R's `grid` graphics with no LaTeX or Quarto dependency required. Suitable for academic awards, professional recognition, and similar uses.
+Generates branded landscape PDF certificates with configurable color themes, optional logos, decorative borders, laurels, and corner ornaments. Built on base R's `grid` graphics with no LaTeX or Quarto dependency required. Suitable for academic awards, professional recognition, and similar uses. Now available on [CRAN](https://cran.r-project.org/package=certify).
 
 **Install:**
 ```r
-# install.packages("remotes")
-remotes::install_github("cwimpy/certify")
+install.packages("certify")
 ```
 
+[{{< fa brands r-project >}} CRAN](https://cran.r-project.org/package=certify){.btn-pub}
 [{{< fa brands github >}} GitHub](https://github.com/cwimpy/certify){.btn-pub}
 :::
 

@@ -45,7 +45,7 @@ The page you're looking for isn't here. It's either been moved, renamed, or neve
 - [Home](index.qmd) — the main page
 - [Research](research.qmd) — publications and working papers
 - [Posts](posts/index.qmd) — writing on teaching, research, and academic life
-- [Teaching](teaching.qmd) — courses and course materials
+- [Teaching](teaching.qmd) — current courses
 - [Contact](contact.qmd) — if you think something *should* be here, tell me
 
 :::::

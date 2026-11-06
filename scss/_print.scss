@@ -1,0 +1,189 @@
+// -----------------------------------------------------------------------------
+// Print stylesheet — apply site-wide. Course pages extend this below.
+// Strips chrome, forces high-contrast black-on-white, repeats post title, keeps
+// figures inside their pages, shows link URLs after link text for reference.
+// -----------------------------------------------------------------------------
+@media print {
+  // Chrome strip
+  .navbar,
+  .nav-footer,
+  .nav-footer-left,
+  .nav-footer-center,
+  .nav-footer-right,
+  .site-footer,
+  .footer-bottom,
+  #quarto-back-to-top,
+  .quarto-color-scheme-toggle,
+  #quarto-search,
+  .anchor-section-link,
+  .social-buttons,
+  .btn-social,
+  .publication-buttons,
+  .cv-actions,
+  .comments-section,
+  .giscus,
+  #TOC,
+  .sidebar,
+  .quarto-secondary-nav,
+  .pdf-download,
+  .home-secondary,
+  .featured-research {
+    display: none !important;
+  }
+
+  @page { margin: 0.8in 0.7in; }
+
+  html, body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  body { font-family: 'Source Serif 4', Georgia, serif !important; }
+
+  main, .content-container, .page-columns {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, ul, ol, blockquote { orphans: 3; widows: 3; }
+
+  a {
+    color: black !important;
+    text-decoration: underline !important;
+    word-wrap: break-word;
+  }
+
+  // Inline the URL after external link text (not for anchor/hash links)
+  // Only for post-body paragraphs; leaves nav/inline UI alone.
+  article a[href^="http"]:after,
+  main p a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+    word-break: break-all;
+  }
+  // But don't duplicate if link text already IS the URL
+  article a[href^="http"]:where([class*="download"], [class*="btn"]):after { content: ""; }
+
+  img, figure, table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  pre, code {
+    font-family: 'JetBrains Mono', Menlo, Consolas, monospace !important;
+    font-size: 9.5pt;
+    background: #f4f4f4 !important;
+    color: black !important;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  pre { padding: 0.4em 0.6em; }
+
+  blockquote {
+    border-left: 3px solid #999;
+    padding-left: 0.6em;
+    color: #333 !important;
+    font-style: italic;
+  }
+
+  .callout, .learning-goals, .search-suggestion {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: black !important;
+    padding: 0.5em 0.75em;
+    page-break-inside: avoid;
+  }
+
+  // Quarto title block
+  .quarto-title-block,
+  header#title-block-header {
+    border-bottom: 1pt solid black;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+
+    h1, h1.title {
+      font-family: 'Fraunces', Georgia, serif !important;
+      font-size: 22pt;
+      line-height: 1.1;
+      margin-bottom: 0.2em;
+    }
+    .subtitle, p.subtitle { color: #444 !important; font-style: italic; }
+    .quarto-title-meta {
+      font-size: 9pt;
+      color: #444 !important;
+    }
+  }
+
+  // Post listing should be clean for print (long paginated index)
+  .quarto-listing .listing-item {
+    border-bottom: 1px solid #aaa;
+    padding: 0.6em 0;
+
+    .listing-title { font-size: 13pt; color: black !important; }
+  }
+}
+
+// Print: clean syllabus output — extends site-wide print rules
+@media print {
+  .navbar,
+  .nav-footer,
+  .course-quick-links,
+  .week-actions,
+  #quarto-back-to-top { display: none !important; }
+
+  body {
+    font-size: 11pt;
+    color: black !important;
+    background: white !important;
+  }
+
+  .course-page,
+  .week-page {
+    max-width: 100%;
+  }
+
+  .course-hero {
+    border-bottom: 2pt solid black;
+    grid-template-columns: 1fr;
+    page-break-after: avoid;
+  }
+
+  .course-hero-art { display: none; }
+
+  .course-meta-bar {
+    border: 1pt solid #999;
+    background: white;
+    page-break-inside: avoid;
+  }
+
+  .course-meta-cell {
+    border-right: 1pt solid #999;
+    .value { color: black; }
+  }
+
+  .course-schedule table {
+    page-break-inside: auto;
+    background: white;
+
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+  }
+
+  a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+}

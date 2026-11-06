@@ -13,11 +13,17 @@ project:
     - "*.qmd"
     - "posts/**/*.qmd"
     - "!teaching/courses/**"
+  # Runs after every render (including the one `quarto publish` does), before
+  # anything is uploaded: removes sync-duplicate files from _site and drops
+  # utility pages from the sitemap.
+  post-render:
+    - scripts/post-render.sh
 
 freeze: auto
 
 website:
   title: "Cameron Wimpy"
+  description: "Political Science Research & Teaching"
   site-url: "https://cwimpy.com"
   favicon: "favicon.ico"
   search:
@@ -30,9 +36,9 @@ website:
     image: "/images/og/index.png"
     card-style: summary_large_image
     creator: "@camwimpy"
+  # No site-wide open-graph title/description: setting them here overrode
+  # every page's own title and description in link previews.
   open-graph:
-    title: "Dr. Cameron Wimpy"
-    description: "Political Science Research & Teaching"
     image: "/images/og/index.png"
     image-width: 1200
     image-height: 630
@@ -75,6 +81,7 @@ website:
       - [Software](/software.html)
       - [CV](/cv.html)
       - [Posts](/posts/)
+      - [Rural Notes](/rural.html)
       - [Now](/now.html)
       :::
 
@@ -92,7 +99,7 @@ website:
       #### Also
       - [Institute for Rural Initiatives](https://www.astate.edu/a/iri/)
       - [Arkansas Biosciences Institute](https://www.astate.edu/abi)
-      - [MIT Election Data + Science Lab](http://electionlab.mit.edu)
+      - [MIT Election Data + Science Lab](https://electionlab.mit.edu)
       - [Contact](/contact.html)
       - [RSS feed](/posts/index.xml)
       :::
@@ -126,6 +133,7 @@ format:
     code-copy: true
     lightbox: true
     include-in-header:
+      - _includes/fonts.html
       - _includes/person-schema.html
 
 filters:

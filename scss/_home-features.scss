@@ -1,0 +1,332 @@
+// -----------------------------------------------------------------------------
+// Homepage — Data exhibit (embedded visualization)
+// -----------------------------------------------------------------------------
+.data-exhibit {
+  max-width: 1200px;
+  margin: $space-8 auto $space-6 auto;
+  padding: 0 $space-6;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 0 $space-7 0;
+  }
+}
+
+.data-exhibit-head {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-bottom: $space-4;
+}
+
+:is(h1, h2, h3, h4).data-exhibit-title {
+  font-family: $font-display;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  font-weight: 500;
+  font-size: $text-3xl;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.data-exhibit-subtitle {
+  font-family: $font-body;
+  font-size: $text-lg;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 72ch;
+}
+
+.data-exhibit-figure {
+  position: relative;
+  margin: $space-5 0 $space-3 0;
+  padding: $space-4;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $radius-md;
+  }
+}
+
+// "In progress" pill — amber, right-aligned in its own row above the map.
+// (It used to float over the image's top-right corner, which was blank
+// margin until the map was re-cropped to fill the frame; now Maine is there.)
+.data-exhibit-figure > p:has(> .data-exhibit-pill) {
+  margin: 0 0 $space-3 0;
+  text-align: right;
+}
+
+.data-exhibit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 0.3rem $space-3;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a4d0f;                        // deep amber text
+  background: rgba(255, 249, 235, 0.95);  // warm cream
+  border: 1px solid #d9a44a;              // amber accent
+  border-radius: $radius-full;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  // Decorative pulsing dot — purely visual, hidden from screen readers.
+  // The "IN PROGRESS" text does the communicating.
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #b07a1f;
+    animation: pill-pulse 2.4s ease-in-out infinite;
+    // ::before pseudos can't take aria attrs; generated content is already
+    // reliably ignored by AT here because content is empty.
+  }
+}
+
+@keyframes pill-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(0.85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .data-exhibit-pill::before { animation: none; }
+}
+
+// In dark mode the chart art is on a cream background; keep contrast and tone
+[data-bs-theme="dark"] .data-exhibit-figure,
+.quarto-dark .data-exhibit-figure {
+  background: var(--color-surface);
+}
+
+.data-exhibit-caption {
+  font-family: $font-sans;
+  font-size: $text-xs;
+  letter-spacing: 0.02em;
+  color: var(--color-text-subtle);
+  margin: 0;
+
+  a {
+    color: var(--color-text-muted);
+    border-bottom: 1px dotted var(--color-border);
+    &:hover { color: var(--color-accent); border-color: var(--color-accent); }
+  }
+}
+
+@media (max-width: 768px) {
+  .data-exhibit { padding: 0 $space-4; margin: $space-7 auto $space-5 auto; }
+  :is(h1, h2, h3, h4).data-exhibit-title { font-size: $text-2xl; }
+  .data-exhibit-subtitle { font-size: $text-base; }
+  .data-exhibit-figure { padding: $space-3; }
+}
+
+// -----------------------------------------------------------------------------
+// Homepage — Featured research card
+// -----------------------------------------------------------------------------
+.featured-research {
+  max-width: 1200px;
+  margin: $space-9 auto $space-6 auto;
+  padding: 0 $space-6;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 0 $space-7 0;
+  }
+}
+
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 32px var(--color-shadow);
+  }
+
+  // Topographic decoration inside the card — echoes the hero treatment
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='none' stroke='%231e5f3e' stroke-width='1.2'><path d='M 700 -50 Q 200 200 700 450'/><path d='M 700 0 Q 260 200 700 400'/><path d='M 700 50 Q 320 200 700 350'/><path d='M 700 100 Q 380 200 700 300'/><path d='M 700 150 Q 440 200 700 250'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    opacity: 0.08;
+    z-index: 0;
+  }
+}
+
+[data-bs-theme="dark"] .featured-card::after,
+.quarto-dark .featured-card::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='none' stroke='%239ad9b3' stroke-width='1.2'><path d='M 700 -50 Q 200 200 700 450'/><path d='M 700 0 Q 260 200 700 400'/><path d='M 700 50 Q 320 200 700 350'/><path d='M 700 100 Q 380 200 700 300'/><path d='M 700 150 Q 440 200 700 250'/></svg>");
+  opacity: 0.18;
+}
+
+.featured-card-body {
+  padding: $space-6 $space-6 $space-6 $space-7;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.featured-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+}
+
+:is(h1, h2, h3, h4).featured-title {
+  font-family: $font-display;
+  font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+  font-weight: 600;
+  font-size: $text-3xl;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+  }
+}
+
+.featured-meta {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.featured-hook {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.featured-card-aside {
+  padding: $space-6;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $space-5;
+  align-items: flex-end;
+
+  // "Pull quote" style stat or tagline
+  .featured-tag {
+    font-family: $font-display;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    font-style: italic;
+    font-weight: 400;
+    font-size: $text-xl;
+    line-height: 1.2;
+    color: var(--color-primary);
+    text-align: right;
+    margin: 0;
+    max-width: 24ch;
+  }
+}
+
+// Study-area map slot inside the featured card aside
+.featured-card-media {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  align-self: flex-end;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $radius-sm;
+    background: var(--color-surface);
+    box-shadow: 0 1px 6px var(--color-shadow);
+    padding: $space-2;
+  }
+}
+
+.featured-card-media-caption {
+  font-family: $font-sans;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  text-align: right;
+  align-self: flex-end;
+}
+
+[data-bs-theme="dark"] .featured-card-media img,
+.quarto-dark .featured-card-media img {
+  // On a dark panel, the white study-map background reads as a cream card
+  background: #f6f1e6;
+}
+
+@media (max-width: 768px) {
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+  .featured-card-body { padding: $space-5; }
+  .featured-card-aside {
+    padding: 0 $space-5 $space-5 $space-5;
+    align-items: flex-start;
+    .featured-tag { text-align: left; font-size: $text-xl; }
+  }
+  :is(h1, h2, h3, h4).featured-title { font-size: $text-2xl; }
+}

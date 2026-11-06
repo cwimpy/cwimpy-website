@@ -1,0 +1,118 @@
+// -----------------------------------------------------------------------------
+// Publication entries & buttons
+// -----------------------------------------------------------------------------
+.publication-buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1px; // hairline gap → buttons read as one segmented unit
+  margin: $space-3 0 $space-5 0;
+  padding: 2px;
+  background: var(--color-border);
+  border-radius: $radius-md;
+  border: 1px solid var(--color-border);
+
+  // Subtle outer container highlight on hover within
+  &:hover {
+    background: var(--color-accent);
+  }
+
+  // Pandoc wraps the buttons in a <p>. Flatten it so the buttons themselves
+  // are the flex items; otherwise the paragraph's bottom margin shows as an
+  // empty band under every button row.
+  > p {
+    display: contents;
+    margin: 0;
+  }
+}
+
+// Expandable abstract under a publication. Hidden until the Summary button
+// toggles it (see _includes/abstract-toggle.html). Colours come from the
+// theme tokens so it reads in both light and dark mode.
+.abstract-full {
+  display: none;
+  margin: $space-3 0 $space-5 0;
+  padding: $space-4 $space-5;
+  background: var(--color-bg-muted);
+  color: var(--color-text);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 $radius-md $radius-md 0;
+  font-size: $text-sm;
+  line-height: 1.6;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+.btn-pub {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: 0;
+  font-family: $font-sans;
+  font-weight: 500;
+  font-size: $text-xs;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  transition: all $transition-fast;
+
+  // First/last get rounded outer corners to match container
+  &:first-child { border-radius: ($radius-md - 2px) 0 0 ($radius-md - 2px); }
+  &:last-child  { border-radius: 0 ($radius-md - 2px) ($radius-md - 2px) 0; }
+  // Single button case
+  &:first-child:last-child { border-radius: ($radius-md - 2px); }
+
+  &:hover {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    transform: none;
+    box-shadow: none;
+  }
+
+  i {
+    margin-right: $space-2;
+    font-size: 0.95em;
+    width: 0.95em;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  &:hover i { opacity: 1; }
+}
+
+// Research page
+#research {
+  h2 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: $space-2;
+    margin-top: $space-7;
+    margin-bottom: $space-6;
+  }
+
+  h3 {
+    color: var(--color-primary);
+    margin-top: $space-6;
+    margin-bottom: $space-2;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: $space-6 0;
+  }
+
+  p {
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+}
+
+// APSA-style hanging indent
+.citation p {
+  padding-left: $space-6;
+  text-indent: -$space-6;
+  margin-bottom: $space-1;
+  line-height: 1.6;
+}

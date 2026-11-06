@@ -1,0 +1,162 @@
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-6;
+}
+
+// When the home page's last section ends the container, drop the container's
+// bottom padding too (it stacked with the footer margin into a ~200px gap).
+.content-container:has(> .home-secondary:last-child) {
+  padding-bottom: 0;
+}
+
+// On standard article pages Quarto's grid already supplies the gutters, so
+// the container's side padding only pushed the body 2rem right of the page
+// title. Drop it there; full-width pages (home) keep it.
+.page-layout-article .content-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Hero (homepage)
+// -----------------------------------------------------------------------------
+// Canvas wraps the hero so the topographic SVG can sit behind it
+.hero-canvas {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-topo {
+  position: absolute;
+  top: -$space-4;
+  // Negative right pulls arcs toward the viewport edge while the hero content
+  // stays within the content-container; arcs bleed off-canvas to the right.
+  right: calc(50% - 50vw);
+  width: 55vw;
+  max-width: 900px;
+  height: calc(100% + $space-6);
+  pointer-events: none;
+  color: var(--color-primary);
+  opacity: 0.09;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to left, black 25%, transparent 100%);
+          mask-image: linear-gradient(to left, black 25%, transparent 100%);
+}
+
+[data-bs-theme="dark"] .hero-topo,
+.quarto-dark .hero-topo {
+  opacity: 0.16;
+}
+
+@media (max-width: 900px) {
+  .hero-topo { display: none; }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: $space-8;
+  align-items: start;
+  margin-bottom: $space-8;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image {
+  position: sticky;
+  top: $space-6;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 32px var(--color-shadow);
+}
+
+.hero-text {
+  max-width: none;
+
+  h1 {
+    font-size: $text-5xl;
+    font-weight: 600;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    color: var(--color-primary);
+    margin-bottom: $space-2;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+
+  h2 {
+    font-size: $text-xl;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-accent);
+    margin: 0 0 $space-1 0;
+    border-bottom: none;   // theme draws a rule under every h2; not wanted here
+    padding-bottom: 0;
+  }
+
+  h3 {
+    font-size: $text-base;
+    font-weight: 400;
+    font-family: $font-sans;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 $space-6 0;
+    text-wrap: balance;    // avoids a one-word last line ("UNIVERSITY")
+  }
+
+  p {
+    font-size: $text-lg;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: $space-6;
+  }
+
+  p a {
+    color: var(--color-link);
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Social buttons
+// -----------------------------------------------------------------------------
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-6;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-muted);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border);
+  font-size: $text-lg;
+  transition: all $transition-base;
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--color-accent-shadow);
+  }
+}

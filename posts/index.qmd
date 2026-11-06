@@ -6,10 +6,13 @@ twitter-card:
 open-graph:
   image: /images/og/posts.png
   image-alt: "Cameron Wimpy — Posts"
+# posts/_metadata.yml stamps every post with its last-modified date; the
+# listing page itself should not show one.
+date-modified: ""
 format: 
   html: 
     toc: false
-    date-format: "M/D/YYYY"
+    date-format: "MMM D, YYYY"
 format-links: false
 listing:
   contents: "**/*.qmd"

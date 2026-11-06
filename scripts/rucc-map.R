@@ -6,7 +6,9 @@
 # county centroids pointing up where a county became more rural and down
 # where it became less rural (arrow length scaled by magnitude of change).
 #
-# Output: images/rucc-map.png (wide, 2000x1200) for retina embed
+# Output: images/rucc-map.png (2000x1460) for retina embed. The image carries
+#         no title or subtitle: the homepage prints those as HTML above it.
+#         scripts/rucc-map-stats.csv holds the counts the homepage quotes.
 #
 # Re-render:  Rscript scripts/rucc-map.R
 # -----------------------------------------------------------------------------
@@ -37,8 +39,9 @@ showtext_auto()
 showtext_opts(dpi = 150)
 
 # Paths
-CACHE    <- here::here("scripts", "rucc-cache")
-OUT_WIDE <- here::here("images", "rucc-map.png")
+CACHE     <- here::here("scripts", "rucc-cache")
+OUT_WIDE  <- here::here("images", "rucc-map.png")
+OUT_STATS <- here::here("scripts", "rucc-map-stats.csv")
 dir.create(CACHE, recursive = TRUE, showWarnings = FALSE)
 
 # Brand
@@ -100,12 +103,25 @@ rucc_2013 <- rucc_2013_raw %>%
     fips = str_pad(as.character(.data[[fips_col(rucc_2013_raw)]]), 5, pad = "0"),
     rucc_2013 = as.integer(.data[[rucc_col(rucc_2013_raw, 2013)]])
   ) %>%
-  filter(!is.na(rucc_2013), nchar(fips) == 5)
+  filter(!is.na(rucc_2013), nchar(fips) == 5) %>%
+  # Two counties were renamed and given new FIPS codes between the two
+  # releases. Recode the 2013 rows so they match their 2023 selves.
+  mutate(fips = recode(fips,
+                       "46113" = "46102",   # Shannon County, SD -> Oglala Lakota
+                       "02270" = "02158"))  # Wade Hampton, AK   -> Kusilvak
 
-rucc <- inner_join(rucc_2023, rucc_2013, by = "fips") %>%
-  mutate(delta = rucc_2023 - rucc_2013)  # + = more rural, - = less rural
+# Keep every 2023 county and attach its 2013 code where one exists.
+# (This used to be an inner join, which dropped any county without a 2013
+# match and left it blank on the map. Connecticut is the main case: it
+# replaced its eight counties with nine planning regions in 2022, so its
+# 2023 codes have no 2013 counterpart. Those areas are now shaded by their
+# 2023 code and simply get no change arrow.)
+rucc <- rucc_2023 %>%
+  left_join(rucc_2013, by = "fips") %>%
+  mutate(delta = rucc_2023 - rucc_2013)  # + = more rural, - = less rural; NA = not comparable
 
-message(sprintf("Joined %d counties.  Distribution of change:", nrow(rucc)))
+message(sprintf("%d counties in the 2023 file, %d comparable with 2013.  Distribution of change:",
+                nrow(rucc), sum(!is.na(rucc$delta))))
 print(table(delta = rucc$delta, useNA = "ifany"))
 
 # --- Geometries ----------------------------------------------------------
@@ -140,15 +156,28 @@ arrows_df <- centroids %>%
   mutate(
     direction = ifelse(delta > 0, "more rural", "less rural"),
     # Arrow endpoint: move up or down from centroid
-    # Magnitude: 18 km base, + 10 km per step of change (capped)
+    # Magnitude: 18 km base, + 14 km per step of change (capped at 5 steps)
     len = pmin(abs(delta), 5) * 14000 + 18000,
     yend = y + ifelse(delta > 0, len, -len)
   )
 
 n_more <- sum(arrows_df$direction == "more rural")
 n_less <- sum(arrows_df$direction == "less rural")
-message(sprintf("Arrows: %d counties more rural, %d counties less rural, %d unchanged",
-                n_more, n_less, sum(rucc$delta == 0, na.rm = TRUE)))
+
+# Counts for the homepage sentence. All three use the same set of counties:
+# the lower-48 counties drawn on the map that have a code in both years.
+# (The homepage used to quote a total that included Alaska, Hawaii and
+# Puerto Rico next to change counts for the lower 48 only.)
+map_stats <- tibble::tibble(
+  n_comparable = sum(!is.na(centroids$delta)),
+  n_more_rural = n_more,
+  n_less_rural = n_less,
+  n_unchanged  = sum(centroids$delta == 0, na.rm = TRUE),
+  n_not_comparable = sum(is.na(centroids$delta))
+)
+readr::write_csv(map_stats, OUT_STATS)
+message(sprintf("Lower 48: %d comparable counties; %d more rural, %d less rural, %d unchanged; %d not comparable",
+                map_stats$n_comparable, n_more, n_less, map_stats$n_unchanged, map_stats$n_not_comparable))
 
 # --- Plot ----------------------------------------------------------------
 
@@ -214,6 +243,7 @@ render_map <- function(path, width_px, height_px, title_size, subtitle_size,
     scale_fill_manual(
       values = rucc_fill, labels = rucc_labels,
       name = "2023 RUCC", drop = FALSE,
+      na.value = "#e3e1da", na.translate = FALSE,   # no "NA" key in the legend
       guide = guide_legend(nrow = 3, byrow = TRUE,
                            title.position = "top",
                            override.aes = list(color = NA))
@@ -231,7 +261,7 @@ render_map <- function(path, width_px, height_px, title_size, subtitle_size,
     theme(
       plot.background = element_rect(fill = COL_BG, color = NA),
       panel.background = element_rect(fill = COL_BG, color = NA),
-      plot.margin = margin(28, 22, 22, 22),
+      plot.margin = margin(14, 22, 22, 22),
       plot.title = element_text(
         family = "fraunces", face = "bold",
         size = title_size, color = COL_TEXT,
@@ -258,9 +288,9 @@ render_map <- function(path, width_px, height_px, title_size, subtitle_size,
       legend.key.size = unit(10, "pt"),
       legend.spacing.y = unit(2, "pt")
     ) +
+    # No title or subtitle here: the homepage prints both as text above the
+    # figure, and repeating them inside the image made the map itself small.
     labs(
-      title = "How rural America shifted between 2013 and 2023",
-      subtitle = "Counties shaded by their 2023 Rural–Urban Continuum Code (darker = more rural).\nArrows mark counties whose code changed since 2013: up for more rural, down for less.",
       caption = "Data: USDA Economic Research Service, Rural–Urban Continuum Codes (2013, 2023). cwimpy.com"
     )
 
@@ -271,8 +301,23 @@ render_map <- function(path, width_px, height_px, title_size, subtitle_size,
   message("wrote ", path)
 }
 
-render_map(OUT_WIDE, width_px = 2000, height_px = 1200,
+render_map(OUT_WIDE, width_px = 2000, height_px = 1460,
            title_size = 22, subtitle_size = 12, caption_size = 8,
            legend_size = 9, arrow_width = 0.38)
+
+# --- WebP copy for the web page ------------------------------------------
+# The PNG is about 1.1 MB; a WebP at quality 88 is about a third of that and
+# looks the same at page size. The homepage embeds the .webp. cwebp is a small
+# command-line tool from Google (macOS: `brew install webp`). If it is not
+# installed the PNG is still written, but the page keeps showing the previous
+# .webp, so the script says so loudly.
+OUT_WEBP <- sub("\\.png$", ".webp", OUT_WIDE)
+if (nzchar(Sys.which("cwebp"))) {
+  system2("cwebp", c("-quiet", "-q", "88", shQuote(OUT_WIDE), "-o", shQuote(OUT_WEBP)))
+  message("wrote ", OUT_WEBP)
+} else {
+  warning("cwebp not found: images/rucc-map.webp was NOT refreshed. ",
+          "Install it (brew install webp) and rerun.", call. = FALSE)
+}
 
 message("\nDone.")

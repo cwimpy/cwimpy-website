@@ -1,7 +1,7 @@
 ---
 title: "Research"
 freeze: false
-description: "Publications and working papers by Cameron Wimpy on comparative, politics, election administration, political methodology, and rural public policy."
+description: "Publications and working papers by Cameron Wimpy on comparative politics, election administration, political methodology, and rural public policy."
 image: /images/og/research.png
 twitter-card:
   image: /images/og/research.png
@@ -10,6 +10,7 @@ open-graph:
   image-alt: "Cameron Wimpy — Research"
 include-after-body:
   - _includes/cite-modal.html
+  - _includes/abstract-toggle.html
 ---
 
 ```{r}
@@ -656,7 +657,10 @@ for(type_idx in 1:nrow(pub_types)) {
       chicago_text <- citation
       escape_attr <- function(s) {
         s <- gsub("\"", "&quot;", s)
-        s <- gsub("\n", "\\n", s)
+        # Encode line breaks as the HTML entity for a newline. The previous
+        # gsub() replacement string was read as a regex escape and wrote a
+        # literal "n", which corrupted the BibTeX shown in the Cite dialog.
+        s <- gsub("\n", "&#10;", s, fixed = TRUE)
         s
       }
       cat("\n[<i class=\"fas fa-quote-right\"></i> Cite](#){.btn-pub .citation-btn",
@@ -678,7 +682,8 @@ for(type_idx in 1:nrow(pub_types)) {
       
       # Add hidden full abstract if it exists
       if(full_abstract != "" && nchar(full_abstract) > 0) {
-        cat("\n::: {.abstract-full #abstract-", pub$bibtex_clean, " style=\"display: none; margin-top: 10px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;\"}\n", sep = "")
+        # Styling lives in the .abstract-full rule in _components.scss
+        cat("\n::: {.abstract-full #abstract-", pub$bibtex_clean, "}\n", sep = "")
         cat("**Abstract:** ", full_abstract, "\n")
         cat(":::\n")
       }
@@ -690,30 +695,3 @@ for(type_idx in 1:nrow(pub_types)) {
   }
 }
 ```
-
-<script>
-// JavaScript to handle abstract toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleButtons = document.querySelectorAll('.abstract-toggle');
-  
-  toggleButtons.forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('data-target');
-      const abstractDiv = document.getElementById(targetId);
-      
-      if(abstractDiv) {
-        if(abstractDiv.style.display === 'none' || abstractDiv.style.display === '') {
-          abstractDiv.style.display = 'block';
-          this.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Summary';
-        } else {
-          abstractDiv.style.display = 'none';
-          this.innerHTML = '<i class="fas fa-align-left"></i> Summary';
-        }
-      }
-    });
-  });
-  
-  // Citation modal handled by _includes/cite-modal.html
-});
-</script>

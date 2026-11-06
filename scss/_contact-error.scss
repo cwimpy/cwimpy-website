@@ -1,0 +1,324 @@
+// -----------------------------------------------------------------------------
+// Contact form
+// -----------------------------------------------------------------------------
+.contact-form-container {
+  max-width: 600px;
+  margin: $space-6 0;
+}
+
+.contact-form {
+  background: var(--color-bg-muted);
+  padding: $space-6;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px var(--color-shadow);
+
+  .form-group {
+    margin-bottom: $space-5;
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-family: $font-sans;
+      color: var(--color-text);
+      margin-bottom: $space-2;
+      font-size: $text-sm;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: $space-3;
+      border: 2px solid var(--color-border);
+      border-radius: $radius-md;
+      font-size: $text-base;
+      font-family: $font-sans;
+      transition: all $transition-base;
+      background: var(--color-surface);
+      color: var(--color-text);
+
+      &:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px var(--color-ring);
+      }
+
+      // :user-invalid only applies after the visitor has interacted with
+      // the field, so required fields are not outlined red on page load.
+      &:user-invalid {
+        border-color: #c94a5a;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    select { cursor: pointer; }
+  }
+
+  .btn-submit {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    border: none;
+    padding: $space-3 $space-5;
+    border-radius: $radius-md;
+    font-size: $text-base;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-base;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--color-accent-shadow);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    i { font-size: 0.9rem; }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact social cards
+// -----------------------------------------------------------------------------
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $space-6;
+  margin: $space-6 0;
+}
+
+.social-card {
+  background: var(--color-bg-muted);
+  padding: $space-5;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border);
+
+  h3 {
+    color: var(--color-primary);
+    margin-bottom: $space-4;
+    font-size: $text-lg;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: $space-2;
+
+      a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-size: $text-sm;
+        transition: color $transition-base;
+
+        &:hover {
+          color: var(--color-accent);
+        }
+      }
+    }
+  }
+}
+
+.social-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: $space-5;
+  margin: $space-6 auto;
+  max-width: 600px;
+}
+
+.social-icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: $space-4;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  color: var(--color-text-muted);
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px var(--color-accent-shadow);
+    text-decoration: none;
+  }
+
+  .icon {
+    font-size: 1.75rem;
+    margin-bottom: $space-2;
+    color: inherit;
+  }
+
+  .label {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    color: inherit;
+  }
+}
+
+.connect-centered {
+  max-width: 700px;
+  margin: 0 auto;
+
+  .social-card {
+    text-align: center;
+    padding: $space-6;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 404
+// -----------------------------------------------------------------------------
+.error-page {
+  text-align: center;
+  max-width: 640px;
+  margin: $space-8 auto;
+  padding: $space-6;
+
+  h2 {
+    font-family: $font-display;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    font-size: $text-3xl;
+    font-weight: 500;
+    color: var(--color-text);
+    margin: $space-5 0 $space-4 0;
+    letter-spacing: -0.01em;
+  }
+
+  > p {
+    font-family: $font-body;
+    font-size: $text-lg;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0 auto $space-7 auto;
+    max-width: 48ch;
+  }
+}
+
+.error-numerals {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: $space-7 auto 0 auto;
+  aspect-ratio: 2.5 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+
+  .error-topo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-primary);
+    opacity: 0.14;
+    z-index: 0;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
+  }
+
+  .error-number {
+    position: relative;
+    z-index: 1;
+    font-family: $font-display;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    font-weight: 600;
+    font-size: clamp(8rem, 22vw, 13rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--color-primary);
+  }
+}
+
+[data-bs-theme="dark"] .error-numerals .error-topo,
+.quarto-dark .error-numerals .error-topo {
+  opacity: 0.22;
+}
+
+.error-actions {
+  background: var(--color-bg-muted);
+  padding: $space-6;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border);
+  margin: $space-6 0;
+  text-align: left;
+
+  h3 {
+    color: var(--color-primary);
+    margin-bottom: $space-4;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: $space-3;
+
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color $transition-base;
+
+        &:hover {
+          color: var(--color-primary);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.search-suggestion {
+  background: var(--color-bg-subtle);
+  padding: $space-5;
+  border-radius: $radius-md;
+  border-left: 4px solid var(--color-accent);
+  text-align: left;
+
+  h3 {
+    color: var(--color-primary);
+    margin-bottom: $space-2;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Comments
+// -----------------------------------------------------------------------------
+.giscus {
+  margin-top: $space-7;
+  padding-top: $space-6;
+  border-top: 2px solid var(--color-border);
+}
+
+.giscus-frame {
+  width: 100%;
+  border: none;
+  border-radius: $radius-md;
+  background: transparent;
+}

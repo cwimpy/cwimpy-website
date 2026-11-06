@@ -1,33 +1,42 @@
 /*-- scss:defaults --*/
 
+// The journal theme imports the News Cycle web font by default. Nothing on
+// the site uses it, so skip that render-blocking request.
+$web-font-path: false;
+
 // Bootstrap body bg/fg overrides for dark
-$body-bg: #0f1620;
-$body-color: #e6ede8;
+$body-bg: #111814;
+$body-color: #ebe8df;
 $link-color: #6fc494;
 $link-hover-color: #9ad9b3;
 
 /*-- scss:rules --*/
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap');
+// Fonts are loaded in _includes/fonts.html (see styles.scss).
 
 // --- Dark-theme color tokens ------------------------------------------------
 // Desaturated greens (vs. previous #4ade80 / #34d399 neon) for lower eye strain
 // on dark backgrounds. Text colors tuned for long-form reading.
+//
+// Surfaces are a green-black ("forest at night") rather than navy, so the dark
+// theme stays in the same hue family as the light theme's cream paper and
+// forest-green ink. Text is a warm cream. Contrast on the page background:
+// text 14.7:1, muted 9.4:1, subtle 5.7:1 (5.0:1 on cards), links 8.6:1.
 :root {
-  --color-bg:            #0f1620;
-  --color-bg-muted:      #1a2332;
-  --color-bg-subtle:     #243246;
-  --color-surface:       #141d2a;
+  --color-bg:            #111814;
+  --color-bg-muted:      #1b2620;
+  --color-bg-subtle:     #24322a;
+  --color-surface:       #161f1a;
 
-  --color-text:          #e6ede8;
-  --color-text-muted:    #a8bfb2;
-  --color-text-subtle:   #7a9385;
+  --color-text:          #ebe8df;
+  --color-text-muted:    #b3bfb1;
+  --color-text-subtle:   #86958a;
 
   --color-primary:       #9ad9b3;
   --color-accent:        #6fc494;
-  --color-on-accent:     #0f1620;
+  --color-on-accent:     #111814;
 
-  --color-border:        #2a3a4d;
+  --color-border:        #2f4036;
 
   --color-link:          var(--color-accent);
   --color-link-hover:    var(--color-primary);
@@ -37,7 +46,7 @@ $link-hover-color: #9ad9b3;
   --color-shadow-strong: rgba(0, 0, 0, 0.55);
   --color-accent-shadow: rgba(111, 196, 148, 0.22);
 
-  --color-navbar-bg:     rgba(15, 22, 32, 0.9);
+  --color-navbar-bg:     rgba(17, 24, 20, 0.9);
 }
 
 // Shared component rules (identical file imported by both themes)

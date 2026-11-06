@@ -2,8 +2,11 @@
 date-modified: last-modified
 format:
   html:
-    date-format: "M/D/YYYY"
+    date-format: "MMM D, YYYY"
     reading-time: true
+    # Adds class="post-page" to <body>; _components.scss uses it to set a
+    # comfortable line length for long-form posts.
+    body-classes: post-page
 
 # Typst PDF config for posts that opt in (add to individual post YAML).
 # `highlight-style: none` is required — the post-template.typ defines `raw`
@@ -34,5 +37,8 @@ comments:
     mapping: "pathname"
     reactions-enabled: true
     input-position: "bottom"
-    theme: "light"
+    # Follow the site's light/dark toggle instead of staying light
+    theme:
+      light: light
+      dark: transparent_dark
     language: "en"

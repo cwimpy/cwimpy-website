@@ -1,0 +1,3 @@
+# Needed only by scripts/generate-og.py (Open Graph card images).
+# After installing, run once:  playwright install chromium
+playwright

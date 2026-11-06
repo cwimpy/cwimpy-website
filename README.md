@@ -8,41 +8,44 @@ I have tried to create a modern, responsive academic website built with [Quarto]
 
 ### Content Organization
 ```
-├── _quarto.yml                 # Main configuration
-|—— _publish.yml                # Deploy to Netlify
+├── _quarto.yml                 # Main configuration (navbar, footer, theme, render list)
+├── _publish.yml                # Netlify publish target
+├── _variables.yml              # Email, ORCID, links used via {{< var ... >}}
 ├── index.qmd                   # Homepage
-├── research.qmd                # Research & publications
-├── cv.qmd                      # Curriculum vitae
-├── contact.qmd                 # Contact form
-|—— 
-├── 404.qmd                     # Custom error page
+├── research.qmd                # Publications (built from publications.bib)
+├── rural.qmd                   # Rural Notes series landing page
+├── software.qmd / templates.qmd
+├── teaching.qmd                # Teaching overview
+├── cv.qmd / now.qmd / contact.qmd / thank-you.qmd / 404.qmd
+├── styles.qmd                  # Style guide (component reference, not linked)
 ├── posts/                      # Blog posts
-│   ├── _metadata.yml           # Posts configuration
+│   ├── _metadata.yml           # Settings shared by every post (comments, dates)
 │   ├── index.qmd               # Posts listing
-│   └── [post-folders]/         # Individual posts
-├── teaching/                   # Teaching materials
-│   ├── _metadata.yml           # Teaching configuration
-│   ├── current/                # Current courses
-│   ├── materials/              # Course resources
-│   └── past/                   # Course archive
-|── styles/                     # Custom styling
-|   ├── styles.scss             # Main styles
-|   └── custom-dark.scss        # Dark mode styles
-|—— templates/                  # Typst templates
-    ├── post-template.typ       # Typst template for PDF posts
-    └── teaching-template.typ   # Typst template for teaching documents
+│   └── [post-folders]/         # One folder per post: index.qmd + figures/data
+├── teaching/courses/           # Course sites (kept in git, not rendered yet)
+├── styles.scss                 # Light theme: colors + imports
+├── custom-dark.scss            # Dark theme: colors + imports
+├── _tokens.scss                # Spacing, type scale, radius, font stacks
+├── _components.scss            # Index that imports the partials below, in order
+├── scss/                       # Component styles, one file per area of the site
+├── _includes/                  # HTML includes (fonts, cite dialog, schema.org)
+├── scripts/                    # Build helpers (see "Building and publishing")
+├── images/ , uploads/          # Site images; PDFs of papers and the CV
+├── publications.bib            # Source for the research page
+└── templates/                  # Typst templates for PDF versions of posts
 ```
 
 ### PDF Templates
 - **`templates/post-template.typ`** - Blog post PDF generation
-- **`templatesteaching-template.typ`** - Academic document formatting
+- **`templates/teaching-template.typ`** - Academic document formatting
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - [Quarto](https://quarto.org/docs/get-started/) (latest version)
-- [Typst](https://typst.app/) for PDF generation
-- **Fonts:** Minion Pro and Myriad Pro (or substitute with something like Times and Helvetica)
+- R with `bib2df`, `dplyr`, and `readr` (the research page and homepage run small R chunks)
+- [Typst](https://typst.app/) for PDF versions of posts
+- **Fonts for the Typst PDFs only:** Minion Pro and Myriad Pro (or substitute with something like Times and Helvetica)
 
 ### Local Development
 ```bash
@@ -98,30 +101,42 @@ format:
 ## 🎨 Customization
 
 ### Color Scheme
-The site uses a professional green color palette defined in `styles.scss`:
-- Primary: `#1e5f3e` (dark green)
-- Secondary: `#2d8a47` (medium green)
-- Accent colors for different text weights
+Colors are CSS custom properties, defined once per theme: `styles.scss` (light) and `custom-dark.scss` (dark). Components only ever refer to the variables, so a color changes in one place.
+- Primary: `#1e5f3e` (dark green) for headings
+- Accent: `#287d40` (medium green) for links and buttons
+- Background: `#fdfcf8` (warm off-white); dark mode uses `#111814` (green-black)
 
 ### Fonts
-- **Body text:** Minion Pro (serif) - excellent readability
-- **Headings:** Myriad Pro (sans-serif) - clean, modern
-- **Code:** SF Mono - consistent monospace
+Loaded from Google Fonts in `_includes/fonts.html`; the stacks are set in `_tokens.scss`.
+- **Headings:** Fraunces
+- **Body text:** Source Serif 4
+- **Navigation, buttons, small labels:** Inter
+- **Code:** JetBrains Mono
 
-### Dark Mode
-Automatic dark mode with custom color palette defined in `custom-dark.scss`:
-- Background: `#0f172a` (dark blue)
-- Text: Light grays and blues
-- Accent: `#4ade80` (bright green)
+(The Typst PDF templates are separate and still ask for Minion Pro and Myriad Pro.)
 
-## 🚢 Deployment
+### Styles
+`_components.scss` is only a list of imports. The rules live in `scss/`, one file per area (`_navbar.scss`, `_footer.scss`, `_home-features.scss`, and so on). The import order matters, so add new files to the list rather than reordering it.
 
-### Netlify (my suggestion)
-1. Connect your GitHub repository to Netlify
-2. Set build command: `quarto render`
-3. Set publish directory: `_site`
-4. Enable form handling for contact form
-5. Configure Giscus for comments (see setup below)
+## 🚢 Building and publishing
+
+The site is rendered on my machine and uploaded to Netlify; Netlify does not build it. That means **what is live is whatever was last published from the local `_site` folder, not what is in git.**
+
+```bash
+scripts/build.sh --no-publish   # rebuild the map and OG cards, render locally
+scripts/build.sh                # the same, then publish to Netlify
+```
+
+Flags: `--skip-data` skips the map rebuild, `--skip-og` skips the OG cards.
+
+What the pieces do:
+- `scripts/rucc-map.R` builds the homepage map and writes the counts the homepage quotes (`scripts/rucc-map-stats.csv`).
+- `scripts/generate-og.py` builds the link-preview cards in `images/og/` (needs `pip install -r scripts/requirements.txt`). Add a page to its `PAGES` list to give it a card.
+- `scripts/post-render.sh` runs automatically after every render, including the one `quarto publish` does. It removes iCloud/Dropbox duplicate files ("index 2.html") from `_site` and drops utility pages from the sitemap.
+
+Two things to remember:
+- A post without `draft: true` goes live on the next publish, along with every file its folder links to.
+- Commit a post when you publish it, so git and the live site agree.
 
 ## 💬 Comments Setup (Giscus)
 

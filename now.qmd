@@ -19,7 +19,7 @@ This is a [now page](https://nownownow.com/about). It's a snapshot of what I'm f
 
 ## At work
 
-I'm in my fourth year as department chair of [Government, Law & Policy](https://www.astate.edu/college/liberal-arts-and-communication/departments/government-law-and-policy/) at Arkansas State University and my fourth year directing the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). Most of my administrative time goes toward faculty development, program review, and building out the IRI's research agenda.
+I'm in my fifth year as department chair of [Government, Law & Policy](https://www.astate.edu/college/liberal-arts-and-communication/departments/government-law-and-policy/) at Arkansas State University and my fifth year directing the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). Most of my administrative time goes toward faculty development, program review, and building out the IRI's research agenda.
 
 ## Research
 
@@ -32,6 +32,9 @@ I also have ongoing work in **political methodology**, particularly spatial econ
 - [rurality](https://cran.r-project.org/package=rurality) -- R package for rurality classification and scoring (now on CRAN)
 - [rurality-stata](https://github.com/cwimpy/rurality-stata) -- Stata implementation
 - [rurality.app](https://rurality.app) -- web app companion
+- [slxr](https://cran.r-project.org/package=slxr) -- R package for spatial-X (SLX) regression (on CRAN)
+- [spimpacts](https://github.com/cwimpy/spimpacts) -- R package for interpreting spatial econometric models
+- [certify](https://cran.r-project.org/package=certify) -- R package for generating PDF certificates (on CRAN)
 
 ## Outside work
 

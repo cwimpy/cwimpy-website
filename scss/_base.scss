@@ -1,0 +1,127 @@
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-feature-settings: "kern", "liga", "onum";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-feature-settings: "kern", "liga", "dlig", "ss01";
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+}
+
+h1 { font-weight: 600; }
+h2, h3, h4 { font-weight: 500; }
+
+code, pre, kbd, samp {
+  font-family: $font-mono;
+}
+
+// UI chrome uses sans — buttons, nav, meta — kept functional/readable
+.navbar,
+.btn,
+.btn-social,
+.btn-pub,
+.cv-button,
+.btn-submit,
+.pdf-download,
+.listing-date,
+.listing-category,
+.quarto-title-meta,
+.quarto-title-meta-heading,
+.quarto-title-meta-contents,
+.listing-reading-time,
+.quarto-listing .listing-item .listing-subtitle {
+  font-family: $font-sans;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
+}
+
+// Links inside running text get an underline so they are not identified by
+// colour alone (the muted caption green and the link green are close).
+// `:not([class])` leaves buttons, chips and listing links untouched.
+main :is(p, li, figcaption, blockquote, td) > a:not([class]) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+// Keyboard focus: one visible ring everywhere. Components below must not
+// remove it (they used to set `outline: none`).
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// Inline code: follow the theme tokens so it stays readable in dark mode,
+// including file names that are also links.
+// (The selector list mirrors Quarto's own inline-code rule so this one has
+// equal specificity and, coming later, wins.)
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode),
+figcaption code:not(.sourceCode),
+:not(pre) > code:not(.sourceCode) {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  padding: 0.05em 0.3em;
+}
+
+p a > code:not(.sourceCode),
+li a > code:not(.sourceCode),
+td a > code:not(.sourceCode),
+a > code:not(.sourceCode) {
+  color: inherit;
+}
+
+// Wide tables scroll inside themselves on small screens instead of pushing
+// the whole page sideways.
+@media (max-width: 768px) {
+  main table.table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+// Long-form posts (`body-classes: post-page` in posts/_metadata.yml):
+// slightly larger text and a capped measure of about 70 characters.
+// Figures, tables, code and callouts keep the full column width.
+.post-page main.content {
+  :is(p, ul, ol, blockquote, h2, h3, h4) {
+    max-width: 70ch;
+  }
+
+  :is(p, li) {
+    font-size: 1.0625rem;
+  }
+
+  // Blocks that should not be narrowed
+  :is(figure, .quarto-figure, .callout, table, .quarto-listing, .listing-item, .cell) :is(p, ul, ol, blockquote, h2, h3, h4) {
+    max-width: none;
+  }
+}

@@ -51,12 +51,12 @@ if [[ -d .quarto ]]; then
   find .quarto -maxdepth 2 -name 'quarto-session-temp*' -delete 2>/dev/null || true
 fi
 
-# Sweep macOS-sync duplicate files ("foo 2.html", "bar 5.pdf", etc.) that
-# accumulate in _site/ across successive renders and otherwise get uploaded
-# to Netlify. Also catches stray duplicates anywhere in the tree that aren't
-# already gitignored (e.g. "site_libs 3/").
-say "Sweeping macOS-sync duplicate files"
-find _site -name "* [0-9]*" -delete 2>/dev/null || true
+# Sweep macOS-sync duplicate source files ("foo 2.qmd", "bar 5.pdf", etc.)
+# so they are not rendered as extra pages. Duplicates inside _site/ are
+# handled by scripts/post-render.sh, which Quarto runs after the render and
+# before the upload (sweeping _site here, before the render, came too early:
+# duplicates created during the render were still deployed).
+say "Sweeping macOS-sync duplicate source files"
 find . -path ./.git -prune -o -path ./_site -prune \
        -o \( -name "* [0-9].qmd" -o -name "* [0-9].pdf" \
           -o -name "* [0-9].html" -o -name "* [0-9].md" \) \

@@ -20,8 +20,6 @@ I'm teaching two courses in Fall 2026:
 - **PLSC 66003 — Advanced Political Analysis** *(graduate)*. Quantitative methods for political science in R: inference, linear regression, maximum likelihood, diagnostics, and reproducible reporting with Quarto.
 - **PLSC 4489V / 6680V — Election Administration and Voting** *(cross-listed undergraduate/graduate)*. A seminar on how American elections actually get run --- officials, laws, machines, and the research on all three.
 
-Course sites will appear here closer to the start of the semester. If you're a prospective or enrolled student and want to know more in the meantime, [email me](mailto:cwimpy@astate.edu).
-
 ---
 
 ## Office Hours

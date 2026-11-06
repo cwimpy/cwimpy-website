@@ -1,0 +1,130 @@
+// -----------------------------------------------------------------------------
+// Responsive
+// -----------------------------------------------------------------------------
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 250px 1fr;
+    gap: $space-7;
+  }
+
+  .hero-text h1 { font-size: $text-4xl; }
+}
+
+@media (max-width: 768px) {
+  .pdf-viewer { display: none; }
+
+  .mobile-cv-notice {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+    color: var(--color-on-accent);
+    padding: $space-6;
+    border-radius: $radius-lg;
+    text-align: center;
+    margin: $space-6 0;
+    box-shadow: 0 6px 20px var(--color-accent-shadow);
+
+    p {
+      margin: $space-4 0;
+      color: var(--color-on-accent);
+      font-weight: 500;
+      font-size: $text-lg;
+    }
+
+    .cv-button {
+      background: var(--color-surface);
+      color: var(--color-primary);
+      border: 2px solid var(--color-surface);
+      margin: $space-2;
+      padding: $space-4 $space-5;
+      font-size: $text-base;
+      font-weight: 600;
+      min-width: 200px;
+
+      &:hover {
+        background: var(--color-bg-muted);
+        color: var(--color-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px var(--color-shadow-strong);
+      }
+    }
+  }
+
+  .cv-container {
+    padding: $space-4;
+
+    .cv-actions {
+      margin-bottom: $space-4;
+      gap: $space-2;
+    }
+
+    .cv-button {
+      flex: 1;
+      min-width: auto;
+      padding: $space-3 $space-4;
+      font-size: $text-sm;
+    }
+  }
+
+  .content-container { padding: $space-4; }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+    text-align: center;
+  }
+
+  .hero-image {
+    position: static;
+    justify-self: center;
+  }
+
+  .profile-image { max-width: 200px; }
+
+  .hero-text h1 { font-size: $text-4xl; }
+
+  .social-buttons { justify-content: center; }
+
+  // Buttons wrap onto extra rows on narrow screens (they are direct flex
+  // items now), so no column layout or minimum width is needed.
+
+  .citation p {
+    padding-left: $space-5;
+    text-indent: -$space-5;
+  }
+
+  .cv-header h2 { font-size: $text-2xl; }
+}
+
+@media (min-width: 769px) {
+  .mobile-cv-notice { display: none; }
+}
+
+@media (max-width: 480px) {
+  .mobile-cv-notice {
+    padding: $space-5;
+    margin: $space-4 0;
+
+    p { font-size: $text-base; }
+
+    .cv-button {
+      display: block;
+      width: 100%;
+      margin: $space-3 0;
+      padding: $space-5;
+      font-size: $text-lg;
+    }
+  }
+
+  .hero-text h1 { font-size: $text-3xl; }
+  .hero-text h2 { font-size: $text-xl; }
+
+  .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-social {
+    min-width: 150px;
+    justify-content: center;
+  }
+}

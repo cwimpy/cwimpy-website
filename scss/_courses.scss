@@ -1,0 +1,487 @@
+// -----------------------------------------------------------------------------
+// Course pages — hero, at-a-glance, quick links, schedule, week template
+// Per-course accent overridable via wrapper class (e.g. .course-plsc66003)
+// All course components fall back to site green if --course-accent unset.
+// -----------------------------------------------------------------------------
+
+.course-page {
+  --course-accent: var(--color-primary);
+  --course-accent-soft: var(--color-bg-subtle);
+  --course-accent-on: var(--color-on-accent);
+}
+
+// Course hero
+.course-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $space-7;
+  align-items: center;
+  margin: $space-6 0 $space-7 0;
+  padding-bottom: $space-6;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.course-hero-text {
+  min-width: 0;
+}
+
+.course-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--course-accent);
+  background: var(--course-accent-soft);
+  border: 1px solid var(--course-accent);
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  margin-bottom: $space-4;
+}
+
+.course-title {
+  font-family: $font-display;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  font-size: $text-4xl;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--course-accent);
+  margin: 0 0 $space-3 0;
+}
+
+.course-tagline {
+  font-family: $font-body;
+  font-size: $text-lg;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 0 0 $space-5 0;
+  max-width: 60ch;
+}
+
+.course-hero-art {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 18px var(--color-shadow));
+  }
+}
+
+@media (max-width: 768px) {
+  .course-hero {
+    grid-template-columns: 1fr;
+    gap: $space-5;
+    text-align: left;
+  }
+  .course-hero-art { width: 120px; height: 120px; justify-self: start; }
+  .course-title { font-size: $text-3xl; }
+}
+
+// At-a-glance metrics bar
+.course-meta-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  margin: $space-6 0;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.course-meta-cell {
+  padding: $space-4 $space-5;
+  border-right: 1px solid var(--color-border);
+
+  &:last-child { border-right: none; }
+
+  .label {
+    display: block;
+    font-family: $font-sans;
+    font-size: $text-xs;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+    margin-bottom: $space-2;
+  }
+
+  .value {
+    display: block;
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.2;
+
+    a {
+      color: var(--course-accent);
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .course-meta-cell {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    &:last-child { border-bottom: none; }
+  }
+}
+
+// Quick-links pill row
+.course-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin: $space-6 0;
+}
+
+.course-quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: $radius-full;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all $transition-base;
+
+  i, svg { color: var(--course-accent); font-size: 0.95em; }
+
+  &:hover {
+    border-color: var(--course-accent);
+    color: var(--course-accent);
+    background: var(--course-accent-soft);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+}
+
+// Section headings inside course pages
+.course-page {
+  h2 {
+    font-family: $font-display;
+    font-variation-settings: "opsz" 144;
+    font-size: $text-2xl;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-top: $space-7;
+    margin-bottom: $space-4;
+    padding-bottom: $space-2;
+    border-bottom: 2px solid var(--course-accent);
+    display: inline-block;
+  }
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-xl;
+    color: var(--color-text);
+    margin-top: $space-6;
+  }
+}
+
+// Learning objectives (numbered, large)
+.learning-objectives {
+  list-style: none;
+  counter-reset: lo;
+  padding: 0;
+  margin: $space-5 0 $space-7 0;
+
+  li {
+    counter-increment: lo;
+    position: relative;
+    padding: $space-3 0 $space-3 $space-7;
+    font-family: $font-body;
+    font-size: $text-lg;
+    line-height: 1.5;
+    color: var(--color-text);
+    border-bottom: 1px dashed var(--color-border);
+
+    &:last-child { border-bottom: none; }
+
+    &::before {
+      content: counter(lo, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: $space-3;
+      font-family: $font-mono;
+      font-size: $text-sm;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--course-accent);
+      width: $space-7;
+    }
+  }
+}
+
+// Course schedule table
+.course-schedule {
+  margin: $space-5 0 $space-7 0;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: $radius-md;
+
+  table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: $font-sans;
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg-muted);
+      color: var(--color-text);
+      font-family: $font-sans;
+      font-size: $text-xs;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: $space-3 $space-4;
+      border-bottom: 2px solid var(--course-accent);
+      text-align: left;
+      vertical-align: bottom;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: $space-3 $space-4;
+      border-bottom: 1px solid var(--color-border);
+      font-size: $text-sm;
+      vertical-align: top;
+      line-height: 1.5;
+      background: transparent;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td { background: var(--color-bg-subtle); }
+
+    // Week-number column
+    tbody td:first-child {
+      font-family: $font-mono;
+      font-weight: 600;
+      color: var(--course-accent);
+      text-align: center;
+      width: 4rem;
+      white-space: nowrap;
+    }
+
+    // Date column
+    tbody td:nth-child(2) {
+      font-family: $font-mono;
+      font-size: $text-xs;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+      width: 6.5rem;
+    }
+
+    // Topic column gets the most weight
+    tbody td:nth-child(3) {
+      font-family: $font-body;
+      font-size: $text-base;
+      a {
+        color: var(--color-text);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all $transition-base;
+
+        &:hover {
+          color: var(--course-accent);
+          border-bottom-color: var(--course-accent);
+        }
+      }
+    }
+
+    // Break/holiday rows — no week number, dimmed
+    tbody tr:has(td:first-child:empty),
+    tbody tr.schedule-break {
+      td {
+        background: var(--color-bg-muted);
+        color: var(--color-text-muted);
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .course-schedule table {
+    thead th { font-size: 0.7rem; padding: $space-2 $space-3; }
+    tbody td { font-size: $text-xs; padding: $space-2 $space-3; }
+  }
+}
+
+// Week-page template
+.week-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.week-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-sans;
+  font-size: $text-xs;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: $space-5 0 $space-3 0;
+
+  a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    &:hover { color: var(--course-accent); }
+  }
+
+  .sep { opacity: 0.5; }
+}
+
+.week-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: $space-4;
+  margin: $space-2 0 $space-4 0;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  color: var(--color-text-muted);
+
+  .week-date {
+    font-family: $font-mono;
+    color: var(--course-accent);
+    font-weight: 600;
+  }
+}
+
+.week-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin: $space-5 0 $space-6 0;
+}
+
+.week-action {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: var(--course-accent-soft);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all $transition-base;
+
+  i, svg { color: var(--course-accent); }
+
+  &:hover {
+    border-color: var(--course-accent);
+    color: var(--course-accent);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.readings-list {
+  list-style: none;
+  padding: 0;
+  margin: $space-4 0 $space-6 0;
+
+  li {
+    padding: $space-3 0 $space-3 $space-6;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+
+    &::before {
+      content: "\f02d"; // book solid
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: $text-sm;
+      color: var(--course-accent);
+      position: absolute;
+      left: 0;
+      top: $space-4;
+    }
+
+    &:last-child { border-bottom: none; }
+
+    .reading-cite {
+      font-family: $font-body;
+      font-weight: 600;
+      color: var(--color-text);
+      a { color: inherit; border-bottom: 1px solid var(--color-border); }
+      a:hover { color: var(--course-accent); border-color: var(--course-accent); }
+    }
+
+    .reading-note {
+      display: block;
+      font-family: $font-body;
+      font-size: $text-sm;
+      color: var(--color-text-muted);
+      margin-top: $space-1;
+      line-height: 1.5;
+    }
+  }
+}
+
+.learning-goals {
+  background: var(--course-accent-soft);
+  border-left: 4px solid var(--course-accent);
+  border-radius: 0 $radius-md $radius-md 0;
+  padding: $space-4 $space-5;
+  margin: $space-5 0;
+
+  h3 {
+    font-family: $font-sans;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--course-accent);
+    margin: 0 0 $space-3 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: $space-5;
+  }
+
+  li {
+    font-family: $font-body;
+    font-size: $text-base;
+    color: var(--color-text);
+    margin-bottom: $space-2;
+    &:last-child { margin-bottom: 0; }
+  }
+}

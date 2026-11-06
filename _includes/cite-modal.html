@@ -29,12 +29,16 @@
 
 <script>
 (function() {
+  // The button that opened the dialog; focus returns to it on close so
+  // keyboard and screen-reader users are not dropped at the top of the page.
+  let opener = null;
+
   function closeModal(el) {
     el.classList.add("is-closing");
     setTimeout(() => el.remove(), 180);
     document.removeEventListener("keydown", onEscape);
-    const prev = document.activeElement;
-    if (prev && prev.blur) prev.blur();
+    if (opener && document.contains(opener)) opener.focus();
+    opener = null;
   }
 
   function onEscape(e) {
@@ -48,17 +52,31 @@
     return raw.replace(/&quot;/g, '"').replace(/\\n/g, "\n");
   }
 
+  // The formatted citations are stored with markdown markers (**bold**,
+  // *italic*). Strip them for the clipboard so a paste is clean text.
+  function plainText(text) {
+    return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\*([^*]+)\*/g, "$1");
+  }
+
+  // Page ranges: show "70–95" rather than "70--95" or "70-95" in the
+  // formatted styles. BibTeX keeps its own "--" convention.
+  function enDash(text) {
+    return text.replace(/(\d)\s?--?\s?(\d)/g, "$1–$2");
+  }
+
   function openCiteModal(btn) {
     const tpl = document.getElementById("cite-modal-template");
     if (!tpl) return;
     const node = tpl.content.cloneNode(true);
     const backdrop = node.querySelector(".cite-modal-backdrop");
 
+    opener = btn;
+
     const formats = {
-      apsa:    decode(btn.getAttribute("data-apsa")),
-      apa:     decode(btn.getAttribute("data-apa")),
-      mla:     decode(btn.getAttribute("data-mla")),
-      chicago: decode(btn.getAttribute("data-chicago")),
+      apsa:    enDash(decode(btn.getAttribute("data-apsa"))),
+      apa:     enDash(decode(btn.getAttribute("data-apa"))),
+      mla:     enDash(decode(btn.getAttribute("data-mla"))),
+      chicago: enDash(decode(btn.getAttribute("data-chicago"))),
       bibtex:  decode(btn.getAttribute("data-citation")),
     };
 
@@ -92,7 +110,8 @@
     const status  = backdrop.querySelector(".cite-copy-status");
     copyBtn.addEventListener("click", async () => {
       const active = backdrop.querySelector(".cite-tab.is-active")?.getAttribute("data-fmt") || "apa";
-      const text   = formats[active] || "";
+      const raw    = formats[active] || "";
+      const text   = active === "bibtex" ? raw : plainText(raw);
       try {
         await navigator.clipboard.writeText(text);
         status.textContent = "Copied to clipboard";

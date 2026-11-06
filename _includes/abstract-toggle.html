@@ -1,0 +1,22 @@
+<!-- Shows/hides a publication abstract. Used by index.qmd and research.qmd.
+     A button with class "abstract-toggle" and data-target="<id>" toggles the
+     element with that id (styled by .abstract-full in _components.scss). -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.abstract-toggle').forEach(function (button) {
+    const target = document.getElementById(button.getAttribute('data-target'));
+    if (!target) return;
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', target.id);
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      const show = getComputedStyle(target).display === 'none';
+      target.style.display = show ? 'block' : 'none';
+      button.setAttribute('aria-expanded', show ? 'true' : 'false');
+      button.innerHTML = show
+        ? '<i class="fas fa-eye-slash"></i> Hide Summary'
+        : '<i class="fas fa-align-left"></i> Summary';
+    });
+  });
+});
+</script>

@@ -1,9 +1,23 @@
 ---
 title: ""
+# The page has no visible title, so give search engines and link previews
+# their text here (description-meta fills the meta tag without printing it).
+description-meta: "Cameron Wimpy is Associate Professor and Chair of Government, Law & Policy at Arkansas State University and directs the Institute for Rural Initiatives."
+open-graph:
+  title: "Cameron Wimpy"
+  description: "Political Science Research & Teaching"
+twitter-card:
+  title: "Cameron Wimpy"
+  description: "Political Science Research & Teaching"
 page-layout: full
 toc: false
+# Re-run the small R chunk below on every render so the map counts and the
+# "last rendered" date always match the current map (the project default is
+# freeze: auto, which only re-runs code when this file itself changes).
+freeze: false
 include-after-body:
   - _includes/cite-modal.html
+  - _includes/abstract-toggle.html
 listing:
   - id: latest-posts
     contents:
@@ -61,9 +75,9 @@ listing:
 
 ### Government, Law & Policy • Arkansas State University
 
-I am associate professor of political science and chair of Government, Law & Policy at Arkansas State University with interests in comparative public administration, election administration, political economy, political methodology, and rural public policy. Since 2022, I have also served as the founding director of the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). I am an affiliate faculty with the [Arkansas Biosciences Institute](https://www.astate.edu/abi) at A-State.
+I am associate professor of political science and chair of Government, Law & Policy at Arkansas State University with interests in comparative public administration, election administration, political economy, political methodology, and rural public policy. Since 2022, I have also served as the founding director of the [Institute for Rural Initiatives](https://www.astate.edu/a/iri/). I am an affiliate faculty member with the [Arkansas Biosciences Institute](https://www.astate.edu/abi) at A-State.
 
-I formerly served as the Research Director in the [MIT Election Data and Science Lab](http://electionlab.mit.edu), where I managed applied research on the scientific study of elections. I was previously an affiliate faculty member with the [Harvard Institute for Quantitative Social Science](https://www.iq.harvard.edu/home). I grew up on [Crowley's Ridge](https://en.wikipedia.org/wiki/Crowley%27s_Ridge) in the Arkansas Delta.
+I formerly served as the Research Director in the [MIT Election Data and Science Lab](https://electionlab.mit.edu), where I managed applied research on the scientific study of elections. I was previously an affiliate faculty member with the [Harvard Institute for Quantitative Social Science](https://www.iq.harvard.edu/home). I grew up on [Crowley's Ridge](https://en.wikipedia.org/wiki/Crowley%27s_Ridge) in the Arkansas Delta.
 
 ::: social-buttons
 [{{< fa file-pdf >}}](uploads/cv-wimpy.pdf){.btn-social} [{{< fa envelope >}}](mailto:cwimpy@astate.edu){.btn-social} [{{< fa brands github >}}](https://github.com/cwimpy){.btn-social rel="me"} [{{< ai google-scholar >}}](https://scholar.google.com/citations?user=LRQ7rpwAAAAJ&hl=en){.btn-social} [{{< fa brands linkedin >}}](https://www.linkedin.com/in/cwimpy/){.btn-social rel="me"} [{{< ai orcid >}}](https://orcid.org/0000-0002-2049-5229){.btn-social rel="me"} [{{< fa brands x-twitter >}}](https://x.com/camwimpy){.btn-social rel="me"}
@@ -89,14 +103,14 @@ I formerly served as the Research Director in the [MIT Election Data and Science
 [<i class="fas fa-external-link-alt"></i> Publisher](https://electioncenter.org/wp-content/uploads/2026/04/JEARP-Volume-05-Issue-01.pdf){.btn-pub}
 [<i class="fas fa-quote-right"></i> Cite](#){.btn-pub .citation-btn
   data-citation="@article{mclean2026rural,&#10;  author = {William P. McLean and Cameron Wimpy},&#10;  title = {Rural Election Administration in the Lower Mississippi Delta},&#10;  year = {2026},&#10;  journal = {Journal of Election Administration Research &amp; Practice},&#10;  volume = {5},&#10;  number = {1},&#10;  pages = {70--95},&#10;  url = {https://electioncenter.org/wp-content/uploads/2026/04/JEARP-Volume-05-Issue-01.pdf}&#10;}"
-  data-apsa="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70--95."
-  data-apa="McLean, W. P., &amp; Wimpy, C. (2026). Rural Election Administration in the Lower Mississippi Delta. *Journal of Election Administration Research &amp; Practice*, *5*(1), 70--95."
-  data-mla="McLean, William P., and Cameron Wimpy. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice*, vol. 5, no. 1, 2026, pp. 70--95."
-  data-chicago="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70-95."}
+  data-apsa="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70–95."
+  data-apa="McLean, W. P., &amp; Wimpy, C. (2026). Rural Election Administration in the Lower Mississippi Delta. *Journal of Election Administration Research &amp; Practice*, *5*(1), 70–95."
+  data-mla="McLean, William P., and Cameron Wimpy. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice*, vol. 5, no. 1, 2026, pp. 70–95."
+  data-chicago="McLean, William P. and **Cameron Wimpy**. 2026. &quot;Rural Election Administration in the Lower Mississippi Delta.&quot; *Journal of Election Administration Research &amp; Practice* 5(1): 70–95."}
 [<i class="fas fa-align-left"></i> Summary](#){.btn-pub .abstract-toggle data-target="abstract-mclean2026rural-home"}
 :::
 
-::: {.abstract-full #abstract-mclean2026rural-home style="display: none; margin-top: 10px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;"}
+::: {.abstract-full #abstract-mclean2026rural-home}
 **Abstract:** Less than one-fifth of the voting-age population lives in rural areas, yet nearly two-thirds of elections occur in jurisdictions classified as rural by the U.S. government. This study examines election administration in the Lower Mississippi Delta, a unique rural region with distinct socioeconomic and geographic challenges. Through qualitative interviews with local election officials (LEOs) across 17 counties in six states, this research identifies key challenges---including communication barriers due to declining local media, difficulties in recruiting poll workers amid population decline, issues with vote-by-mail delivery, and challenges in maintaining bipartisan poll worker balance. Conversely, LEOs report opportunities such as enhanced voter access due to smaller populations, high local trust, and robust federal and state support---particularly during the COVID-19 pandemic. These findings highlight the interplay of rurality and election administration, offering insights for LEOs, policymakers, and researchers.
 :::
 ::::
@@ -114,23 +128,6 @@ I formerly served as the Research Director in the [MIT Election Data and Science
 ::::
 :::::
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.abstract-toggle').forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.getElementById(this.getAttribute('data-target'));
-      if (!target) return;
-      const hidden = target.style.display === 'none' || target.style.display === '';
-      target.style.display = hidden ? 'block' : 'none';
-      this.innerHTML = hidden
-        ? '<i class="fas fa-eye-slash"></i> Hide Summary'
-        : '<i class="fas fa-align-left"></i> Summary';
-    });
-  });
-});
-</script>
-
 ::::::
 
 ```{r}
@@ -141,6 +138,14 @@ rucc_last_built <- if (file.exists("images/rucc-map.png")) {
 } else {
   format(Sys.Date(), "%B %Y")
 }
+
+# Counts quoted in the sentence above the map. scripts/rucc-map.R writes this
+# file each time it rebuilds the map, so the text and the figure cannot drift
+# apart. All three numbers cover the same counties: those in the lower 48
+# states with a code in both 2013 and 2023.
+rucc_stats <- readr::read_csv("scripts/rucc-map-stats.csv", show_col_types = FALSE)
+# big.mark adds the thousands comma: 3100 becomes "3,100"
+fmt_n <- function(x) format(x, big.mark = ",")
 ```
 
 :::: {.data-exhibit}
@@ -149,13 +154,13 @@ rucc_last_built <- if (file.exists("images/rucc-map.png")) {
 
 ### How rural America shifted between 2013 and 2023 {.data-exhibit-title}
 
-[Of 3,219 U.S. counties, **553 became more rural** and **184 became less rural** over the past decade, as measured by USDA's Rural–Urban Continuum Codes. Counties shade darker for higher RUCC; arrows mark every county whose code changed.]{.data-exhibit-subtitle}
+[Of `r fmt_n(rucc_stats$n_comparable)` counties in the lower 48 states, **`r fmt_n(rucc_stats$n_more_rural)` became more rural** and **`r fmt_n(rucc_stats$n_less_rural)` became less rural** over the past decade, as measured by USDA's Rural–Urban Continuum Codes. Counties shade darker for higher RUCC; arrows mark every county whose code changed.]{.data-exhibit-subtitle}
 :::
 
 ::: {.data-exhibit-figure}
 [In progress]{.data-exhibit-pill}
 
-![How rural America shifted between 2013 and 2023 — county-level change in USDA Rural–Urban Continuum Codes](images/rucc-map.png){fig-alt="Map of the continental United States. Counties are shaded in a green sequence from light beige (metropolitan) to deep green (most rural). Small arrows overlay counties whose RUCC code changed between 2013 and 2023: green arrows pointing up where counties became more rural, amber arrows pointing down where they became less rural."}
+![](images/rucc-map.webp){fig-alt="Map of the continental United States. Counties are shaded in a green sequence from light beige (metropolitan) to deep green (most rural). Small arrows overlay counties whose RUCC code changed between 2013 and 2023: green arrows pointing up where counties became more rural, amber arrows pointing down where they became less rural."}
 :::
 
 ::: {.data-exhibit-caption}

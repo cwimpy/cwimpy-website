@@ -1,0 +1,174 @@
+// -----------------------------------------------------------------------------
+// Homepage scroll-payoff: "Latest" section beneath the hero
+// -----------------------------------------------------------------------------
+.home-secondary {
+  max-width: 1200px;
+  // No bottom margin: the footer's own top margin separates it from this,
+  // the last section on the home page.
+  margin: $space-9 auto 0 auto;
+  padding: 0 $space-6;
+  position: relative;
+
+  // Subtle top divider — encourages eye to flow downward from hero
+  &::before {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 0 $space-7 0;
+  }
+}
+
+.section-eyebrow {
+  font-family: $font-sans;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: $space-2;
+}
+
+:is(h1, h2, h3, h4).section-title {
+  font-family: $font-display;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  font-size: $text-3xl;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 0 $space-6 0;
+  letter-spacing: -0.02em;
+}
+
+.section-more-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: $space-5;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: all $transition-base;
+
+  &:hover {
+    color: var(--color-primary);
+    transform: translateX(2px);
+    text-decoration: none;
+  }
+}
+
+// Custom listing styling for the homepage grid (overrides default card chrome)
+// Quarto renders the listing as #listing-latest-posts > .list > .g-col-1 > a > .quarto-grid-item.card
+#listing-latest-posts {
+  .list { gap: $space-5; }
+
+  .quarto-grid-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
+  .quarto-grid-item.card {
+    background: var(--color-bg-muted);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: all $transition-base;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: none;
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-accent);
+      box-shadow: 0 10px 30px var(--color-shadow);
+
+      .listing-title { color: var(--color-accent); }
+    }
+
+    .card-img-top {
+      margin: 0;
+      padding: 0;
+    }
+
+    .thumbnail-image,
+    img.card-img,
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      height: auto !important;
+      max-height: none;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .card-body {
+      padding: $space-5;
+      display: flex;
+      flex-direction: column;
+      gap: $space-3;
+      flex: 1;
+    }
+
+    .listing-title,
+    h5.listing-title {
+      font-family: $font-display;
+      font-size: $text-xl;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--color-primary);
+      margin: 0;
+      transition: color $transition-base;
+    }
+
+    // Reading-time was the awkward block — now small subtle caption
+    .listing-reading-time {
+      font-family: $font-sans;
+      font-size: $text-xs;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--color-text-subtle);
+      margin: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+
+      &::before {
+        content: "\f017"; // clock
+        font-family: "Font Awesome 6 Free";
+        font-weight: 400;
+        margin-right: $space-2;
+        opacity: 0.7;
+      }
+    }
+
+    .card-attribution {
+      margin-top: auto;
+      padding-top: $space-3;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .listing-date {
+      font-family: $font-sans;
+      font-size: $text-xs;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-secondary {
+    margin: $space-7 auto 0 auto;
+    padding: 0 $space-4;
+  }
+  :is(h1, h2, h3, h4).section-title { font-size: $text-2xl; }
+}

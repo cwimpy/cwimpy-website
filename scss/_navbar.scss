@@ -1,0 +1,225 @@
+// -----------------------------------------------------------------------------
+// Navbar
+// -----------------------------------------------------------------------------
+.navbar {
+  background: var(--color-navbar-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+
+  // Bootstrap 5 navbar tokens — override journal defaults so nav text follows
+  // our theme rather than the bs default white-on-dark
+  --bs-navbar-color:               var(--color-text-muted);
+  --bs-navbar-hover-color:         var(--color-accent);
+  --bs-navbar-active-color:        var(--color-accent);
+  --bs-navbar-disabled-color:      var(--color-text-subtle);
+  --bs-navbar-brand-color:         var(--color-primary);
+  --bs-navbar-brand-hover-color:   var(--color-accent);
+
+  .navbar-brand,
+  .navbar-brand:hover,
+  .navbar-brand:focus {
+    font-weight: 600;
+    font-family: $font-display;
+    font-size: $text-lg;
+    color: var(--color-primary);
+  }
+
+  .navbar-nav {
+    .nav-link,
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
+      color: var(--color-text-muted);
+      font-weight: 500;
+      font-size: $text-sm;
+      letter-spacing: 0.02em;
+      transition: color $transition-base;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-item.active .nav-link,
+    .nav-item .nav-link.active {
+      color: var(--color-accent);
+    }
+  }
+
+  // Quarto navigation tools (search, color-scheme toggle, reader toggle) —
+  // override journal theme's white text with our muted text color
+  .quarto-navbar-tools .quarto-navigation-tool,
+  .quarto-navbar-tools .quarto-navigation-tool:hover {
+    color: var(--color-text-muted);
+  }
+
+  .quarto-navbar-tools .quarto-navigation-tool:hover {
+    color: var(--color-accent);
+  }
+
+  // Mobile hamburger — use mask so color follows theme
+  .navbar-toggler {
+    border: none;
+    padding: $space-1 $space-2;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: none;
+      background-color: var(--color-text-muted);
+      mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+      -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+      mask-size: 100%;
+      -webkit-mask-size: 100%;
+    }
+
+    &[aria-expanded="true"]:not(.collapsed) .navbar-toggler-icon {
+      mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6'/></svg>");
+      -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6l18 18M6 24L24 6'/></svg>");
+    }
+  }
+}
+
+// Search button
+.navbar #quarto-search {
+  display: flex;
+  align-items: center;
+
+  button {
+    background: transparent;
+    border: none;
+    padding: $space-2;
+    color: var(--color-text-muted);
+    font-size: $text-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color $transition-base;
+
+    &:hover,
+    &:focus {
+      color: var(--color-accent);
+      background: transparent;
+    }
+
+    .bi,
+    i:not(.fa):not(.fas):not(.far):not(.fab),
+    svg {
+      display: none;
+    }
+
+    &::after {
+      content: "\f002";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: $text-base;
+    }
+  }
+}
+
+// Dark-mode toggle
+.navbar .quarto-color-scheme-toggle {
+  background: transparent;
+  border: none;
+  padding: $space-2;
+  color: var(--color-text-muted);
+  font-size: $text-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color $transition-base;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--color-accent);
+    background: transparent;
+    text-decoration: none;
+  }
+
+  .bi,
+  svg,
+  i:not(.fa):not(.fas):not(.far):not(.fab) {
+    display: none;
+  }
+
+  &::after {
+    content: "\f186"; // moon (switch TO dark)
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: $text-base;
+  }
+
+  // Quarto adds .alternate to the toggle when in dark mode; swap to sun
+  &.alternate::after {
+    content: "\f185";
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Utility: back-to-top, anchors, reader toggle
+// -----------------------------------------------------------------------------
+#quarto-back-to-top {
+  background: transparent;
+  color: var(--color-text-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  padding: $space-2 $space-3;
+  font-size: $text-xs;
+  font-family: $font-sans;
+  box-shadow: none;
+  opacity: 0.6;
+  // Bottom-right corner, clear of the centred footer links and comment box
+  left: auto;
+  right: $space-5;
+  bottom: $space-5;
+  transform: none;
+  transition: all $transition-base;
+
+  &:hover {
+    opacity: 1;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-bg-muted);
+  }
+}
+
+.anchor-section-link {
+  color: var(--color-border);
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.quarto-reader-toggle {
+  .bi {
+    color: var(--color-text-muted);
+    transition: color $transition-base;
+  }
+
+  &:hover .bi {
+    color: var(--color-accent);
+  }
+}
+
+// Bootstrap semantic color overrides
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-accent) !important; }
+
+.btn-primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+
+  &:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-accent);
+  }
+}

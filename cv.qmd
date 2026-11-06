@@ -2,6 +2,9 @@
 title: "Curriculum Vitae"
 description: "CV for Cameron Wimpy, Associate Professor and Department Chair at Arkansas State University."
 page-layout: full
+# The page has its own centred header below; _components.scss hides the
+# default title block visually (it stays available to screen readers).
+body-classes: cv-page
 image: /images/og/cv.png
 twitter-card:
   image: /images/og/cv.png
